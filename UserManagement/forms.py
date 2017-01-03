@@ -7,14 +7,22 @@ from django.contrib.auth.models import Group
 import random
 
 
-class SignUpCustomerForm(forms.Form):
-    field_errors = {
+def random_with_N_digits(n):
+    range_start = 10 ** (n - 1)
+    range_end = (10 ** n) - 1
+    return random.randint(range_start, range_end)
+
+field_errors = {
         'required': 'وارد کردن این فیلد ضروری است.',
         'invalid': 'داده وارد شده نادرست است.'
     }
+
+
+class SignUpCustomerForm(forms.Form):
+
     first_name = forms.CharField(max_length=100, error_messages=field_errors)
     last_name = forms.CharField(max_length=100, error_messages=field_errors)
-    national_id = forms.IntegerField(max_value=9999999999,min_value=0)
+    national_id = forms.IntegerField(max_value=9999999999, min_value=0)
     email = forms.EmailField(max_length=100, error_messages=field_errors)
     password = forms.CharField(widget=forms.PasswordInput, error_messages=field_errors)
 
@@ -33,10 +41,11 @@ class SignUpCustomerForm(forms.Form):
         password = self.cleaned_data.get('password')
         national_id = self.cleaned_data.get('national_id')
 
-        while (True):
+        while True:
             try:
-                number = random.randint(1000000, 9999999)
-                user = User.objects.create_user(username=number, password=password, email=email, first_name=first_name,
+                customer_id = random_with_N_digits(10)
+                user = User.objects.create_user(username=customer_id, password=password, email=email,
+                                                first_name=first_name,
                                                 last_name=last_name)
                 user.save()
                 self.cleaned_data['user'] = user
@@ -51,3 +60,4 @@ class SignUpCustomerForm(forms.Form):
         customer.save()
         group = Group.objects.get(name='Customer')
         group.user_set.add(user)
+

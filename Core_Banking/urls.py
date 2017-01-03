@@ -17,8 +17,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from UserManagement import views
 urlpatterns = [
     url(r'^user/', include('UserManagement.urls')),
     url(r'^transaction/', include('TransactionManagement.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^homepage/', view=views.homepage, name='Homepage'),
+    url(r'^403/', view=views.forbidden, name='403'),
 ]
