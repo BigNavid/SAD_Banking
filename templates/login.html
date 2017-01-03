@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Navid Ahmadian">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+
+    <title>فا بانک | ورود به حساب کاربری</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-reset.css' %}" rel="stylesheet">
+    <!--external css-->
+    <link href="{% static 'assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style-responsive.css' %}" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/html5shiv.js'%}"></script>
+    <script src="{% static 'js/respond.min.js' %}"></script>
+    <![endif]-->
+    <style type="text/css">
+        body{
+
+        }
+    </style>
+</head>
+
+  <body class="login-body">
+
+    <div class="container">
+
+      <form class="form-signin" action="{% url 'Login' %}" method="post">
+          {% csrf_token %}
+        <h2 class="form-signin-heading">ورود به حساب کاربری</h2>
+        <div class="login-wrap">
+            <p>{{ error }}</p>
+            <input type="text" class="form-control" placeholder="شماره مشتری/ پرسنلی" autofocus name="username" required="required">
+            <input type="password" class="form-control" placeholder="کلمه عبور" name="password" required="required">
+            <label class="checkbox">
+                <input type="checkbox" value="remember-me"> مرا به خاطر بسپار
+            </label>
+
+            <button class="btn btn-lg btn-login btn-block" type="submit">ورود</button>
+            
+            <p><a href="#" class="forget"> کلمه عبور را فراموش کرده اید؟</a></p>
+
+        </div>
+
+      </form>
+
+    </div>
+
+
+  </body>
+</html>
