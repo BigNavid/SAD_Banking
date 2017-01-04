@@ -47,15 +47,14 @@ def signup_customer(request):
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('user')
-            message = """{}
-            حساب کاربری با موفقیت ساخته شد.""" \
-                .format(user.username)
+            message = "حساب کاربری با شماره مشتری {} برای کاربر ساخته شد.".format(user.username)
             # return redirect(reverse(''))
     else:
         form = SignUpCustomerForm()
     context = {'form': form,
-               'message': message}
-    return render(request, 'SignUpCustomer.html', context=context)
+               'message': message,
+               'username':request.user.username}
+    return render(request, 'signup_customer.html', context=context)
 
 
 def signup_accountant(request):

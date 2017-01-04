@@ -3082,11 +3082,16 @@ ul.amounts li {
 }
 
 
-.form-horizontal.tasi-form .form-group .help-block {
+.form-horizontal.tasi-form .form-group .help-block{
     margin-bottom: 0;
 }
 
-
+.error-block{
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    color: red;
+}
 .round-input {
     border-radius: 500px;
     -webkit-border-radius: 500px;
@@ -3565,29 +3570,6 @@ table.sliders tr td {
 .datepicker td span {
     height: 40px;
     line-height: 40px;
-}
-
-
-/*ck editor*/
-
-.cke_top, .cke_bottom {
-    background: #F5F5F5 !important;
-    background: -moz-linear-gradient(center top , #F5F5F5, #F5F5F5) repeat scroll 0 0 #F5F5F5 !important;
-    background: -webkit-linear-gradient(center top , #F5F5F5, #F5F5F5) repeat scroll 0 0 #F5F5F5 !important;
-    background: -o-linear-gradient(center top , #F5F5F5, #F5F5F5) repeat scroll 0 0 #F5F5F5 !important;
-    box-shadow: none;
-    padding: 6px 8px 2px;
-}
-
-.cke_top {
-    border-bottom: 1px solid #cccccc !important;
-}
-
-.cke_chrome {
-    border: 1px solid #cccccc !important;
-    box-shadow: none !important;
-    display: block;
-    padding: 0;
 }
 
 /*form wizard*/
