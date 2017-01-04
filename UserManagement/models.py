@@ -31,6 +31,6 @@ class AdminATM(models.Model):
 
 class Customer(models.Model):
     user = models.OneToOneField(User)
-    national_id = models.IntegerField(unique=True, null=True, blank=True)
+    national_id = models.IntegerField(unique=True)
     phone = models.IntegerField(unique=False, null=True, blank=True)
-    notification = models.BooleanField
+    notification = models.BooleanField(unique=False, null=False)

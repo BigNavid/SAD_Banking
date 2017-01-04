@@ -26,7 +26,7 @@ class SignUpCustomerForm(forms.Form):
     email = forms.EmailField(max_length=100, error_messages=field_errors)
     phone = forms.IntegerField(error_messages=field_errors)
     password = forms.CharField(widget=forms.PasswordInput, error_messages=field_errors)
-    notification = forms.CheckboxInput
+    notification = forms.BooleanField()
 
     def clean_national_id(self):
         national_id = self.cleaned_data.get('national_id')
