@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def atm_login(request):
+    pass

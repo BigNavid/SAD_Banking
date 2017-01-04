@@ -9,7 +9,7 @@ from .models import Customer, Cashier
 
 
 def homepage(request):
-    pass
+    return render(request, 'homepage.html')
 
 
 def login_user(request):
