@@ -71,13 +71,13 @@ class ATMMoneys(models.Model):
     money = models.ForeignKey(Money, on_delete=models.CASCADE)
 
 
-class Czech(models.Model):
-    czech_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
+class Check(models.Model):
+    check_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
     bankaccount = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
 
 
-class CzechLeaf(models.Model):
-    czechleaf_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
+class CheckLeaf(models.Model):
+    checkleaf_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
     bankaccount = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name= 'BankAccount')
-    czech_id = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name= 'CzechID')
+    check_id = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name= 'CheckID')
     expiration_date = models.DateField()
