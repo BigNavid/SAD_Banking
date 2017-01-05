@@ -67,7 +67,7 @@ a, a:hover, a:focus {
     margin: 0;
     padding:20px 15px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.71);
+    background: #FFC000;
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     color: #fff;
@@ -107,12 +107,12 @@ a, a:hover, a:focus {
     font-size: 12px;
 }
 .form-signin .btn-login {
-    background: rgba(103, 51, 46, 0.8);
+    background: #FFC000;
     color: #fff;
     text-transform: uppercase;
     font-weight: 300;
     font-family: yekan,'Open Sans', sans-serif;
-    box-shadow: 0 4px rgba(70, 33, 29, 0.78);
+    box-shadow: 0 4px #e5ac00;
     margin-bottom: 20px;
 }
 
