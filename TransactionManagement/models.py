@@ -1,19 +1,12 @@
 from django.db import models
 
-from UserManagement.models import Customer, Admin, AdminBranch, Accountant, AdminATM, Cashier, LegalExpert
+from UserManagement.models import Customer, Admin, AdminBranch, Accountant, AdminATM, Cashier, LegalExpert, Branch
 
 
 class BankAccount(models.Model):
     account_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     amount = models.BigIntegerField()
-
-
-class Branch(models.Model):
-    branch_id = models.IntegerField(primary_key=True, unique=True, db_index=True)
-    name = models.CharField(max_length=255, blank=True, null=True)
-    address = models.TextField(blank=True, null=True)
-    admin = models.OneToOneField(AdminBranch, null=False)
 
 
 class Loan(models.Model):
@@ -30,6 +23,7 @@ class LoanPayment(models.Model):
     customer = models.ForeignKey(Customer, on_delete=None)
     date = models.DateField(db_index=True)
     paid = models.BooleanField(default=False)
+
 
 class Money(models.Model):
     payment_id = models.IntegerField(primary_key=True, unique=True, db_index=True)
