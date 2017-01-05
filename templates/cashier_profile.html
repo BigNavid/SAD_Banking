@@ -176,7 +176,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <img alt="" src="img/avatar1_small.jpg">
-                            <span class="username">{{ cashier.user.first_name }}</span>
+                            <span class="username">{{ cashier.user.user.first_name }}</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
@@ -296,8 +296,8 @@
                                 <a href="#">
                                     <img src="img/profile-avatar.jpg" alt="">
                                 </a>
-                                <h1>{{ cashier.user.first_name }} {{ cashier.user.last_name }}</h1>
-                                <p>{{ cashier.user.email }}</p>
+                                <h1>{{ cashier.user.user.first_name }} {{ cashier.user.user.last_name }}</h1>
+                                <p>{{ cashier.user.user.email }}</p>
                             </div>
 
                             <ul class="nav nav-pills nav-stacked">

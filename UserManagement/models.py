@@ -7,12 +7,6 @@ class Admin(models.Model):
     profit = models.IntegerField(default=18)
 
 
-class Fees(models.Model):
-    fees_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
-    name = models.CharField(max_length=255)
-    fee = models.IntegerField(default=500)
-
-
 class Branch(models.Model):
     branch_id = models.IntegerField(primary_key=True, unique=True, db_index=True)
     name = models.CharField(max_length=255, blank=True, null=True)
@@ -25,24 +19,24 @@ class BranchStaff(models.Model):
     national_id = models.IntegerField(unique=True)
 
 
-class AdminBranch(BranchStaff):
-    pass
+class AdminBranch(models.Model):
+    user = models.OneToOneField(BranchStaff)
 
 
-class Accountant(BranchStaff):
-    pass
+class Accountant(models.Model):
+    user = models.OneToOneField(BranchStaff)
 
 
-class Cashier(BranchStaff):
-    pass
+class Cashier(models.Model):
+    user = models.OneToOneField(BranchStaff)
 
 
-class LegalExpert(BranchStaff):
-    pass
+class LegalExpert(models.Model):
+    user = models.OneToOneField(BranchStaff)
 
 
-class AdminATM(BranchStaff):
-    pass
+class AdminATM(models.Model):
+    user = models.OneToOneField(BranchStaff)
 
 
 class Customer(models.Model):

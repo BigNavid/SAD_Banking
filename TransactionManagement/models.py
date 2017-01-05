@@ -3,6 +3,12 @@ from django.db import models
 from UserManagement.models import Customer, Admin, AdminBranch, Accountant, AdminATM, Cashier, LegalExpert, Branch
 
 
+class Fees(models.Model):
+    fees_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
+    name = models.CharField(max_length=255)
+    fee = models.IntegerField(default=500)
+
+
 class BankAccount(models.Model):
     account_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)

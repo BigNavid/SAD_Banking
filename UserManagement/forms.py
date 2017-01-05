@@ -1,7 +1,6 @@
 import random
 
 from django import forms
-from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 
 from .models import Customer
@@ -63,5 +62,3 @@ class SignUpCustomerForm(forms.Form):
         customer.notification = notification
 
         customer.save()
-        group = Group.objects.get(name='Customer')
-        group.user_set.add(user)

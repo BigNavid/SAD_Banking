@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
@@ -20,10 +20,10 @@ def login_user(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            group = Group.objects.get(name='Cashier')
-            if group in request.user.groups.all():
+            try:
+                Cashier.objects.get(user__user__username=username)
                 return redirect(reverse('ProfileCashier', args={username}))
-            else:
+            except:
                 return redirect(reverse('TestView', args={username}))
         else:
             error = 'شماره مشتری/پرسنلی ویا رمز عبور اشتباه است.'
@@ -39,22 +39,23 @@ def logout_view(request):
 @login_required(login_url='/login')
 def signup_customer(request):
     message = ''
-    group = Group.objects.get(name='Cashier')
-    if group not in request.user.groups.all():
+    try:
+        Cashier.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = SignUpCustomerForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('user')
+                message = "حساب کاربری با شماره مشتری {} برای کاربر ساخته شد.".format(user.username)
+                # return redirect(reverse(''))
+        else:
+            form = SignUpCustomerForm()
+        context = {'form': form,
+                   'message': message,
+                   'username': request.user.username}
+        return render(request, 'signup_customer.html', context=context)
+    except:
         return redirect(reverse('TestView'))
-    if request.method == 'POST':
-        form = SignUpCustomerForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('user')
-            message = "حساب کاربری با شماره مشتری {} برای کاربر ساخته شد.".format(user.username)
-            # return redirect(reverse(''))
-    else:
-        form = SignUpCustomerForm()
-    context = {'form': form,
-               'message': message,
-               'username':request.user.username}
-    return render(request, 'signup_customer.html', context=context)
 
 
 def signup_accountant(request):
@@ -85,11 +86,11 @@ def test(request, username):
 def profile_cashier(request, username):
     if request.user.username != username:
         return redirect(reverse('403'))
-    group = Group.objects.get(name='Cashier')
-    if group not in request.user.groups.all():
+    try:
+        cashier = Cashier.objects.get(user__user__username=username)
+        context = {'cashier': cashier}
+    except:
         return redirect(reverse('403'))
-    cashier = Cashier.objects.get(user__username=username)
-    context = {'cashier': cashier}
     return render(request, 'cashier_profile.html', context=context)
 
 
