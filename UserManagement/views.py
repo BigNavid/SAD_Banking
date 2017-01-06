@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
-from .forms import SignUpCustomerForm
+from .forms import SignUpCustomerForm, CreateBankAccount
 from .models import Customer, Cashier
 
 
@@ -36,7 +36,7 @@ def logout_view(request):
     return redirect(reverse('Login'))
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/user/login/')
 def signup_customer(request):
     message = ''
     try:
@@ -58,22 +58,39 @@ def signup_customer(request):
         return redirect(reverse('TestView'))
 
 
-def signup_accountant(request):
-    pass
+@login_required(login_url='/user/login/')
+def create_bank_account(request):
+    message = ''
+    try:
+        cashier = Cashier.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = CreateBankAccount(request.POST)
+
+            if form.is_valid():
+                form.save()
+                bank_account = form.cleaned_data.get('bank_account')
+                message = "حساب بانکی با شماره حساب {} برای مشتری ساخته شد.".format(
+                    bank_account.account_id)
+                # return redirect(reverse(''))
+        else:
+            form = SignUpCustomerForm()
+        context = {'form': form,
+                   'message': message,
+                   'cashier': cashier,
+                   'username': request.user.username}
+        return render(request, 'create_bank_account.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
 
 
-def signup_branch_admin(request):
-    pass
-
-
-@login_required(login_url='/login')
+@login_required(login_url='/user/login/')
 def profile_customer(request, id):
     customer = Customer.objects.get(number=id)
     context = {'customer': customer}
     return render(request, '', context=context)
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/user/login/')
 def test(request, username):
     if request.user.username != username:
         return redirect(reverse('403'))
@@ -82,7 +99,7 @@ def test(request, username):
     return render(request, 'Test.html', context=context)
 
 
-@login_required(login_url='/login')
+@login_required(login_url='/user/login/')
 def profile_cashier(request, username):
     if request.user.username != username:
         return redirect(reverse('403'))
