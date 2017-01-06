@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
-from .forms import SignUpCustomerForm, CreateBankAccount
-from .models import Customer, Cashier
+from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm
+from .models import Customer, Cashier, Admin
 
 
 def homepage(request):
@@ -59,12 +59,57 @@ def signup_customer(request):
 
 
 @login_required(login_url='/user/login/')
+def signup_admin(request):
+    message = ''
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            form = SignUpAdminForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('user')
+                message = "حساب کاربری با شماره پرسنلی {} برای کاربر ساخته شد.".format(user.username)
+                # return redirect(reverse(''))
+        else:
+            form = SignUpAdminForm()
+        context = {'form': form,
+                   'message': message,
+                   'username': request.user.username}
+        return render(request, 'signup_admin.html', context=context)
+    else:
+        return redirect(reverse('TestView'))
+
+
+@login_required(login_url='/user/login/')
+def create_branch(request):
+    message = ''
+    try:
+        Admin.objects.get(user__username=request.user.username)
+        if request.method == 'POST':
+            form = CreateBranchForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                branch = form.cleaned_data.get('branch')
+                message = "شعبه به شماره {} ساخته شد.".format(
+                    branch.branch_id)
+                # return redirect(reverse(''))
+        else:
+            form = CreateBranchForm()
+        context = {'form': form,
+                   'message': message,
+                   'username': request.user.username}
+        return render(request, 'create_branch.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
+
+
+@login_required(login_url='/user/login/')
 def create_bank_account(request):
     message = ''
     try:
         cashier = Cashier.objects.get(user__user__username=request.user.username)
         if request.method == 'POST':
-            form = CreateBankAccount(request.POST)
+            form = CreateBankAccountForm(request.POST)
 
             if form.is_valid():
                 form.save()

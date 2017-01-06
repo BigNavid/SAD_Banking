@@ -3,8 +3,8 @@ import random
 from django import forms
 from django.contrib.auth.models import User
 
-from .models import Customer
-from TransactionManagement.models import BankAccount
+from .models import Customer, Admin
+from TransactionManagement.models import BankAccount, Branch
 
 
 def random_with_N_digits(n):
@@ -19,7 +19,7 @@ field_errors = {
 }
 
 
-class CreateBankAccount(forms.Form):
+class CreateBankAccountForm(forms.Form):
     customer_username = forms.IntegerField(max_value=99999, min_value=10000, error_messages=field_errors)
     amount = forms.IntegerField(min_value=0, error_messages=field_errors)
 
@@ -37,6 +37,69 @@ class CreateBankAccount(forms.Form):
                 break
             except:
                 pass
+
+
+class CreateBranchForm(forms.Form):
+    name = forms.CharField(max_length=255, error_messages=field_errors)
+    address = forms.CharField(max_length=10000, error_messages=field_errors)
+
+    def save(self):
+        name = self.cleaned_data.get('name')
+        address = self.cleaned_data.get('address')
+
+        while True:
+            try:
+                branch_id = random_with_N_digits(4)
+                print(branch_id)
+                branch = Branch.objects.create(branch_id=branch_id, name=name, address=address)
+                branch.save()
+                self.cleaned_data['branch'] = branch
+                break
+            except:
+                pass
+
+
+class SignUpAdminForm(forms.Form):
+    first_name = forms.CharField(max_length=255, error_messages=field_errors)
+    last_name = forms.CharField(max_length=255, error_messages=field_errors)
+    national_id = forms.IntegerField(error_messages=field_errors)
+    email = forms.EmailField(max_length=255, error_messages=field_errors)
+    phone = forms.IntegerField(error_messages=field_errors)
+    password = forms.CharField(widget=forms.PasswordInput, error_messages=field_errors)
+
+    def clean_national_id(self):
+        national_id = self.cleaned_data.get('national_id')
+        try:
+            Admin.objects.get(national_id=national_id)
+            raise forms.ValidationError('این شماره ملی قبلا ثبت شده است.')
+        except Admin.DoesNotExist:
+            return national_id
+
+    def save(self):
+        first_name = self.cleaned_data.get('first_name')
+        last_name = self.cleaned_data.get('last_name')
+        email = self.cleaned_data.get('email')
+        password = self.cleaned_data.get('password')
+        national_id = self.cleaned_data.get('national_id')
+        phone = self.cleaned_data.get('phone')
+
+        while True:
+            try:
+                admin_id = random_with_N_digits(5)
+                user = User.objects.create_user(username=admin_id, password=password, email=email,
+                                                first_name=first_name, last_name=last_name)
+                user.save()
+                self.cleaned_data['user'] = user
+                break
+            except:
+                pass
+
+        admin = Admin()
+        admin.user = user
+        admin.national_id = national_id
+        admin.phone = phone
+
+        admin.save()
 
 
 class SignUpCustomerForm(forms.Form):
