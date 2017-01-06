@@ -32,6 +32,6 @@ def whithdraw_from_bank_account(request):
                    'message': message,
                    'cashier': cashier,
                    'username': request.user.username}
-        return render(request, 'whutdraw_from_bank_account.html', context=context)
+        return render(request, 'whithdraw_from_bank_account.html', context=context)
     except:
         return redirect(reverse('TestView'))
