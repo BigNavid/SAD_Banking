@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.core.urlresolvers import reverse
 
 from TransactionManagement.forms import WhithdrawForm
 from UserManagement.models import Cashier
