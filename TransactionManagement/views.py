@@ -6,8 +6,8 @@ from TransactionManagement.forms import WhithdrawForm
 from UserManagement.models import Cashier
 
 
-def atm_login(request):
-    pass
+def atm(request):
+    return render(request, 'atm_index.html')
 
 
 @login_required(login_url='/user/login/')
