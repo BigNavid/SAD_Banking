@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
-from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm
+from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm
 from .models import Customer, Cashier, Admin
 
 
@@ -88,6 +88,30 @@ def signup_admin(request):
                    'username': request.user.username}
         return render(request, 'signup_admin.html', context=context)
     else:
+        return redirect(reverse('TestView'))
+
+
+@login_required(login_url='/user/login/')
+def create_branch_admin(request):
+    message = ''
+    try:
+        Admin.objects.get(user__username=request.user.username)
+        if request.method == 'POST':
+            form = SignUpBranchAdminForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('user')
+                message = "مدیر شعبه به شماره {} ساخته شد.".format(
+                    user.username)
+                # return redirect(reverse(''))
+        else:
+            form = SignUpBranchAdminForm()
+        context = {'form': form,
+                   'message': message,
+                   'username': request.user.username}
+        return render(request, 'create_branch_admin.html', context=context)
+    except:
         return redirect(reverse('TestView'))
 
 
