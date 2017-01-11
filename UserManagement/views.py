@@ -31,7 +31,12 @@ def login_user(request):
                     print("Customer Found")
                     return redirect(reverse('ProfileCustomer', args={username}))
                 except:
-                    return redirect(reverse('TestView', args={username}))
+                    try:
+                        Admin.objects.get(user__username=username)
+                        print("Admin Found")
+                        return redirect(reverse('ProfileAdmin', args={username}))
+                    except:
+                        return redirect(reverse('TestView', args={username}))
         else:
             error = 'شماره مشتری/پرسنلی ویا رمز عبور اشتباه است.'
     context = {'error': error}
@@ -170,6 +175,19 @@ def profile_cashier(request, username):
     except:
         return redirect(reverse('403'))
     return render(request, 'cashier_profile.html', context=context)
+
+
+@login_required(login_url='/user/login/')
+def profile_admin(request, username):
+    print("In Admin Profile")
+    if request.user.username != username:
+        return redirect(reverse('403'))
+    try:
+        admin = Admin.objects.get(user__username=username)
+        context = {'admin': admin}
+    except:
+        return redirect(reverse('403'))
+    return render(request, 'admin_profile.html', context=context)
 
 
 def forbidden(request):

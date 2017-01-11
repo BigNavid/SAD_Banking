@@ -199,7 +199,7 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a class="" href="{% url 'Homepage' %}">
+                        <a class="" href="index.html">
                             <i class="icon-dashboard"></i>
                             <span>صفحه اصلی</span>
                         </a>
@@ -207,40 +207,35 @@
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon-book"></i>
-                            <span>عناصر صفحه</span>
+                            <span>مدیریت حساب ها</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="general.html">عمومی</a></li>
-                            <li><a class="" href="buttons.html">دکمه ها</a></li>
-                            <li><a class="" href="widget.html">ویجت ها</a></li>
-                            <li><a class="" href="slider.html">اسلایدر ها</a></li>
-                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>
+                            <li><a class="" href="{% url 'SignUpCustomer' %}">حساب کاربری جدید</a></li>
+                            <li><a class="" href="{% url 'CreateBankAccount' %}">حساب بانکی جدید</a></li>
+{#                            <li><a class="" href="widget.html">ویجت ها</a></li>#}
+{#                            <li><a class="" href="slider.html">اسلایدر ها</a></li>#}
+{#                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>#}
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon-cogs"></i>
-                            <span>کامنت ها</span>
+                            <span>برداشت از حساب</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="grids.html">گرید</a></li>
-                            <li><a class="" href="calendar.html">تقویم</a></li>
-                            <li><a class="" href="charts.html">چارت</a></li>
+                            <li><a class="" href="{%  url 'WithdrawBankAccount' %}">نقدی</a></li>
+                            <li><a class="" href="calendar.html">واریز به حساب دبگر</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="javascript:;" class="">
+                        <a href="variz.html" class="">
                             <i class="icon-tasks"></i>
-                            <span>ابزارهای فرم</span>
+                            <span>واریز به حساب</span>
                             <span class="arrow"></span>
                         </a>
-                        <ul class="sub">
-                            <li><a class="" href="form_component.html">کامنت فرم</a></li>
-                            <li><a class="" href="form_wizard.html">فرم Wizard</a></li>
-                            <li><a class="" href="form_validation.html">ارزیابی فرم</a></li>
-                        </ul>
+
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
@@ -267,7 +262,7 @@
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="blank.html">صفحه خالی</a></li>
+                            <li><a class="" href="blank_admin.html">صفحه خالی</a></li>
                             <li><a class="" href="profile.html">پروفایل</a></li>
                             <li><a class="" href="invoice.html">فاکتور</a></li>
                             <li><a class="" href="404.html">404 Error</a></li>

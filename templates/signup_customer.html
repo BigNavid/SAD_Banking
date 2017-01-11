@@ -54,7 +54,7 @@
                             <li>
                                 <a href="#">
                                     <span class="photo">
-                                        <img alt="avatar" src="img/avatar-mini.jpg"></span>
+                                        <img alt="avatar" src="{% static 'img/avatar-mini.jpg' %}"></span>
                                     <span class="subject">
                                         <span class="from">سجاد باقرزاده</span>
                                         <span class="time">همین حالا</span>
@@ -66,7 +66,7 @@
                             <li>
                                 <a href="#">
                                     <span class="photo">
-                                        <img alt="avatar" src="img/avatar-mini2.jpg"></span>
+                                        <img alt="avatar" src="{% static 'img/avatar-mini2.jpg' %}"></span>
                                     <span class="subject">
                                         <span class="from">ایمان مدائنی</span>
                                         <span class="time">10 دقیقه قبل</span>
@@ -78,7 +78,7 @@
                             <li>
                                 <a href="#">
                                     <span class="photo">
-                                        <img alt="avatar" src="img/avatar-mini3.jpg"></span>
+                                        <img alt="avatar" src="{% static 'img/avatar-mini3.jpg' %}"></span>
                                     <span class="subject">
                                         <span class="from">صبا ذاکر</span>
                                         <span class="time">3 ساعت قبل</span>
@@ -90,7 +90,7 @@
                             <li>
                                 <a href="#">
                                     <span class="photo">
-                                        <img alt="avatar" src="img/avatar-mini4.jpg"></span>
+                                        <img alt="avatar" src="{% static 'img/avatar-mini4.jpg' %}"></span>
                                     <span class="subject">
                                         <span class="from">مسعود شریفی</span>
                                         <span class="time">همین حالا</span>
@@ -175,13 +175,13 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <img alt="" src="img/avatar1_small.jpg">
-                            <span class="username">{{ cashier.user.first_name }}</span>
+                            <img alt="" src="{% static 'img/avatar1_small.jpg' %}">
+                            <span class="username">{{ cashier.user.user.first_name }}</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
-                            <li><a href="{% url 'ProfileCashier' username %}"><i class=" icon-suitcase"></i>پروفایل</a></li>
+                            <li><a href="#"><i class=" icon-suitcase"></i>پروفایل</a></li>
                             <li><a href="#"><i class="icon-cog"></i>تنظیمات</a></li>
                             <li><a href="#"><i class="icon-bell-alt"></i>اعلام ها</a></li>
                             <li><a href="{% url 'Logout' %}"><i class="icon-key"></i>خروج</a></li>
@@ -198,49 +198,44 @@
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
-                    <li class="active">
-                        <a class="" href="{% url 'Homepage' %}">
+                    <li class="sub-menu">
+                        <a class="" href="index.html">
                             <i class="icon-dashboard"></i>
                             <span>صفحه اصلی</span>
                         </a>
                     </li>
-                    <li class="sub-menu">
+                    <li class="active sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon-book"></i>
-                            <span>عناصر صفحه</span>
+                            <span>مدیریت حساب ها</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="general.html">عمومی</a></li>
-                            <li><a class="" href="buttons.html">دکمه ها</a></li>
-                            <li><a class="" href="widget.html">ویجت ها</a></li>
-                            <li><a class="" href="slider.html">اسلایدر ها</a></li>
-                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>
+                            <li><a class="" href="{% url 'SignUpCustomer' %}">حساب کاربری جدید</a></li>
+                            <li><a class="" href="{% url 'CreateBankAccount' %}">حساب بانکی جدید</a></li>
+{#                            <li><a class="" href="widget.html">ویجت ها</a></li>#}
+{#                            <li><a class="" href="slider.html">اسلایدر ها</a></li>#}
+{#                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>#}
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon-cogs"></i>
-                            <span>کامنت ها</span>
+                            <span>برداشت از حساب</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="grids.html">گرید</a></li>
-                            <li><a class="" href="calendar.html">تقویم</a></li>
-                            <li><a class="" href="charts.html">چارت</a></li>
+                            <li><a class="" href="{%  url 'WithdrawBankAccount' %}">نقدی</a></li>
+                            <li><a class="" href="calendar.html">واریز به حساب دبگر</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="javascript:;" class="">
+                        <a href="variz.html" class="">
                             <i class="icon-tasks"></i>
-                            <span>ابزارهای فرم</span>
+                            <span>واریز به حساب</span>
                             <span class="arrow"></span>
                         </a>
-                        <ul class="sub">
-                            <li><a class="" href="form_component.html">کامنت فرم</a></li>
-                            <li><a class="" href="form_wizard.html">فرم Wizard</a></li>
-                            <li><a class="" href="form_validation.html">ارزیابی فرم</a></li>
-                        </ul>
+
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
@@ -267,7 +262,7 @@
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="blank.html">صفحه خالی</a></li>
+                            <li><a class="" href="blank_admin.html">صفحه خالی</a></li>
                             <li><a class="" href="profile.html">پروفایل</a></li>
                             <li><a class="" href="invoice.html">فاکتور</a></li>
                             <li><a class="" href="404.html">404 Error</a></li>

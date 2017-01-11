@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f3a6e9d-01a1-4186-b4a6-aa1e7498695d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/search-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/customer_profile.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin_profile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UserManagement/urls.py" afterPath="$PROJECT_DIR$/UserManagement/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UserManagement/views.py" afterPath="$PROJECT_DIR$/UserManagement/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/cashier_profile.html" afterPath="$PROJECT_DIR$/templates/cashier_profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/create_bank_account.html" afterPath="$PROJECT_DIR$/templates/create_bank_account.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/create_branch.html" afterPath="$PROJECT_DIR$/templates/create_branch.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/customer_profile.html" afterPath="$PROJECT_DIR$/templates/customer_profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/signup_customer.html" afterPath="$PROJECT_DIR$/templates/signup_customer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/withdraw_from_bank_account.html" afterPath="$PROJECT_DIR$/templates/withdraw_from_bank_account.html" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,21 +37,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="cashier_profile.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/cashier_profile.html">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UserManagement/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="7" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="367" selection-end-column="7" />
+            <state relative-caret-position="285">
+              <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/UserManagement/views.py">
+      <file leaf-file-name="create_branch.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/create_branch.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="163" column="16" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+            <state relative-caret-position="576">
+              <caret line="193" column="17" lean-forward="false" selection-start-line="193" selection-start-column="17" selection-end-line="193" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -57,8 +60,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UserManagement/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+            <state relative-caret-position="135">
+              <caret line="11" column="77" lean-forward="false" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -67,8 +70,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UserManagement/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="45" column="50" lean-forward="true" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
+            <state relative-caret-position="705">
+              <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -96,11 +99,15 @@
       <find>panel-body</find>
       <find>bio</find>
       <find>cashier</find>
-      <find>customer</find>
       <find>href</find>
+      <find>sidebar menu s</find>
+      <find>واریز به</find>
+      <find>customer</find>
+      <find>مشتری</find>
     </findStrings>
     <replaceStrings>
       <replace>customer</replace>
+      <replace>admin</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -112,23 +119,25 @@
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/UserManagement/admin.py" />
         <option value="$PROJECT_DIR$/TransactionManagement/admin.py" />
-        <option value="$PROJECT_DIR$/templates/create_bank_account.html" />
         <option value="$PROJECT_DIR$/TransactionManagement/models.py" />
-        <option value="$PROJECT_DIR$/templates/signup_customer.html" />
         <option value="$PROJECT_DIR$/templates/signup_admin.html" />
         <option value="$PROJECT_DIR$/UserManagement/models.py" />
         <option value="$PROJECT_DIR$/UserManagement/forms.py" />
-        <option value="$PROJECT_DIR$/templates/create_branch.html" />
         <option value="$PROJECT_DIR$/static/css/atm.css" />
         <option value="$PROJECT_DIR$/TransactionManagement/views.py" />
         <option value="$PROJECT_DIR$/TransactionManagement/urls.py" />
         <option value="$PROJECT_DIR$/templates/homepage.html" />
         <option value="$PROJECT_DIR$/templates/atm_index.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
-        <option value="$PROJECT_DIR$/templates/cashier_profile.html" />
         <option value="$PROJECT_DIR$/templates/customer_profile.html" />
-        <option value="$PROJECT_DIR$/UserManagement/urls.py" />
+        <option value="$PROJECT_DIR$/templates/cashier_profile.html" />
+        <option value="$PROJECT_DIR$/templates/signup_customer.html" />
+        <option value="$PROJECT_DIR$/templates/create_bank_account.html" />
+        <option value="$PROJECT_DIR$/templates/withdraw_from_bank_account.html" />
         <option value="$PROJECT_DIR$/UserManagement/views.py" />
+        <option value="$PROJECT_DIR$/UserManagement/urls.py" />
+        <option value="$PROJECT_DIR$/templates/admin_profile.html" />
+        <option value="$PROJECT_DIR$/templates/create_branch.html" />
       </list>
     </option>
   </component>
@@ -631,7 +640,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483736522270</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add Cashier &amp; Customer Profile">
+      <created>1484129114690</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1484129114690</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -711,7 +727,8 @@
     <MESSAGE value="Fix CreateBranch form" />
     <MESSAGE value="Fix views imports (TransactionManagement)" />
     <MESSAGE value="Add ATM page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ATM page" />
+    <MESSAGE value="Add Cashier &amp; Customer Profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Cashier &amp; Customer Profile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -762,13 +779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/create_bank_account.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="314" column="89" lean-forward="false" selection-start-line="314" selection-start-column="83" selection-end-line="314" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TransactionManagement/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-511">
@@ -783,24 +793,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/signup_customer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="347" column="35" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="397" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/signup_admin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="395">
           <caret line="351" column="77" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="387" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/create_branch.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="297" column="32" lean-forward="false" selection-start-line="297" selection-start-column="32" selection-end-line="297" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -889,42 +885,98 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/signup_customer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="277" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/create_bank_account.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="277" column="21" lean-forward="false" selection-start-line="277" selection-start-column="21" selection-end-line="277" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/cashier_profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="7" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="367" selection-end-column="7" />
+        <state relative-caret-position="420">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="277" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/withdraw_from_bank_account.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="220" column="38" lean-forward="false" selection-start-line="220" selection-start-column="38" selection-end-line="220" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/blank_cashier.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1416">
+          <caret line="365" column="21" lean-forward="true" selection-start-line="282" selection-start-column="16" selection-end-line="365" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/customer_profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="313" column="73" lean-forward="false" selection-start-line="313" selection-start-column="73" selection-end-line="313" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UserManagement/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        <state relative-caret-position="492">
+          <caret line="337" column="98" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="370" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UserManagement/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="45" column="50" lean-forward="true" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
+        <state relative-caret-position="705">
+          <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/blank_admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="365" column="21" lean-forward="true" selection-start-line="282" selection-start-column="16" selection-end-line="365" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UserManagement/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="77" lean-forward="false" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UserManagement/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="163" column="16" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+        <state relative-caret-position="285">
+          <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="193" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/create_branch.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="193" column="17" lean-forward="false" selection-start-line="193" selection-start-column="17" selection-end-line="193" selection-end-column="17" />
           <folding />
         </state>
       </provider>
