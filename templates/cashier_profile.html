@@ -54,7 +54,7 @@
                             <li>
                                 <a href="#">
                                     <span class="photo">
-                                        <img alt="avatar" src="img/avatar-mini.jpg"></span>
+                                        <img alt="avatar" src="{% static 'img/avatar-mini.jpg' %}"></span>
                                     <span class="subject">
                                         <span class="from">سجاد باقرزاده</span>
                                         <span class="time">همین حالا</span>
@@ -66,7 +66,7 @@
                             <li>
                                 <a href="#">
                                     <span class="photo">
-                                        <img alt="avatar" src="img/avatar-mini2.jpg"></span>
+                                        <img alt="avatar" src="{% static 'img/avatar-mini2.jpg' %}"></span>
                                     <span class="subject">
                                         <span class="from">ایمان مدائنی</span>
                                         <span class="time">10 دقیقه قبل</span>
@@ -78,7 +78,7 @@
                             <li>
                                 <a href="#">
                                     <span class="photo">
-                                        <img alt="avatar" src="img/avatar-mini3.jpg"></span>
+                                        <img alt="avatar" src="{% static 'img/avatar-mini3.jpg' %}"></span>
                                     <span class="subject">
                                         <span class="from">صبا ذاکر</span>
                                         <span class="time">3 ساعت قبل</span>
@@ -90,7 +90,7 @@
                             <li>
                                 <a href="#">
                                     <span class="photo">
-                                        <img alt="avatar" src="img/avatar-mini4.jpg"></span>
+                                        <img alt="avatar" src="{% static 'img/avatar-mini4.jpg' %}"></span>
                                     <span class="subject">
                                         <span class="from">مسعود شریفی</span>
                                         <span class="time">همین حالا</span>
@@ -175,7 +175,7 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <img alt="" src="img/avatar1_small.jpg">
+                            <img alt="" src="{% static 'img/avatar1_small.jpg' %}">
                             <span class="username">{{ cashier.user.user.first_name }}</span>
                             <b class="caret"></b>
                         </a>
@@ -199,7 +199,7 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a class="" href="{% url 'Homepage' %}">
+                        <a class="" href="index.html">
                             <i class="icon-dashboard"></i>
                             <span>صفحه اصلی</span>
                         </a>
@@ -207,40 +207,35 @@
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon-book"></i>
-                            <span>عناصر صفحه</span>
+                            <span>مدیریت حساب ها</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="general.html">عمومی</a></li>
-                            <li><a class="" href="buttons.html">دکمه ها</a></li>
-                            <li><a class="" href="widget.html">ویجت ها</a></li>
-                            <li><a class="" href="slider.html">اسلایدر ها</a></li>
-                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>
+                            <li><a class="" href="{% url 'SignUpCustomer' %}">حساب کاربری جدید</a></li>
+                            <li><a class="" href="{% url 'CreateBankAccount' %}">حساب بانکی جدید</a></li>
+{#                            <li><a class="" href="widget.html">ویجت ها</a></li>#}
+{#                            <li><a class="" href="slider.html">اسلایدر ها</a></li>#}
+{#                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>#}
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon-cogs"></i>
-                            <span>کامنت ها</span>
+                            <span>برداشت از حساب</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="grids.html">گرید</a></li>
-                            <li><a class="" href="calendar.html">تقویم</a></li>
-                            <li><a class="" href="charts.html">چارت</a></li>
+                            <li><a class="" href="{%  url 'WithdrawBankAccount' %}">نقدی</a></li>
+                            <li><a class="" href="calendar.html">واریز به حساب دبگر</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="javascript:;" class="">
+                        <a href="variz.html" class="">
                             <i class="icon-tasks"></i>
-                            <span>ابزارهای فرم</span>
+                            <span>واریز به حساب</span>
                             <span class="arrow"></span>
                         </a>
-                        <ul class="sub">
-                            <li><a class="" href="form_component.html">کامنت فرم</a></li>
-                            <li><a class="" href="form_wizard.html">فرم Wizard</a></li>
-                            <li><a class="" href="form_validation.html">ارزیابی فرم</a></li>
-                        </ul>
+
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
@@ -267,7 +262,7 @@
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="blank.html">صفحه خالی</a></li>
+                            <li><a class="" href="blank_admin.html">صفحه خالی</a></li>
                             <li><a class="" href="profile.html">پروفایل</a></li>
                             <li><a class="" href="invoice.html">فاکتور</a></li>
                             <li><a class="" href="404.html">404 Error</a></li>
@@ -294,7 +289,7 @@
                         <section class="panel">
                             <div class="user-heading round">
                                 <a href="#">
-                                    <img src="img/profile-avatar.jpg" alt="">
+                                    <img src="{% static 'img/profile-avatar.jpg' %}" alt="">
                                 </a>
                                 <h1>{{ cashier.user.user.first_name }} {{ cashier.user.user.last_name }}</h1>
                                 <p>{{ cashier.user.user.email }}</p>
@@ -302,66 +297,37 @@
 
                             <ul class="nav nav-pills nav-stacked">
                                 <li class="active"><a href="profile.html"><i class="icon-user"></i>Profile</a></li>
-                                <li><a href="profile-activity.html"><i class="icon-calendar"></i>Recent Activity <span class="label label-danger pull-right r-activity">9</span></a></li>
-                                <li><a href="profile-edit.html"><i class="icon-edit"></i>Edit profile</a></li>
+                                <li><a href="#"><i class="icon-calendar"></i>Recent Activity <span class="label label-danger pull-right r-activity">9</span></a></li>
+                                <li><a href="#"><i class="icon-edit"></i>Edit profile</a></li>
                             </ul>
 
                         </section>
                     </aside>
                     <aside class="profile-info col-lg-9">
                         <section class="panel">
-                            <form>
-                                <textarea placeholder="Whats in your mind today?" rows="2" class="form-control input-lg p-text-area"></textarea>
-                            </form>
-                            <footer class="panel-footer">
-                                <button class="btn btn-danger pull-right">Post</button>
-                                <ul class="nav nav-pills">
-                                    <li>
-                                        <a href="#"><i class="icon-map-marker"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="icon-camera"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class=" icon-film"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="icon-microphone"></i></a>
-                                    </li>
-                                </ul>
-                            </footer>
-                        </section>
-                        <section class="panel">
                             <div class="bio-graph-heading">
-                                Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ispum. Aliquam ac magna metus.
-
+                                {{ cashier.user.user.first_name }} عزیز صندوق‌دار محترم فابانک به حساب کاربری‌تان خوش آمدید.
                             </div>
                             <div class="panel-body bio-graph-info">
-                                <h1>Bio Graph</h1>
+                                <h1>اطلاعات شما:</h1>
                                 <div class="row">
                                     <div class="bio-row">
-                                        <p><span>First Name </span>: Jonathan</p>
+                                        <p><span>نام </span>: {{ cashier.user.user.first_name }}</p>
                                     </div>
                                     <div class="bio-row">
-                                        <p><span>Last Name </span>: Smith</p>
+                                        <p><span>نام خانوادگی </span>: {{ cashier.user.user.last_name }}</p>
                                     </div>
                                     <div class="bio-row">
-                                        <p><span>Country </span>: Australia</p>
+                                        <p><span>شعبه </span>: {{ cashier.user.branch.name }}</p>
                                     </div>
                                     <div class="bio-row">
-                                        <p><span>Birthday</span>: 13 July 1983</p>
+                                        <p><span>شماره ملی</span>: {{ cashier.user.national_id }}</p>
                                     </div>
                                     <div class="bio-row">
-                                        <p><span>Occupation </span>: UI Designer</p>
+                                        <p><span>نقش </span>: صندوق‌دار</p>
                                     </div>
                                     <div class="bio-row">
-                                        <p><span>Email </span>: jsmith@flatlab.com</p>
-                                    </div>
-                                    <div class="bio-row">
-                                        <p><span>Mobile </span>: (12) 03 4567890</p>
-                                    </div>
-                                    <div class="bio-row">
-                                        <p><span>Phone </span>: 88 (02) 123456</p>
+                                        <p><span>رایانامه </span>: {{ cashier.user.user.email }}</p>
                                     </div>
                                 </div>
                             </div>
