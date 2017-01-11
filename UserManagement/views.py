@@ -13,6 +13,7 @@ def homepage(request):
 
 
 def login_user(request):
+    print("In Sign-in")
     error = ''
     if request.method == 'POST':
         username = request.POST['username']
@@ -24,7 +25,13 @@ def login_user(request):
                 Cashier.objects.get(user__user__username=username)
                 return redirect(reverse('ProfileCashier', args={username}))
             except:
-                return redirect(reverse('TestView', args={username}))
+                print("Not Cashier")
+                try:
+                    Customer.objects.get(user__username=username)
+                    print("Customer Found")
+                    return redirect(reverse('ProfileCustomer', args={username}))
+                except:
+                    return redirect(reverse('TestView', args={username}))
         else:
             error = 'شماره مشتری/پرسنلی ویا رمز عبور اشتباه است.'
     context = {'error': error}
@@ -129,10 +136,18 @@ def create_bank_account(request):
 
 
 @login_required(login_url='/user/login/')
-def profile_customer(request, id):
-    customer = Customer.objects.get(number=id)
-    context = {'customer': customer}
-    return render(request, '', context=context)
+def profile_customer(request, username):
+    print("In Customer Profile")
+    if request.user.username != username:
+        return redirect(reverse('403'))
+        print("First 403")
+    try:
+        customer = Customer.objects.get(user__username=username)
+        context = {'customer': customer}
+    except:
+        return redirect(reverse('403'))
+        print("Second 403")
+    return render(request, 'customer_profile.html', context=context)
 
 
 @login_required(login_url='/user/login/')
@@ -146,6 +161,7 @@ def test(request, username):
 
 @login_required(login_url='/user/login/')
 def profile_cashier(request, username):
+    print("In Cashier Profile")
     if request.user.username != username:
         return redirect(reverse('403'))
     try:

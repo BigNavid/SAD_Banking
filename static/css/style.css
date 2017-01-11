@@ -13,7 +13,7 @@
 }
 
 body {
-    color: #797979;
+    color: #000000;
     background: #f1f2f7;
     font-family: yekan,'Open Sans', sans-serif;
     padding: 0px !important;
@@ -366,8 +366,8 @@ ul.sidebar-menu li.active a i {
 }
 
 .white-bg {
-    background: #fff;
-    border-bottom: 1px solid #f1f2f7;
+    background: #ffd805;
+    border-bottom: 1px solid #e5ac00;
 }
 
 .wrapper {
@@ -568,7 +568,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     float: right;
     text-align: center;
     width: 100%;
-    background: #a9d96c;
+    background: #f4a32e;
     border-radius: 0 0 3px 3px;
 }
 
@@ -696,7 +696,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     transition: all .3s ease;
     border: 1px solid #fff;
     box-shadow: none;
-    background: url("../img/search-icon.jpg") no-repeat 10px 8px;
+    background: url("../img/search-icon.png") no-repeat 10px 8px;
     padding:0 5px 0 35px;
     color: #fff;
 }
@@ -2309,7 +2309,7 @@ ul.inbox-pagination li {
 /*profile*/
 
 .profile-nav .user-heading {
-    background: #ff766c;
+    background: #e5ac00;
     color: #fff;
     border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
@@ -2332,6 +2332,7 @@ ul.inbox-pagination li {
 }
 
 .profile-nav .user-heading h1 {
+    font-family: yekan, 'Open Sans', sans-serif;
     font-size: 22px;
     font-weight: 300;
     margin-bottom: 5px;
@@ -2403,8 +2404,8 @@ ul.inbox-pagination li {
 }
 
 .bio-graph-heading {
-    background: #41cac0;
-    color: #fff;
+    background: #ffcc88;
+    color: #097168;
     text-align: center;
     font-style: italic;
     padding: 40px 110px;
@@ -2415,10 +2416,12 @@ ul.inbox-pagination li {
 }
 
 .bio-graph-info {
+    font-family: yekan, 'Open Sans', sans-serif;
     color: #89817e;
 }
 
 .bio-graph-info h1 {
+    font-family: yekan, 'Open Sans', sans-serif;
     font-size: 22px;
     font-weight: 300;
     margin: 0 0 20px;
