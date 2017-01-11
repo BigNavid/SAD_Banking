@@ -8,7 +8,7 @@ field_errors = {
     'invalid': 'داده وارد شده نادرست است.'
 }
 
-class WhithdrawForm(forms.Form):
+class WithdrawForm(forms.Form):
     bank_account_id = forms.IntegerField(max_value=99999, min_value=10000, error_messages=field_errors)
     amount = forms.IntegerField(min_value=0, error_messages=field_errors)
 

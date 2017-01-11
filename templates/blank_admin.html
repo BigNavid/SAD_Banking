@@ -1,28 +1,28 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="fa">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Navid Ahmadian">
-    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="img/favicon.html">
 
-    <title>برداشت نقدی</title>
+    <title>Blank</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap-reset.css' %}" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
-    <link href="{% static 'assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style-responsive.css' %}" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
-      <script src="{% static 'js/html5shiv.js' %}"></script>
-      <script src="{% static 'js/respond.min.js' %}"></script>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
     <![endif]-->
 </head>
 
@@ -35,11 +35,94 @@
                 <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
             </div>
             <!--logo start-->
-            <a href="#" class="logo">فا<span>بانک</span></a>
+            <a href="#" class="logo">فلت<span>لب</span></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="icon-tasks"></i>
+                            <span class="badge bg-success">6</span>
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">شما 6 برنامه در دست کار دارید</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">پنل مدیریت</div>
+                                        <div class="percent">40%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">بروزرسانی دیتابیس</div>
+                                        <div class="percent">60%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">برنامه نویسی  IPhone</div>
+                                        <div class="percent">87%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 87%">
+                                            <span class="sr-only">87% Complete</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">برنامه موبایل</div>
+                                        <div class="percent">33%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 33%">
+                                            <span class="sr-only">33% Complete (danger)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">پروفایل v1.3</div>
+                                        <div class="percent">45%</div>
+                                    </div>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                                            <span class="sr-only">45% Complete</span>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li class="external">
+                                <a href="#">برنامه های بیشتر</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -121,7 +204,7 @@
                                 <a href="#">
                                     <span class="label label-danger"><i class="icon-bolt"></i></span>
                                     سرور شماره 3 توقف کرده
-
+                                   
                                     <span class="small italic">34 دقیقه قبل</span>
                                 </a>
                             </li>
@@ -129,7 +212,7 @@
                                 <a href="#">
                                     <span class="label label-warning"><i class="icon-bell"></i></span>
                                     سرور شماره 4 بارگزاری نمی شود
-
+                                   
                                     <span class="small italic">1 ساعت قبل</span>
                                 </a>
                             </li>
@@ -137,7 +220,7 @@
                                 <a href="#">
                                     <span class="label label-danger"><i class="icon-bolt"></i></span>
                                     پنل مدیریت 24% پیشرفت داشته است
-
+                                   
                                     <span class="small italic">4 ساعت قبل</span>
                                 </a>
                             </li>
@@ -145,7 +228,7 @@
                                 <a href="#">
                                     <span class="label label-success"><i class="icon-plus"></i></span>
                                     ثبت نام کاربر جدید
-
+                                   
                                     <span class="small italic">همین حالا</span>
                                 </a>
                             </li>
@@ -153,7 +236,7 @@
                                 <a href="#">
                                     <span class="label label-info"><i class="icon-bullhorn"></i></span>
                                     برنامه پیام خطا دارد
-
+                                   
                                     <span class="small italic">10 دقیقه قبل</span>
                                 </a>
                             </li>
@@ -176,15 +259,15 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <img alt="" src="img/avatar1_small.jpg">
-                            <span class="username">{{ cashier.user.user.first_name }}</span>
+                            <span class="username">سجاد باقرزاده</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
-                            <li><a href="{% url 'ProfileCashier' username %}"><i class=" icon-suitcase"></i>پروفایل</a></li>
+                            <li><a href="#"><i class=" icon-suitcase"></i>پروفایل</a></li>
                             <li><a href="#"><i class="icon-cog"></i>تنظیمات</a></li>
                             <li><a href="#"><i class="icon-bell-alt"></i>اعلام ها</a></li>
-                            <li><a href="{% url 'Logout' %}"><i class="icon-key"></i>خروج</a></li>
+                            <li><a href="login.html"><i class="icon-key"></i>خروج</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -199,7 +282,7 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a class="" href="{% url 'Homepage' %}">
+                        <a class="" href="index.html">
                             <i class="icon-dashboard"></i>
                             <span>صفحه اصلی</span>
                         </a>
@@ -207,15 +290,15 @@
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon-book"></i>
-                            <span>عناصر صفحه</span>
+                            <span>مدیریت شعب</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="general.html">عمومی</a></li>
-                            <li><a class="" href="buttons.html">دکمه ها</a></li>
-                            <li><a class="" href="widget.html">ویجت ها</a></li>
-                            <li><a class="" href="slider.html">اسلایدر ها</a></li>
-                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>
+                            <li><a class="" href="{% url 'CreateBranch' %}">شعبه جدید</a></li>
+                            <li><a class="" href="{% url 'SignUpAdmin' %}">مدیر شعبه</a></li>
+{#                            <li><a class="" href="widget.html">ویجت ها</a></li>#}
+{#                            <li><a class="" href="slider.html">اسلایدر ها</a></li>#}
+{#                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>#}
                         </ul>
                     </li>
                     <li class="sub-menu">
@@ -267,7 +350,7 @@
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="blank.html">صفحه خالی</a></li>
+                            <li><a class="" href="blank_admin.html">صفحه خالی</a></li>
                             <li><a class="" href="profile.html">پروفایل</a></li>
                             <li><a class="" href="invoice.html">فاکتور</a></li>
                             <li><a class="" href="404.html">404 Error</a></li>
@@ -288,47 +371,9 @@
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
-                {% if message != '' %}
-                    <div class="alert alert-success alert-block fade in">
-                        <button data-dismiss="alert" class="close close-sm" type="button">
-                            <i class="icon-remove"></i>
-                        </button>
-                        <h4>
-                            <i class="icon-ok-sign"></i>
-                            برداشت از حساب انجام شد.
-                        </h4>
-                        <p>{{ message }}</p>
-                    </div>
-                {% endif %}
                 <!-- page start-->
-                    <div class="col-lg-12">
-                        <section class="panel">
-                            <header class="panel-heading">
-                            برداشت از حساب به صورت نقدی
-                            </header>
-                            <div class="panel-body">
-                                <form class="form-horizontal tasi-form" method="post" action="{% url 'WhithdrawBankAccount' %}">
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">شماره حساب</label>
-                                        <div class="col-sm-10">
-                                            <input id="id_bank_account_id" type="number" class="form-control" autofocus name="bank_account_id">
-                                            <span class="error-block">{{ form.bank_account_id.errors }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">مقدار برداشت</label>
-                                        <div class="col-sm-10">
-                                            <input id="id_amount" type="number" class="form-control" name="amount">
-                                            <span class="error-block">{{ form.amount.errors }}</span>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-shadow btn-success" type="submit">برداشت</button>
-                                </form>
-                            </div>
-                        </section>
-                    </div>
-                </div>
+                Page content goes here
+             
                 <!-- page end-->
             </section>
         </section>
@@ -336,23 +381,14 @@
     </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/jquery.scrollTo.min.js' %}"></script>
-    <script src="{% static 'js/jquery.nicescroll.js' %}" type="text/javascript"></script>
-    <script src="{% static 'assets/jquery-knob/js/jquery.knob.js' %}"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
 
-    <script src="{% static 'js/bootstrap-switch.js' %}"></script>
 
     <!--common script for all pages-->
-    <script src="{% static 'js/common-scripts.js' %}"></script>
-
-    <script>
-
-        //knob
-        $(".knob").knob();
-
-  </script>
+    <script src="js/common-scripts.js"></script>
 
 
 </body>

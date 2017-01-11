@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 
-from TransactionManagement.forms import WhithdrawForm
+from TransactionManagement.forms import WithdrawForm
 from UserManagement.models import Cashier
 
 
@@ -11,12 +11,12 @@ def atm(request):
 
 
 @login_required(login_url='/user/login/')
-def whithdraw_from_bank_account(request):
+def withdraw_from_bank_account(request):
     message = ''
     try:
         cashier = Cashier.objects.get(user__user__username=request.user.username)
         if request.method == 'POST':
-            form = WhithdrawForm(request.POST)
+            form = WithdrawForm(request.POST)
 
             if form.is_valid():
                 form.save()
@@ -27,11 +27,11 @@ def whithdraw_from_bank_account(request):
                     amount)
                 # return redirect(reverse(''))
         else:
-            form = WhithdrawForm()
+            form = WithdrawForm()
         context = {'form': form,
                    'message': message,
                    'cashier': cashier,
                    'username': request.user.username}
-        return render(request, 'whithdraw_from_bank_account.html', context=context)
+        return render(request, 'withdraw_from_bank_account.html', context=context)
     except:
         return redirect(reverse('TestView'))
