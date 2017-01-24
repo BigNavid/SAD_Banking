@@ -14,4 +14,16 @@ urlpatterns = [
     url(r'^profile/customer/(.+)/', view=views.profile_customer, name='ProfileCustomer'),
     url(r'^test/(.+)/', view=views.test, name='TestView'),
     url(r'^logout/', view=views.logout_view, name='Logout'),
+
+    url(r'^ghabz/', view=views.ghabz, name='Ghabz'),
+    url(r'^vam/', view=views.vam, name='Vam'),
+    url(r'^check/', view=views.check, name='Check'),
+    url(r'^gozaresh/', view=views.gozaresh, name='Gozaresh'),
+    url(r'^havale/', view=views.havale_monazam, name='Havale'),
+    url(r'^gardesh/', view=views.gardesh_hesab, name='Gardesh'),
+    url(r'^eskenas/', view=views.tarif_eskenas, name='ATMEskenas'),
+    url(r'^masdod/', view=views.masdodsazi, name='Masodosazi'),
+    url(r'^faal/', view=views.faalsazi, name='FaalSazi'),
+    url(r'^hesabbehesab/', view=views.hesabbehesab, name='HesabBeHesab'),
+
 ]
