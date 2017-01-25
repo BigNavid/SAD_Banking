@@ -13,7 +13,6 @@ def homepage(request):
 
 
 def login_user(request):
-    print("In Sign-in")
     error = ''
     if request.method == 'POST':
         username = request.POST['username']
@@ -25,15 +24,12 @@ def login_user(request):
                 Cashier.objects.get(user__user__username=username)
                 return redirect(reverse('ProfileCashier', args={username}))
             except:
-                print("Not Cashier")
                 try:
                     Customer.objects.get(user__username=username)
-                    print("Customer Found")
                     return redirect(reverse('ProfileCustomer', args={username}))
                 except:
                     try:
                         Admin.objects.get(user__username=username)
-                        print("Admin Found")
                         return redirect(reverse('ProfileAdmin', args={username}))
                     except:
                         return redirect(reverse('TestView', args={username}))
@@ -167,16 +163,13 @@ def create_bank_account(request):
 
 @login_required(login_url='/user/login/')
 def profile_customer(request, username):
-    print("In Customer Profile")
     if request.user.username != username:
         return redirect(reverse('403'))
-        print("First 403")
     try:
         customer = Customer.objects.get(user__username=username)
         context = {'customer': customer}
     except:
         return redirect(reverse('403'))
-        print("Second 403")
     return render(request, 'customer_profile.html', context=context)
 
 
@@ -191,7 +184,6 @@ def test(request, username):
 
 @login_required(login_url='/user/login/')
 def profile_cashier(request, username):
-    print("In Cashier Profile")
     if request.user.username != username:
         return redirect(reverse('403'))
     try:
@@ -204,7 +196,6 @@ def profile_cashier(request, username):
 
 @login_required(login_url='/user/login/')
 def profile_admin(request, username):
-    print("In Admin Profile")
     if request.user.username != username:
         return redirect(reverse('403'))
     try:
@@ -217,3 +208,73 @@ def profile_admin(request, username):
 
 def forbidden(request):
     return render(request, '403.html')
+
+
+def ghabz(request):
+    cashier = Cashier.objects.get(user__user__username=request.user.username)
+    context = {'cashier': cashier,
+               'username': request.user.username}
+    return render(request, 'ghabz.html',context=context)
+
+
+def vam(request):
+    cashier = Cashier.objects.get(user__user__username=request.user.username)
+    context = {'cashier': cashier,
+               'username': request.user.username}
+    return render(request, 'vam.html', context=context)
+
+
+def check(request):
+    cashier = Cashier.objects.get(user__user__username=request.user.username)
+    context = {'cashier': cashier,
+               'username': request.user.username}
+    return render(request, 'check.html', context=context)
+
+
+def gozaresh(request):
+    cashier = Cashier.objects.get(user__user__username=request.user.username)
+    context = {'cashier': cashier,
+               'username': request.user.username}
+    return render(request, 'gozaresh.html', context=context)
+
+
+def havale_monazam(request):
+    cashier = Cashier.objects.get(user__user__username=request.user.username)
+    context = {'cashier': cashier,
+               'username': request.user.username}
+    return render(request, 'havale.html', context=context)
+
+
+def gardesh_hesab(request):
+    cashier = Cashier.objects.get(user__user__username=request.user.username)
+    context = {'cashier': cashier,
+               'username': request.user.username}
+    return render(request, 'ghardesh.html', context=context)
+
+
+def tarif_eskenas(request):
+    cashier = Cashier.objects.get(user__user__username=request.user.username)
+    context = {'cashier': cashier,
+               'username': request.user.username}
+    return render(request, 'atm_eskenas.html', context=context)
+
+
+def masdodsazi(request):
+    cashier = Cashier.objects.get(user__user__username=request.user.username)
+    context = {'cashier': cashier,
+               'username': request.user.username}
+    return render(request, 'masdod.html', context=context)
+
+
+def faalsazi(request):
+    cashier = Cashier.objects.get(user__user__username=request.user.username)
+    context = {'cashier': cashier,
+               'username': request.user.username}
+    return render(request, 'faalsazi.html', context=context)
+
+
+def hesabbehesab(request):
+    cashier = Cashier.objects.get(user__user__username=request.user.username)
+    context = {'cashier': cashier,
+               'username': request.user.username}
+    return render(request, 'hesabbehesab.html', context=context)
