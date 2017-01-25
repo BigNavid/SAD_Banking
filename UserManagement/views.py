@@ -109,7 +109,8 @@ def create_branch_admin(request):
             form = SignUpBranchAdminForm()
         context = {'form': form,
                    'message': message,
-                   'username': request.user.username}
+                   'username': request.user.username,
+                   'range' : range(0,10)}
         return render(request, 'create_branch_admin.html', context=context)
     except:
         return redirect(reverse('TestView'))
