@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm
-from .models import Customer, Cashier, Admin
+from .models import Customer, Cashier, Admin, Branch
 
 
 def homepage(request):
@@ -106,7 +106,7 @@ def create_branch_admin(request):
         context = {'form': form,
                    'message': message,
                    'username': request.user.username,
-                   'range' : range(0,10)}
+                   'range' : range(0, len(Branch.objects))}
         return render(request, 'create_branch_admin.html', context=context)
     except:
         return redirect(reverse('TestView'))
