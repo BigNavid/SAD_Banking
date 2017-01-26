@@ -330,24 +330,28 @@
                                             <span class="error-block">{{ form.national_id.errors }}</span>
                                         </div>
                                     </div>
+{#                                    <div class="form-group">#}
+{#                                        <label class="col-sm-2 control-label">شماره شعبه</label>#}
+{#                                        <div class="col-sm-10">#}
+{#                                            <input id="id_branch" type="number" class="form-control" name="branch">#}
+{#                                            <span class="error-block">{{ form.branch.errors }}</span>#}
+{#                                        </div>#}
+{#                                    </div>#}
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">شماره شعبه</label>
                                         <div class="col-sm-10">
-                                            <input id="id_branch" type="number" class="form-control" name="branch">
-                                            <span class="error-block">{{ form.branch.errors }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">شماره شعبه</label>
-                                        <div class="col-sm-10">
-                                            <div class="btn-group">
-                                                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">لطفا یک شعبه را انتخاب نمایید. <span class="caret"></span></button>
-                                                <ul role="menu" class="dropdown-menu">
-                                                    {% for x in range %}
-                                                        <li><a href="#">Test</a></li>
-                                                    {% endfor %}
-                                                </ul>
-                                            </div>
+{#                                            <div class="btn-group">#}
+{#                                                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">لطفا یک شعبه را انتخاب نمایید. <span class="caret"></span></button>#}
+{#                                                <ul role="menu" class="dropdown-menu">#}
+                                            <select name="branch" id="id_branch" class="btn btn-success" style="width: 200px">
+                                                <option selected disabled>انتخاب کنید</option>
+                                                {% for x in branches %}
+{#                                                        <li><a href="#">{{ x.branch_id }}</a></li>#}
+                                                    <option value="{{ x.branch_id }}">{{ x.name }}</option>
+                                                {% endfor %}
+                                            </select>
+{#                                                </ul>#}
+{#                                            </div>#}
                                         </div>
                                     </div>
                                     <div class="form-group">

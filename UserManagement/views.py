@@ -106,7 +106,8 @@ def create_branch_admin(request):
         context = {'form': form,
                    'message': message,
                    'username': request.user.username,
-                   'range' : range(0, len(Branch.objects))}
+                   # 'range' : Branch.objects.all(),
+                   'branches' : Branch.objects.all()}
         return render(request, 'create_branch_admin.html', context=context)
     except:
         return redirect(reverse('TestView'))
