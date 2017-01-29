@@ -220,22 +220,15 @@
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
-                            <i class="icon-cogs"></i>
-                            <span>برداشت از حساب</span>
+                            <i class="icon-money"></i>
+                            <span>واریز یا برداشت</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="{%  url 'WithdrawBankAccount' %}">نقدی</a></li>
-                            <li><a class="" href="calendar.html">واریز به حساب دبگر</a></li>
+                            <li><a class="" href="{%  url 'WithdrawBankAccount' %}">برداشت نقدی</a></li>
+                            <li><a class="" href="{% url 'DepositBankAccount' %}">واریز نقدی</a></li>
+                            <li><a class="" href="{% url 'DepositToOtherBankAccount' %}">واریز به حساب دیگر</a></li>
                         </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="variz.html" class="">
-                            <i class="icon-tasks"></i>
-                            <span>واریز به حساب</span>
-                            <span class="arrow"></span>
-                        </a>
-
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
