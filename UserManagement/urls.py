@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^profile/cashier/(.+)/', view=views.profile_cashier, name='ProfileCashier'),
     url(r'^profile/admin/(.+)/', view=views.profile_admin, name='ProfileAdmin'),
     url(r'^profile/customer/(.+)/', view=views.profile_customer, name='ProfileCustomer'),
+    url(r'^profile/branchAdmin/(.+)/', view=views.profile_branch_admin, name='ProfileBranchAdmin'),
+    url(r'^branchAdmin/signupStaff/', view=views.signup_staff, name='SignupStaff'),
     url(r'^test/(.+)/', view=views.test, name='TestView'),
     url(r'^logout/', view=views.logout_view, name='Logout'),
 

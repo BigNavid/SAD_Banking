@@ -4,8 +4,9 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
-from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm
-from .models import Customer, Cashier, Admin, Branch
+from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
+    SignUpStaffForm
+from .models import Customer, Cashier, Admin, Branch, AdminBranch
 
 
 def homepage(request):
@@ -32,9 +33,14 @@ def login_user(request):
                         Admin.objects.get(user__username=username)
                         return redirect(reverse('ProfileAdmin', args={username}))
                     except:
-                        return redirect(reverse('TestView', args={username}))
+                        try:
+                            AdminBranch.objects.get(user__user__username=username)
+                            return redirect(reverse('ProfileBranchAdmin', args={username}))
+                        except:
+                            return redirect(reverse('TestView', args={username}))
+
         else:
-            error = 'شماره مشتری/پرسنلی ویا رمز عبور اشتباه است.'
+            error = 'شماره مشتری/پرسنلی یا رمز عبور اشتباه است.'
     context = {'error': error}
     return render(request, 'login.html', context)
 
@@ -98,7 +104,7 @@ def create_branch_admin(request):
             if form.is_valid():
                 form.save()
                 user = form.cleaned_data.get('user')
-                message = "مدیر شعبه به شماره {} ساخته شد.".format(
+                message = "حساب کاربری مدیر شعبه به شماره {} ساخته شد.".format(
                     user.username)
                 # return redirect(reverse(''))
         else:
@@ -107,11 +113,35 @@ def create_branch_admin(request):
                    'message': message,
                    'username': request.user.username,
                    # 'range' : Branch.objects.all(),
-                   'branches' : Branch.objects.all()}
+                   'branches': Branch.objects.all()}
         return render(request, 'create_branch_admin.html', context=context)
     except:
         return redirect(reverse('TestView'))
 
+@login_required(login_url='/user/login/')
+def signup_staff(request):
+    message = ''
+    try:
+        adminBranch=AdminBranch.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = SignUpStaffForm(request.POST)
+            if form.is_valid():
+                form.save(adminBranch)
+                user = form.cleaned_data.get('user')
+                message = "حساب کاربری کارمند به شماره پرسنلی {} ساخته شد.".format(
+                    user.username)
+                # return redirect(reverse(''))
+        else:
+            form = SignUpStaffForm()
+        context = {'form': form,
+                   'message': message,
+                   'username': request.user.username}
+                   # 'range' : Branch.objects.all(),
+                   # 'branches': Branch.objects.all()}
+        return render(request, 'signup_staff.html', context=context)
+        # return redirect(reverse('SignupStaff', args={username}), context = context)
+    except:
+        return redirect(reverse('TestView'))
 
 @login_required(login_url='/user/login/')
 def create_branch(request):
@@ -206,6 +236,17 @@ def profile_admin(request, username):
         return redirect(reverse('403'))
     return render(request, 'admin_profile.html', context=context)
 
+@login_required(login_url='/user/login/')
+def profile_branch_admin(request, username):
+    if request.user.username != username:
+        return redirect(reverse('403'))
+    try:
+        adminBranch = AdminBranch.objects.get(user__user__username=username)
+        context = {'adminBranch': adminBranch}
+    except:
+        return redirect(reverse('403'))
+    return render(request, 'branch_admin_profile.html', context=context)
+
 
 def forbidden(request):
     return render(request, '403.html')
@@ -215,7 +256,7 @@ def ghabz(request):
     cashier = Cashier.objects.get(user__user__username=request.user.username)
     context = {'cashier': cashier,
                'username': request.user.username}
-    return render(request, 'ghabz.html',context=context)
+    return render(request, 'ghabz.html', context=context)
 
 
 def vam(request):
