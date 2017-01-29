@@ -123,10 +123,11 @@ def signup_staff(request):
     message = ''
     try:
         adminBranch=AdminBranch.objects.get(user__user__username=request.user.username)
+        Branch=adminBranch.user.branch
         if request.method == 'POST':
             form = SignUpStaffForm(request.POST)
             if form.is_valid():
-                form.save(adminBranch)
+                form.save(Branch)
                 user = form.cleaned_data.get('user')
                 message = "حساب کاربری کارمند به شماره پرسنلی {} ساخته شد.".format(
                     user.username)

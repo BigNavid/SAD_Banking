@@ -137,13 +137,13 @@ class SignUpStaffForm(forms.Form):
     #     except Branch.DoesNotExist:
     #         raise forms.ValidationError('این شماره شعبه معتبر نمی‌باشد.')
 
-    def save(adminBranch,self):
+    def save(self,Branch):
         first_name = self.cleaned_data.get('first_name')
         last_name = self.cleaned_data.get('last_name')
         email = self.cleaned_data.get('email')
         password = self.cleaned_data.get('password')
         national_id = self.cleaned_data.get('national_id')
-        branch = adminBranch.branch
+        branch = Branch
         post= self.cleaned_data.get('post')
 
         while True:
@@ -160,7 +160,7 @@ class SignUpStaffForm(forms.Form):
         branch_staff = BranchStaff()
         branch_staff.user = user
         branch_staff.national_id = national_id
-        branch_staff.branch = Branch.objects.get(branch_id=branch)
+        branch_staff.branch = branch
         branch_staff.save()
         if post=="Cashier":
             employee = Cashier()
