@@ -210,20 +210,20 @@
                         <span>حساب کاربری جدید</span>
                     </a>
                 </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon-book"></i>
-                        <span>مدیریت حساب ها</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="{% url 'SignUpCustomer' %}">حساب کاربری جدید</a></li>
-                        <li><a class="" href="{% url 'CreateBankAccount' %}">حساب بانکی جدید</a></li>
+{#                <li class="sub-menu">#}
+{#                    <a href="javascript:;" class="">#}
+{#                        <i class="icon-book"></i>#}
+{#                        <span>مدیریت حساب ها</span>#}
+{#                        <span class="arrow"></span>#}
+{#                    </a>#}
+{#                    <ul class="sub">#}
+{#                        <li><a class="" href="{% url 'SignUpCustomer' %}">حساب کاربری جدید</a></li>#}
+{#                        <li><a class="" href="{% url 'CreateBankAccount' %}">حساب بانکی جدید</a></li>#}
                         {#                            <li><a class="" href="widget.html">ویجت ها</a></li>#}
                         {#                            <li><a class="" href="slider.html">اسلایدر ها</a></li>#}
                         {#                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>#}
-                    </ul>
-                </li>
+{#                    </ul>#}
+{#                </li>#}
                 <li class="sub-menu">
                     <a href="javascript:;" class="">
                         <i class="icon-cogs"></i>
@@ -232,7 +232,7 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="{%  url 'WithdrawBankAccount' %}">نقدی</a></li>
-                        <li><a class="" href="calendar.html">واریز به حساب دبگر</a></li>
+                        <li><a class="" href="{%  url 'DepositBankAccount' %}">واریز به حساب دیگر</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

@@ -206,7 +206,7 @@
                 </li>
                 <li class="active">
                     <a class="" href="{% url 'SignupStaff' %}">
-                        <i class="icon-dashboard"></i>
+                        <i class="icon-user"></i>
                         <span>حساب کاربری جدید</span>
                     </a>
                 </li>
@@ -313,7 +313,7 @@
                         ساخت حساب کاربری برای کارمند
                     </header>
                     <div class="panel-body">
-                        <form class="form-horizontal tasi-form" method="post" action="{% url 'CreateBranchAdmin' %}">
+                        <form class="form-horizontal tasi-form" method="post" action="{% url 'SignupStaff' %}">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">نام</label>
