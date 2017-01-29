@@ -2,6 +2,15 @@ from django.db import models
 
 from UserManagement.models import Customer, Admin, AdminBranch, Accountant, AdminATM, Cashier, LegalExpert, Branch
 
+class Bank(models.Model):
+    name = models.CharField(default="FaBank",primary_key=True, db_index=True)
+    account = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
+    profit = models.IntegerField(default=18)
+    # card_fee = models.FloatField(default=10)
+    check_fee = models.IntegerField(default=100)
+    alert_fee = models.IntegerField(default=10)
+    transfer_fee = models.IntegerField(default=100)
+
 
 class Fees(models.Model):
     fees_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)

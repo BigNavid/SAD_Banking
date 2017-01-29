@@ -6,7 +6,6 @@ class Admin(models.Model):
     user = models.OneToOneField(User)
     national_id = models.IntegerField(unique=True, db_index=True)
     phone = models.IntegerField(unique=False, null=True, blank=True)
-    profit = models.IntegerField(default=18)
 
 
 class Branch(models.Model):
