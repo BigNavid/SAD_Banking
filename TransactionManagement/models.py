@@ -2,8 +2,15 @@ from django.db import models
 
 from UserManagement.models import Customer, Admin, AdminBranch, Accountant, AdminATM, Cashier, LegalExpert, Branch
 
+
+class BankAccount(models.Model):
+    account_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    amount = models.BigIntegerField()
+
+
 class Bank(models.Model):
-    name = models.CharField(default="FaBank",primary_key=True, db_index=True)
+    name = models.CharField(default="FaBank", max_length=255, primary_key=True, db_index=True)
     account = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
     profit = models.IntegerField(default=18)
     # card_fee = models.FloatField(default=10)
@@ -16,12 +23,6 @@ class Fees(models.Model):
     fees_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
     name = models.CharField(max_length=255)
     fee = models.IntegerField(default=500)
-
-
-class BankAccount(models.Model):
-    account_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    amount = models.BigIntegerField()
 
 
 class Loan(models.Model):
