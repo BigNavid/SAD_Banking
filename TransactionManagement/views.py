@@ -6,10 +6,6 @@ from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOthe
 from UserManagement.models import Cashier
 
 
-def atm(request):
-    return render(request, 'atm_index.html')
-
-
 @login_required(login_url='/user/login/')
 def withdraw_from_bank_account(request):
     message = ''

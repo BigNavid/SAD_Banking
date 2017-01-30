@@ -26,7 +26,7 @@ html {
 
 /* Using box shadows to create 3D effects */
 #atm {
-	width: 325px;
+	width: 700px;
 	height: auto;
 
 	margin: 100px auto;
@@ -38,17 +38,26 @@ html {
 	box-shadow: 0px 4px #009de4, 0px 10px 15px rgba(0, 0, 0, 0.2);
 }
 
+div.top {
+	width: 660px;
+	margin: auto;
+}
 /* Top portion */
 .top span.clear {
 	float: left;
 }
 
 /* Inset shadow on the screen to create indent */
+
 .top .screen {
 	height: 250px;
-	width: auto;
+	width: 325px;
+
+	float: left;
 
 	padding: 0 10px;
+	margin-left: 5px;
+	margin-right: 5px;
 	margin-bottom: 10px;
 
 	background: rgba(0, 0, 0, 0.2);
@@ -64,9 +73,71 @@ html {
 	letter-spacing: 1px;
 }
 
+#context {
+	font-family:BNazanin,'BNazanin',tahoma;
+	direction: rtl;
+}
+
+#context_input {
+	font-family:BNazanin,'BNazanin',tahoma;
+}
+.top .panel {
+	float: left;
+	height: 250px;
+	width: 160px;
+	padding: 10px;
+	margin: auto;
+}
+
+.panel span.button {
+	font-family:BNazanin,'BNazanin',tahoma;
+	float: left;
+	position: relative;
+	top: 0;
+
+	cursor: pointer;
+
+	width: 140px;
+	height: 36px;
+
+	border-radius: 3px;
+	box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+
+	margin-bottom: 25px;
+
+	color: #888;
+	line-height: 36px;
+	text-align: center;
+
+	/* prevent selection of text inside keys */
+	user-select: none;
+
+	/* Smoothing out hover and active states using css3 transitions */
+	transition: all 0.2s ease;
+
+	background: #FFF0F5;
+}
+.panel span.button:hover {
+	background: #9c89f6;
+	box-shadow: 0px 4px #6b54d3;
+	color: white;
+}
+.panel span.disable{
+	background: #9b9295;
+}
+.panel span.disable:hover {
+	background: #9b9295;
+	box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+	color: white;
+}
 /* Clear floats */
 .keys, .top {overflow: hidden;}
 
+div.keys {
+	width: 285px;
+	height: auto;
+	margin: auto;
+}
 /* Applying same to the keys */
 .keys span, .top span.clear {
 	font-family:BNazanin,'BNazanin',tahoma;
@@ -99,18 +170,6 @@ html {
 
 /* Remove right margins from operator keys */
 /* style different type of keys (operators/evaluate/clear) differently */
-.keys span.button.left {
-	float: left;
-	width: 139px;
-	background: #FFF0F5;
-}
-
-.keys span.button.right {
-	float: right;
-	width: 139px;
-	background: #FFF0F5;
-	margin-right: 0;
-}
 
 .keys span.operator {
 	background: #FFF0F5;
@@ -167,4 +226,3 @@ html {
 	top: 4px;
 	box-shadow: 0px 0px #d3545d;
 }
-

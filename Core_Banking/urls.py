@@ -21,6 +21,7 @@ from UserManagement import views
 urlpatterns = [
     url(r'^user/', include('UserManagement.urls')),
     url(r'^transaction/', include('TransactionManagement.urls')),
+    url(r'^atm/', include('AutomatedTellerMachine.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^homepage/', view=views.homepage, name='Homepage'),
     url(r'^403/', view=views.forbidden, name='403'),

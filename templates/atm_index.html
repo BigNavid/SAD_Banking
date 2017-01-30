@@ -10,13 +10,32 @@
 
 	<div id="atm">
 		<div class="top">
-			<div class="screen"></div>
+
+			<div class="panel">
+				<span class="button">گزینه ۱</span>
+				<span class="button">گزینه ۲</span>
+				<span class="button disable">گزینه ۳</span>
+				<span class="button">گزینه ۴</span>
+			</div>
+
+			<div class="screen">
+                <br>
+                <p id="context">لطفا شماره کارت خود را وارد کنید.</p>
+                <br>
+                <br>
+                <p id="context_input"></p>
+            </div>
+
+			<div class="panel">
+				<span class="button">گزینه ۱</span>
+				<span class="button">گزینه ۲</span>
+				<span class="button">گزینه ۳</span>
+				<span class="button">گزینه ۴</span>
+			</div>
+
 		</div>
 		<div class="keys">
-			<span class="button right">گزینه ۱</span>
-			<span class="button left">گزینه ۲</span>
-			<span class="button right">گزینه ۳</span>
-			<span class="button left">گزینه ۴</span>
+
 			<span>7</span>
 			<span>8</span>
 			<span>9</span>
@@ -35,6 +54,10 @@
 
 		</div>
 	</div>
+    <script src="{% static 'js/ATM_Script.js' %}"></script>
 
+    <form method="post" action="{% url 'ATMLogin' %}" id="form_temp">
+        {% csrf_token %}
+    </form>
 </body>
 </html>
