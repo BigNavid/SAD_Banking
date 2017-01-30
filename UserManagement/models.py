@@ -42,7 +42,6 @@ class AdminATM(models.Model):
 
 class Customer(models.Model):
     user = models.OneToOneField(User)
-    card_number = models.IntegerField(unique=False, null=True, blank=True)
     national_id = models.IntegerField(unique=True)
     phone = models.IntegerField(unique=False, null=True, blank=True)
     notification = models.BooleanField(default=False, null=False)

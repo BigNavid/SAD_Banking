@@ -62,10 +62,13 @@ class BillPayment(models.Model):
 
 class Transaction(models.Model):
     transaction_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
-    bankaccount_from = models.ForeignKey(BankAccount, on_delete=None, related_name='From')
-    bankaccount_to = models.ForeignKey(BankAccount, on_delete=None, related_name='To')
+    bankaccount_from = models.ForeignKey(BankAccount, on_delete=None, related_name='From', null=True, blank=True)
+    bankaccount_to = models.ForeignKey(BankAccount, on_delete=None, related_name='To', null=True, blank=True)
     date_time = models.DateTimeField(auto_now=True)
     amount = models.BigIntegerField()
+    type = models.CharField(max_length=255, blank=False, null=False, db_index=True)
+    branch = models.ForeignKey(Branch, on_delete=None)
+    cashier = models.ForeignKey(Cashier, on_delete=None, null=True, blank=True)
 
 
 class ATM(models.Model):
@@ -89,5 +92,11 @@ class Check(models.Model):
 class CheckLeaf(models.Model):
     checkleaf_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
     bankaccount = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name= 'BankAccount')
-    check_id = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name= 'CheckID')
+    parent_check = models.ForeignKey(Check, on_delete=models.CASCADE, related_name= 'Check')
     expiration_date = models.DateField()
+
+
+class CreditCard(models.Model):
+    number = models.BigIntegerField(primary_key=True, unique=True, blank=False, null=False)
+    bank_account = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
+    password = models.IntegerField(null=False, blank=False)

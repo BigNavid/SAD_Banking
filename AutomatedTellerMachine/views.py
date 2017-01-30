@@ -9,10 +9,10 @@ from UserManagement.models import Customer
 def atm_login(request):
     msg = ''
     if request.method == 'POST':
-        card_number = request.POST['card_number']
+        cardNumber = request.POST['cardNumber']
         password = request.POST['password']
         try:
-            customer = Customer.objects.get(card_number=card_number)
+            customer = Customer.objects.get(cardNumber=cardNumber)
             username = customer.user.username
             user = authenticate(username=username, password=password)
             if user is not None:
