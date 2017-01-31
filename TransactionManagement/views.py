@@ -16,12 +16,11 @@ def withdraw_from_bank_account(request):
 
             if form.is_valid():
                 form.save()
-                bank_account = form.cleaned_data.get('bank_account')
+                bank_account_id = form.cleaned_data.get('bank_account_id')
                 amount = form.cleaned_data.get('amount')
                 message = "از حساب بانکی با شماره حساب {} مبلغ {} کسر شد.".format(
-                    bank_account.account_id,
+                    bank_account_id,
                     amount)
-                # return redirect(reverse(''))
         else:
             form = WithdrawForm()
         context = {'form': form,
@@ -42,12 +41,11 @@ def deposit_to_bank_account(request):
 
             if form.is_valid():
                 form.save()
-                bank_account = form.cleaned_data.get('bank_account')
+                bank_account_id = form.cleaned_data.get('bank_account_id')
                 amount = form.cleaned_data.get('amount')
                 message = "به حساب بانکی با شماره حساب {} مبلغ {} اضافه شد.".format(
-                    bank_account.account_id,
+                    bank_account_id,
                     amount)
-                # return redirect(reverse(''))
         else:
             form = WithdrawForm()
         context = {'form': form,
@@ -68,14 +66,13 @@ def deposit_to_other_bank_account(request):
 
             if form.is_valid():
                 form.save()
-                source_bank_account = form.cleaned_data.get('source_bank_account')
-                destination_bank_account = form.cleaned_data.get('destination_bank_account')
+                source_bank_account_id = form.cleaned_data.get('source_bank_account_id')
+                destination_bank_account_id = form.cleaned_data.get('destination_bank_account_id')
                 amount = form.cleaned_data.get('amount')
                 message = "از حساب بانکی با شماره حساب {} مبلغ {} کسر و به حساب بانکی {} اضافه شد.".format(
-                    source_bank_account.account_id,
+                    source_bank_account_id,
                     amount,
-                    destination_bank_account)
-                # return redirect(reverse(''))
+                    destination_bank_account_id)
         else:
             form = WithdrawForm()
         context = {'form': form,
