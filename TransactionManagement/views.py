@@ -15,7 +15,7 @@ def withdraw_from_bank_account(request):
             form = WithdrawForm(request.POST)
 
             if form.is_valid():
-                form.save()
+                form.save(cashier)
                 bank_account_id = form.cleaned_data.get('bank_account_id')
                 amount = form.cleaned_data.get('amount')
                 message = "از حساب بانکی با شماره حساب {} مبلغ {} کسر شد.".format(
@@ -40,7 +40,7 @@ def deposit_to_bank_account(request):
             form = DepositForm(request.POST)
 
             if form.is_valid():
-                form.save()
+                form.save(cashier)
                 bank_account_id = form.cleaned_data.get('bank_account_id')
                 amount = form.cleaned_data.get('amount')
                 message = "به حساب بانکی با شماره حساب {} مبلغ {} اضافه شد.".format(
@@ -65,7 +65,7 @@ def deposit_to_other_bank_account(request):
             form = DepositToOtherForm(request.POST)
 
             if form.is_valid():
-                form.save()
+                form.save(cashier)
                 source_bank_account_id = form.cleaned_data.get('source_bank_account_id')
                 destination_bank_account_id = form.cleaned_data.get('destination_bank_account_id')
                 amount = form.cleaned_data.get('amount')
