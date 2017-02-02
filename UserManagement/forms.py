@@ -1,16 +1,11 @@
-import random
-
 from django import forms
 from django.contrib.auth.models import User
 
+from TransactionManagement.Utils import random_with_N_digits
 from .models import Customer, Admin, AdminBranch, BranchStaff, Cashier, Accountant, LegalExpert, AdminATM
 from TransactionManagement.models import BankAccount, Branch
 
 
-def random_with_N_digits(n):
-    range_start = 10 ** (n - 1)
-    range_end = (10 ** n) - 1
-    return random.randint(range_start, range_end)
 
 
 field_errors = {

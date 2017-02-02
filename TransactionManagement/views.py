@@ -2,9 +2,12 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 
+from TransactionManagement import Constants
+from TransactionManagement.Utils import CreateTansactionModel
 from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm
 from UserManagement.models import Cashier, Accountant
-from .models import Transaction
+from .models import Transaction, BankAccount
+
 
 
 @login_required(login_url='/user/login/')
@@ -16,9 +19,15 @@ def withdraw_from_bank_account(request):
             form = WithdrawForm(request.POST)
 
             if form.is_valid():
-                form.save(cashier)
+                form.save()
                 bank_account_id = form.cleaned_data.get('bank_account_id')
                 amount = form.cleaned_data.get('amount')
+                bankaccount_to = BankAccount.objects.get(account_id=bank_account_id)
+                CreateTansactionModel(bankaccount_to=bankaccount_to,
+                                      branch_to=bankaccount_to.branch,
+                                      amount=amount,
+                                      type=Constants.CASH_WITHDRAW,
+                                      cashier=cashier)
                 message = "از حساب بانکی با شماره حساب {} مبلغ {} کسر شد.".format(
                     bank_account_id,
                     amount)
@@ -42,9 +51,15 @@ def deposit_to_bank_account(request):
             form = DepositForm(request.POST)
 
             if form.is_valid():
-                form.save(cashier)
-                bank_account_id = form.cleaned_data.get('bank_account_id')
+                form.save()
+                bank_account_id = form.cleaned_data.get('source_bank_account_id')
                 amount = form.cleaned_data.get('amount')
+                bankaccount_from = BankAccount.objects.get(account_id=bank_account_id)
+                CreateTansactionModel(bankaccount_from=bankaccount_from,
+                                      branch_from=bankaccount_from.branch,
+                                      amount=amount,
+                                      type=Constants.CASH_DEPOSIT,
+                                      cashier=cashier)
                 message = "به حساب بانکی با شماره حساب {} مبلغ {} اضافه شد.".format(
                     bank_account_id,
                     amount)
@@ -68,10 +83,19 @@ def deposit_to_other_bank_account(request):
             form = DepositToOtherForm(request.POST)
 
             if form.is_valid():
-                form.save(cashier)
+                form.save()
                 source_bank_account_id = form.cleaned_data.get('source_bank_account_id')
                 destination_bank_account_id = form.cleaned_data.get('destination_bank_account_id')
                 amount = form.cleaned_data.get('amount')
+                bankaccount_from = BankAccount.objects.get(account_id=source_bank_account_id)
+                bankaccount_to = BankAccount.objects.get(account_id=destination_bank_account_id)
+                CreateTansactionModel(bankaccount_from=bankaccount_from,
+                                      branch_from=bankaccount_from.branch,
+                                      bankaccount_to=bankaccount_to,
+                                      branch_to=bankaccount_to.branch,
+                                      amount=amount,
+                                      type=Constants.DEPOSIT_TO_OTHER_ACCOUNT,
+                                      cashier=cashier)
                 message = "از حساب بانکی با شماره حساب {} مبلغ {} کسر و به حساب بانکی {} اضافه شد.".format(
                     source_bank_account_id,
                     amount,
