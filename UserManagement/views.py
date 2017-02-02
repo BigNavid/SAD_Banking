@@ -211,7 +211,6 @@ def create_creditcard(request):
             form = CreateCreditCardForm()
         context = {'form': form,
                    'message': message,
-                   'card_number': credit_card.number,
                    'username': request.user.username}
         return render(request, 'create_credit_card.html', context=context)
     except:
