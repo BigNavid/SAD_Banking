@@ -14,7 +14,7 @@ class Bank(models.Model):
     name = models.CharField(default="FaBank", max_length=255, primary_key=True, db_index=True)
     account = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
     profit = models.IntegerField(default=18)
-    # card_fee = models.FloatField(default=10)
+    card_fee = models.FloatField(default=10)
     check_fee = models.IntegerField(default=100)
     alert_fee = models.IntegerField(default=10)
     transfer_fee = models.IntegerField(default=100)
