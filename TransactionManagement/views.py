@@ -135,5 +135,4 @@ def accountant_report(request):
         print("Before Rendering")
         return render(request, 'accountant_report.html', context=context)
     except:
-        print("FUCK")
         return redirect(reverse('403'))
