@@ -177,7 +177,7 @@ def create_bank_account(request):
             form = CreateBankAccountForm(request.POST)
 
             if form.is_valid():
-                form.save()
+                form.save(cashier.branch)
                 bank_account = form.cleaned_data.get('bank_account')
                 message = "حساب بانکی با شماره حساب {} برای مشتری ساخته شد.".format(
                     bank_account.account_id)

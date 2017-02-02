@@ -18,7 +18,7 @@ class CreateBankAccountForm(forms.Form):
     customer_username = forms.IntegerField(max_value=99999, min_value=10000, error_messages=field_errors)
     amount = forms.IntegerField(min_value=0, error_messages=field_errors)
 
-    def save(self):
+    def save(self,branch):
         customer_username = self.cleaned_data.get('customer_username')
         amount = self.cleaned_data.get('amount')
 
@@ -26,7 +26,7 @@ class CreateBankAccountForm(forms.Form):
             try:
                 bank_account_id = random_with_N_digits(10)
                 customer = Customer.objects.get(user__username=customer_username)
-                bank_account = BankAccount.objects.create(account_id=bank_account_id, customer=customer, amount=amount)
+                bank_account = BankAccount.objects.create(account_id=bank_account_id, customer=customer, amount=amount, branch=branch)
                 bank_account.save()
                 self.cleaned_data['bank_account'] = bank_account
                 break
