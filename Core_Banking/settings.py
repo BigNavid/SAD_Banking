@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'UserManagement',
     'TransactionManagement',
+    'AutomatedTellerMachine',
 ]
 
 MIDDLEWARE_CLASSES = [

@@ -7,6 +7,7 @@ class BankAccount(models.Model):
     account_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     amount = models.BigIntegerField()
+    branch = models.ForeignKey(Branch,on_delete=None)
 
 
 class Bank(models.Model):
@@ -62,12 +63,13 @@ class BillPayment(models.Model):
 
 class Transaction(models.Model):
     transaction_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
-    bankaccount_from = models.ForeignKey(BankAccount, on_delete=None, related_name='From', null=True, blank=True)
-    bankaccount_to = models.ForeignKey(BankAccount, on_delete=None, related_name='To', null=True, blank=True)
+    bankaccount_from = models.ForeignKey(BankAccount, on_delete=None, related_name='BankAcoount From+', null=True, blank=True)
+    branch_from = models.ForeignKey(Branch, on_delete=None, related_name="Branch From+", null=True, blank=True)
+    bankaccount_to = models.ForeignKey(BankAccount, on_delete=None, related_name='BankAccount To+', null=True, blank=True)
+    branch_to = models.ForeignKey(Branch, on_delete=None, related_name='Branch To+', null=True, blank=True)
     date_time = models.DateTimeField(auto_now=True)
     amount = models.BigIntegerField()
     type = models.CharField(max_length=255, blank=False, null=False, db_index=True)
-    branch = models.ForeignKey(Branch, on_delete=None)
     cashier = models.ForeignKey(Cashier, on_delete=None, null=True, blank=True)
 
 
