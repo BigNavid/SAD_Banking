@@ -49,15 +49,16 @@ class Money(models.Model):
 
 
 class Bills(models.Model):
-    bill_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
-    name = models.CharField(max_length=255, blank=True, null=True)
+    # bill_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
+    kind = models.CharField(primary_key=True, max_length=255, unique=True)
     BankAccount_to = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
 
 
 class BillPayment(models.Model):
-    billpayment_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
-    billkinde = models.ForeignKey(Bills, on_delete=None)
-    customer = models.ForeignKey(Customer, on_delete=None)
+    bill_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
+    billpayment_id = models.BigIntegerField( unique=True, db_index=True)
+    billkind = models.ForeignKey(Bills, on_delete=None)
+    # customer = models.ForeignKey(Customer, on_delete=None)
     bankaccount = models.ForeignKey(BankAccount, on_delete=None)
 
 

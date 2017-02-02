@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 from TransactionManagement.Utils import random_with_N_digits
 from .models import Customer, Admin, AdminBranch, BranchStaff, Cashier, Accountant, LegalExpert, AdminATM
-from TransactionManagement.models import BankAccount, Branch, CreditCard
+from TransactionManagement.models import BankAccount, Branch, CreditCard, Bills
 
 field_errors = {
     'required': 'وارد کردن این فیلد ضروری است.',
@@ -260,7 +260,6 @@ class SignUpCustomerForm(forms.Form):
                 customer_id = random_with_N_digits(5)
                 user = User.objects.create_user(username=customer_id, password=password, email=email,
                                                 first_name=first_name, last_name=last_name)
-                user.save()
                 self.cleaned_data['user'] = user
                 break
             except:
@@ -273,3 +272,20 @@ class SignUpCustomerForm(forms.Form):
         customer.notification = notification
 
         customer.save()
+
+class BillDefinitionForm(forms.Form):
+    kind = forms.CharField(max_length=255, error_messages=field_errors)
+    bank_account_id = forms.IntegerField(min_value=0, error_messages=field_errors)
+
+    def clean_bank_account_id(self):
+        bank_account_id = self.cleaned_data.get('bank_account_id')
+        try:
+            bankAccount=BankAccount.objects.get(account_id=bank_account_id)
+            raise forms.ValidationError('شماره حساب وارد شده تکراری است!')
+        except BankAccount.DoesNotExist:
+            pass
+
+    def save(self):
+        kind = self.cleaned_data.get('kind')
+        bank_account_id = self.cleaned_data.get('bank_account_id')
+        bill = Bills.objects.create(bank_account_id=bank_account_id, kind=kind)

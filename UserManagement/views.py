@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
-    SignUpStaffForm, CreateCreditCardForm
+    SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm
 from .models import Customer, Cashier, Admin, Branch, AdminBranch
 
 
@@ -213,6 +213,30 @@ def create_creditcard(request):
                    'message': message,
                    'username': request.user.username}
         return render(request, 'create_credit_card.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
+
+@login_required(login_url='/user/login/')
+def bill_definition(request):
+    message = ''
+    try:
+        admin = Admin.objects.get(user__username=request.user.username)
+        if request.method == 'POST':
+            form = BillDefinitionForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                bank_account_id = form.cleaned_data.get('bank_account_id')
+                kind = form.cleaned_data.get('kind')
+                message = "قبض {} با شماره حساب {} تعریف شد.".format(
+                    bank_account_id,
+                    kind)
+        else:
+            form = BillDefinitionForm()
+        context = {'form': form,
+                   'message': message,
+                   'username': request.user.username}
+        return render(request, 'bill_definition.html', context=context)
     except:
         return redirect(reverse('TestView'))
 
