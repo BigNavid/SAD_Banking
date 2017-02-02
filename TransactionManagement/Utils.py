@@ -34,3 +34,6 @@ def CreateTansactionModel(bankaccount_from=None,
     transaction.branch = cashier.user.branch
     transaction.type = type
     transaction.save()
+
+def UpdateAmount(bankAccount):
+    pass

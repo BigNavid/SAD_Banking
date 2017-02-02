@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
-    SignUpStaffForm
+    SignUpStaffForm, CreateCreditCardForm
 from .models import Customer, Cashier, Admin, Branch, AdminBranch
 
 
@@ -183,7 +183,7 @@ def create_bank_account(request):
                     bank_account.account_id)
                 # return redirect(reverse(''))
         else:
-            form = SignUpCustomerForm()
+            form = CreateBankAccountForm()
         context = {'form': form,
                    'message': message,
                    'cashier': cashier,
@@ -192,6 +192,30 @@ def create_bank_account(request):
     except:
         return redirect(reverse('TestView'))
 
+@login_required(login_url='/user/login/')
+def create_creditcard(request):
+    message = ''
+    try:
+        cashier = Cashier.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = CreateCreditCardForm(request.POST)
+            bank_account_id = form.cleaned_data.get('bank_account_id')
+            if form.is_valid():
+                form.save()
+                credit_card= form.cleaned_data.get('credit_card')
+                message = "کارت بانکی با شماره {} برای حساب شماره {} صادر شد.".format(
+                    credit_card.number,
+                    bank_account_id)
+                # return redirect(reverse(''))
+        else:
+            form = CreateCreditCardForm()
+        context = {'form': form,
+                   'message': message,
+                   'card_number': credit_card.number,
+                   'username': request.user.username}
+        return render(request, 'create_credit_card.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
 
 @login_required(login_url='/user/login/')
 def profile_customer(request, username):

@@ -3,10 +3,7 @@ from django.contrib.auth.models import User
 
 from TransactionManagement.Utils import random_with_N_digits
 from .models import Customer, Admin, AdminBranch, BranchStaff, Cashier, Accountant, LegalExpert, AdminATM
-from TransactionManagement.models import BankAccount, Branch
-
-
-
+from TransactionManagement.models import BankAccount, Branch, CreditCard
 
 field_errors = {
     'required': 'وارد کردن این فیلد ضروری است.',
@@ -22,13 +19,33 @@ class CreateBankAccountForm(forms.Form):
         customer_username = self.cleaned_data.get('customer_username')
         amount = self.cleaned_data.get('amount')
 
+        customer = Customer.objects.get(user__username=customer_username)
         while True:
             try:
                 bank_account_id = random_with_N_digits(10)
-                customer = Customer.objects.get(user__username=customer_username)
-                bank_account = BankAccount.objects.create(account_id=bank_account_id, customer=customer, amount=amount, branch=branch)
+                bank_account = BankAccount.objects.create(account_id=bank_account_id,
+                                                          customer=customer,
+                                                          amount=amount,
+                                                          branch=branch)
                 bank_account.save()
                 self.cleaned_data['bank_account'] = bank_account
+                break
+            except:
+                pass
+
+
+class CreateCreditCardForm(forms.Form):
+    bank_account_id = forms.IntegerField(error_messages=field_errors)
+
+    def save(self):
+        bank_account_id = self.cleaned_data.get('bank_account_id')
+
+        while True:
+            try:
+                creditcard_id = random_with_N_digits(10)
+                credit_card = CreditCard.objects.create(number=creditcard_id,
+                                                        bank_account_id=bank_account_id)
+                self.cleaned_data['credit_card'] = credit_card
                 break
             except:
                 pass

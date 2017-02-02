@@ -73,6 +73,7 @@ class Transaction(models.Model):
     cashier = models.ForeignKey(Cashier, on_delete=None, null=True, blank=True)
 
 
+
 class ATM(models.Model):
     atm_id = models.IntegerField(primary_key=True, unique=True, db_index=True)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
