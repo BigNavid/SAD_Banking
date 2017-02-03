@@ -55,11 +55,11 @@ class Bills(models.Model):
 
 
 class BillPayment(models.Model):
-    bill_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
-    billpayment_id = models.BigIntegerField( unique=True, db_index=True)
+    # bill_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
+    billpayment_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
     billkind = models.ForeignKey(Bills, on_delete=None)
     # customer = models.ForeignKey(Customer, on_delete=None)
-    bankaccount = models.ForeignKey(BankAccount, on_delete=None)
+    bankaccount_from = models.ForeignKey(BankAccount, on_delete=None)
 
 
 class Transaction(models.Model):

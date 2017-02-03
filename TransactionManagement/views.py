@@ -4,10 +4,9 @@ from django.core.urlresolvers import reverse
 
 from TransactionManagement import Constants
 from TransactionManagement.Utils import CreateTansactionModel
-from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm
+from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm
 from UserManagement.models import Cashier, Accountant
-from .models import Transaction, BankAccount
-
+from .models import Transaction, BankAccount, Bills
 
 
 @login_required(login_url='/user/login/')
@@ -107,6 +106,43 @@ def deposit_to_other_bank_account(request):
                    'cashier': cashier,
                    'username': request.user.username}
         return render(request, 'deposit_to_other_bank_account.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
+
+@login_required(login_url='/user/login/')
+def bill_payment(request):
+    message = ''
+    try:
+        cashier = Cashier.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = BillPaymentForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                bill_id = form.cleaned_data.get('bill_id')
+                amount = form.cleaned_data.get('amount')
+                bank_account_id = form.cleaned_data.get('bank_account_id')
+                bill_kind = form.cleaned_data.get('bill_kind')
+                bill_account = Bills.objects.get(kind=bill_kind).BankAccount_to
+                bank_account = BankAccount.objects.get(account_id=bank_account_id)
+                CreateTansactionModel(bankaccount_from=bank_account,
+                                      branch_from=bank_account.branch,
+                                      bankaccount_to=bill_account,
+                                      branch_to=bill_account.branch,
+                                      amount=amount,
+                                      type=Constants.BILL_PAYEMENT,
+                                      cashier=cashier)
+                message = "قبض {} با شماره {} و مبلغ {} پرداخت شد.".format(
+                    bill_kind,
+                    bill_id,
+                    amount)
+        else:
+            form = BillPaymentForm()
+        context = {'form': form,
+                   'message': message,
+                   'bill_kinds': Bills.objects.all(),
+                   'username': request.user.username}
+        return render(request, 'bill_payment.html', context=context)
     except:
         return redirect(reverse('TestView'))
 
