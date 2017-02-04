@@ -16,7 +16,7 @@ CASH_WITHDRAW = "cash_withdraw"
 
 
 class WithdrawForm(forms.Form):
-    bank_account_id = forms.IntegerField(min_value=0, error_messages=field_errors)
+    bank_account_id = forms.IntegerField(min_value=0, max_value=9999999999, error_messages=field_errors)
     amount = forms.IntegerField(min_value=0, error_messages=field_errors)
 
     def clean_bank_account_id(self):
@@ -27,6 +27,7 @@ class WithdrawForm(forms.Form):
                 raise forms.ValidationError('این حساب مسدود است!')
         except BankAccount.DoesNotExist:
             raise forms.ValidationError('حسابی با این شماره یافت نشد!')
+        return bank_account_id
 
     def clean_amount(self):
         amount = self.cleaned_data.get('amount')
@@ -37,6 +38,7 @@ class WithdrawForm(forms.Form):
                 raise forms.ValidationError('موجودی کافی نیست!')
         except:
             raise forms.ValidationError('خطایی در مقدار وجود دارد!')
+        return amount
 
     def save(self):
         bank_account_id = self.cleaned_data.get('bank_account_id')
@@ -61,6 +63,7 @@ class DepositToOtherForm(forms.Form):
                 raise forms.ValidationError('این حساب مسدود است!')
         except BankAccount.DoesNotExist:
             raise forms.ValidationError('حسابی با این شماره یافت نشد!')
+        return source_bank_account_id
 
     def clean_destination_bank_account_id(self):
         destination_bank_account_id = self.cleaned_data.get('destination_bank_account_id')
@@ -70,6 +73,7 @@ class DepositToOtherForm(forms.Form):
                 raise forms.ValidationError('این حساب مسدود است!')
         except BankAccount.DoesNotExist:
             raise forms.ValidationError('حسابی با این شماره یافت نشد!')
+        return destination_bank_account_id
 
     def clean_amount(self):
         amount = self.cleaned_data.get('amount')
@@ -80,6 +84,7 @@ class DepositToOtherForm(forms.Form):
                 raise forms.ValidationError('موجودی کافی نیست!')
         except:
             raise forms.ValidationError('خطایی در مقدار وجود دارد!')
+        return amount
 
     def save(self):
         source_bank_account_id = self.cleaned_data.get('source_bank_account_id')
@@ -106,6 +111,7 @@ class DepositForm(forms.Form):
                 raise forms.ValidationError('این حساب مسدود است!')
         except BankAccount.DoesNotExist:
             raise forms.ValidationError('حسابی با این شماره یافت نشد!')
+        return bank_account_id
 
     def save(self):
         bank_account_id = self.cleaned_data.get('bank_account_id')
@@ -129,6 +135,7 @@ class BillPaymentForm(forms.Form):
                 raise forms.ValidationError('این حساب مسدود است!')
         except BankAccount.DoesNotExist:
             raise forms.ValidationError('حسابی با این شماره یافت نشد!')
+        return bank_account_id
 
     def clean_amount(self):
         amount = self.cleaned_data.get('amount')
@@ -139,6 +146,7 @@ class BillPaymentForm(forms.Form):
                 raise forms.ValidationError('موجودی کافی نیست!')
         except:
             raise forms.ValidationError('خطایی در مقدار وجود دارد!')
+        return amount
 
     def save(self):
         bank_account_id = self.cleaned_data.get('bank_account_id')

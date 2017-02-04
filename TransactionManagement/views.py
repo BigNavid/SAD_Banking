@@ -51,7 +51,7 @@ def deposit_to_bank_account(request):
 
             if form.is_valid():
                 form.save()
-                bank_account_id = form.cleaned_data.get('source_bank_account_id')
+                bank_account_id = form.cleaned_data.get('bank_account_id')
                 amount = form.cleaned_data.get('amount')
                 bankaccount_from = BankAccount.objects.get(account_id=bank_account_id)
                 CreateTansactionModel(bankaccount_from=bankaccount_from,
