@@ -155,44 +155,53 @@ def accountant_report(request):
         print("User Found")
         branch = accountant.user.branch
         print("Branch Found")
+        print(branch.branch_id)
 
-        transactions_from = None
+        cashiers = None
         try:
-            transactions_from = Transaction.objects.get(branch_from=branch)
+            cashiers = Cashier.objects.get(user_branch=branch)
         except:
-            print("No Transaction From")
-            msg += 'تراکنش خروجی برای این شعبه یافت نشد.\n'
+            print("Cashier not found")
 
-        transactions_to = None
-        try:
-            transactions_to = Transaction.objects.get(branch_from=branch)
-        except:
-            print("No Transaction To")
-            msg += 'تراکنش ورودی برای این شعبه یافت نشد.'
+        if request.method =='POST':
+            transactions_from = None
+            try:
+                transactions_from = Transaction.objects.get(branch_from=branch)
+            except:
+                print("No Transaction From")
+                msg += 'تراکنش خروجی برای این شعبه یافت نشد.\n'
 
-        print("Hi")
-        amount_from = 0
-        amount_to = 0
-        print("Before For#1")
-        if transactions_from is not None:
-            for transaction in transactions_from:
-                amount = transaction.amount
-                amount_from += amount
-        print("After For#1")
-        if transactions_to is not None:
-            for transaction in transactions_to:
-                amount = transaction.amount
-                amount_to += amount
-        print("Bye")
-        context = {
-            'branch': branch,
-            'transactions_to': transactions_to,
-            'transactions_from': transactions_from,
-            'amount_from': amount_from,
-            'amount_to': amount_to
-        }
+            transactions_to = None
+            try:
+                transactions_to = Transaction.objects.get(branch_from=branch)
+            except:
+                print("No Transaction To")
+                msg += 'تراکنش ورودی برای این شعبه یافت نشد.'
 
-        print("Before Rendering")
+            print("Hi")
+            amount_from = 0
+            amount_to = 0
+            if transactions_from is not None:
+                for transaction in transactions_from:
+                    amount = transaction.amount
+                    amount_from += amount
+            print("Done1")
+            if transactions_to is not None:
+                for transaction in transactions_to:
+                    amount = transaction.amount
+                    amount_to += amount
+            print("Done2")
+            context = {
+                'msg': msg,
+                'branch': branch,
+                'cashiers': cashiers,
+                'transactions_to': transactions_to,
+                'transactions_from': transactions_from,
+                'amount_from': amount_from,
+                'amount_to': amount_to
+            }
+            print("Done3")
         return render(request, 'accountant_report.html', context=context)
     except:
+        print("Exception")
         return redirect(reverse('403'))

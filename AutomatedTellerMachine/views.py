@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout
 from django.core.urlresolvers import reverse
 
 
-from UserManagement.models import Customer
+from TransactionManagement.models import CreditCard
 
 
 def atm_login(request):
@@ -12,10 +13,9 @@ def atm_login(request):
         cardNumber = request.POST['cardNumber']
         password = request.POST['password']
         try:
-            customer = Customer.objects.get(cardNumber=cardNumber)
-            username = customer.user.username
-            user = authenticate(username=username, password=password)
-            if user is not None:
+            creditcard = CreditCard.objects.get(cardNumber=cardNumber, password=password)
+            user = creditcard.bank_account.customer.user
+            if creditcard is not None:
                 login(request, user)
                 return redirect(reverse('Services'))
             else:
@@ -26,7 +26,9 @@ def atm_login(request):
     return render(request, 'atm_index.html', context)
 
 
+@login_required(login_url='/user/login/')
 def choose_service(request):
+    print("Services")
     return render(request, 'atm_index.html')
 
 
