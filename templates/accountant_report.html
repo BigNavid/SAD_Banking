@@ -297,18 +297,46 @@
                                 مشخصات تراکنش‌های مورد نظر
                             </header>
                         <div class="panel-body">
-                            <p class="text-muted">انتخاب صندوقدار</p>
-                            <select name="branch" id="id_branch" class="btn btn-success" style="width: 200px">
-                                <option selected disabled>انتخاب کنید</option>
-                                {% for x in Cashiers %}
-                                    <option value="{{ x.user.national_id }}">{% x.user.user.get_full_name() %}</option>
-                                {% endfor %}
-                                    <option value="ALL">همه صندوقدارها</option>
-                            </select>
+                            <form action="{% url 'AccountantReport' %}" method="post">
+                                {% csrf_token %}
+                                <label>انتخاب صندوقدار:</label>
+                                <select name="national_id" id="id_national_id" class="btn btn-success" style="width: 200px">
+                                    <option selected disabled>انتخاب کنید</option>
+                                    {% for x in cashiers %}
+                                        <option value="{{ x.user.national_id }}">{{ x.user.user.first_name }} {{ x.user.user.last_name }}</option>
+                                    {% endfor %}
+                                        <option value="-1">همه صندوقدارها</option>
+                                </select>
+                                <p class="text-muted">تعیین بازه تاریخ موردنظر:</p>
+                                <label>از:</label>
+                                <input name="start_date" id="id_start_date" type="date">
+                                <label>تا:</label>
+                                <input name="end_date" id="id_end_date" type="date">
+                                <br>
+                                <br>
+                                <button class="btn btn-shadow btn-success" type="submit">ثبت</button>
+                                <br><br><br>
+                                <p>{{ form.errors }}</p>
+                                <p>{{ form.non_field_errors }}</p>
+                            </form>
                         </div>
 
                         </section>
                     </div>
+                        <div class="col-lg-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+    اطلاعات موجودی فعلی شعبه                            </header>
+                            <div class="panel-body">
+                                <p class="text-muted">مجموع خروجی شعبه:</p>
+                                <p>{{ amount_from }}</p>
+                                <p class="text-muted">مجموع ورودی شعبه:</p>
+                                <p>{{ amount_to }}</p>
+                            </div>
+
+                            </section>
+                        </div>
+
                     <div class="col-lg-12">
                         <section class="panel">
                             <header class="panel-heading">
@@ -330,12 +358,47 @@
                                 <tbody>
                                 {% for transaction in transactions_from %}
                                     <tr>
-                                        <td>{{ transactions_from.banckaccount_from.account_id }}</td>
-                                        <td>{{ transactions_from.banckaccount_from.customer.user.get_full_name }}</td>
-                                        <td>{{ transactions_from.banckaccount_to.account_id }}</td>
-                                        <td>{{ transactions_from.branch_to.branch_id }}</td>
-                                        <td>{{ transactions_from.amount }}</td>
-                                        <td>{{ transactions_from.type }}</td>
+                                        <td>{{ transaction.bankaccount_from.account_id }}</td>
+                                        <td>{{ transaction.bankaccount_from.customer.user.first_name }} {{ transaction.bankaccount_from.customer.user.last_name }}</td>
+                                        <td>{{ transaction.bankaccount_to.account_id }}</td>
+                                        <td>{{ transaction.branch_to.branch_id }}</td>
+                                        <td>{{ transaction.amount }}</td>
+                                        <td>{{ transaction.type }}</td>
+                                        <td></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+                                        <div class="col-lg-12">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                تراکنش‌هایی که مقصد آن‌ها شعبه شماره {{ branch.branch_id }} بوده اند.
+
+                            </header>
+                            <table class="table table-striped table-advance table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>شماره حساب مبدأ</th>
+                                        <th>شماره حساب مقصد</th>
+                                        <th>نام صاحب حساب مقصد</th>
+                                        <th>شماره شعبه مبدأ</th>
+                                        <th>مبلغ</th>
+                                        <th>نوع تراکنش</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for transaction in transactions_to %}
+                                    <tr>
+                                        <td>{{ transaction.bankaccount_from.account_id }}</td>
+                                        <td>{{ transaction.bankaccount_to.account_id }}</td>
+                                        <td>{{ transaction.bankaccount_to.customer.user.first_name }} {{ transaction.bankaccount_to.customer.user.last_name }}</td>
+                                        <td>{{ transaction.branch_from.branch_id }}</td>
+                                        <td>{{ transaction.amount }}</td>
+                                        <td>{{ transaction.type }}</td>
+                                        <td></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

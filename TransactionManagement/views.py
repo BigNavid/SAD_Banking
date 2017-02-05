@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 
 from TransactionManagement import Constants
 from TransactionManagement.Utils import CreateTansactionModel
-from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm
+from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm, AccountantReportForm
 from UserManagement.models import Cashier, Accountant
 from .models import Transaction, BankAccount, Bills
 
@@ -152,56 +152,73 @@ def accountant_report(request):
     msg = ''
     try:
         accountant = Accountant.objects.get(user__user__username=request.user.username)
-        print("User Found")
         branch = accountant.user.branch
-        print("Branch Found")
-        print(branch.branch_id)
 
-        cashiers = None
-        try:
-            cashiers = Cashier.objects.get(user_branch=branch)
-        except:
-            print("Cashier not found")
+        cashiers = Cashier.objects.all().filter(user__branch=branch)
 
-        if request.method =='POST':
-            transactions_from = None
-            try:
-                transactions_from = Transaction.objects.get(branch_from=branch)
-            except:
-                print("No Transaction From")
-                msg += 'تراکنش خروجی برای این شعبه یافت نشد.\n'
+        transactions_from = None
+        transactions_to = None
+        amount_from = None
+        amount_to = None
+        form = None
 
-            transactions_to = None
-            try:
-                transactions_to = Transaction.objects.get(branch_from=branch)
-            except:
-                print("No Transaction To")
-                msg += 'تراکنش ورودی برای این شعبه یافت نشد.'
+        if request.method == 'POST':
+            form = AccountantReportForm(request.POST)
+            if form.is_valid():
+                amount_from = 0
+                amount_to = 0
+                national_id = form.cleaned_data.get('national_id')
+                if national_id == -1:
+                    isAll = True
+                else:
+                    isAll=False
 
-            print("Hi")
-            amount_from = 0
-            amount_to = 0
-            if transactions_from is not None:
-                for transaction in transactions_from:
-                    amount = transaction.amount
-                    amount_from += amount
-            print("Done1")
-            if transactions_to is not None:
-                for transaction in transactions_to:
-                    amount = transaction.amount
-                    amount_to += amount
-            print("Done2")
-            context = {
-                'msg': msg,
-                'branch': branch,
-                'cashiers': cashiers,
-                'transactions_to': transactions_to,
-                'transactions_from': transactions_from,
-                'amount_from': amount_from,
-                'amount_to': amount_to
-            }
-            print("Done3")
+                start_date = form.cleaned_data.get('start_date')
+                end_date = form.cleaned_data.get('end_date')
+
+                print(national_id)
+                print(start_date)
+                print(end_date)
+                print(branch.branch_id)
+
+                try:
+                    if isAll:
+                        transactions_from = Transaction.objects.all().filter(branch_from=branch, date_time__range=[start_date, end_date])
+                    else:
+                        transactions_from = Transaction.objects.all().filter(branch_from=branch, cashier__user__national_id=national_id,
+                                                                             date_time__range=[start_date, end_date])
+                except:
+                    msg += 'تراکنش خروجی برای این شعبه/صندوقدار یافت نشد.'
+
+                try:
+                    if isAll:
+                        transactions_to = Transaction.objects.all().filter(branch_to=branch, date_time__range=[start_date, end_date])
+                    else:
+                        transactions_to = Transaction.objects.all().filter(branch_to=branch, cashier__user__national_id=national_id,
+                                                                             date_time__range=[start_date, end_date])
+                except:
+                    msg += 'تراکنش ورودی برای این شعبه/صندوقدار یافت نشد.'
+
+                if transactions_from is not None:
+                    for transaction in transactions_from:
+                        amount = transaction.amount
+                        amount_from += amount
+                if transactions_to is not None:
+                    for transaction in transactions_to:
+                        amount = transaction.amount
+                        amount_to += amount
+            else:
+                print('Salam')
+        context = {
+            'msg': msg,
+            'branch': branch,
+            'cashiers': cashiers,
+            'transactions_to': transactions_to,
+            'transactions_from': transactions_from,
+            'amount_from': amount_from,
+            'amount_to': amount_to,
+            'form': form
+        }
         return render(request, 'accountant_report.html', context=context)
     except:
-        print("Exception")
         return redirect(reverse('403'))
