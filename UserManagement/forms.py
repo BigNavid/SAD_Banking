@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 from TransactionManagement.Utils import random_with_N_digits
 from .models import Customer, Admin, AdminBranch, BranchStaff, Cashier, Accountant, LegalExpert, AdminATM
-from TransactionManagement.models import BankAccount, Branch, CreditCard, Bills
+from TransactionManagement.models import BankAccount, Branch, CreditCard, Bills, Check, CheckLeaf
 
 field_errors = {
     'required': 'وارد کردن این فیلد ضروری است.',
@@ -295,3 +295,35 @@ class BillDefinitionForm(forms.Form):
                                                   amount=0,
                                                   branch=branch)
         Bills.objects.create(BankAccount_to=bank_account, kind=kind)
+
+
+
+class CheckRequestForm(forms.Form):
+    bank_account_id = forms.IntegerField(min_value=1000000000, max_value=9999999999, error_messages=field_errors)
+
+    def clean_bank_account_id(self):
+        bank_account_id = self.cleaned_data.get('bank_account_id')
+        try:
+            bankAccount=BankAccount.objects.get(account_id=bank_account_id)
+        except BankAccount.DoesNotExist:
+            return bank_account_id
+
+    def save(self):
+        while True:
+            try:
+                check_id = random_with_N_digits(6)
+                bank_account_id = self.cleaned_data.get('bank_account_id')
+                bank_account=BankAccount.objects.get(account_id=bank_account_id)
+                check = Check.objects.create(check_id=check_id,
+                                             bankaccount=bank_account)
+                checkLeaf_id= random_with_N_digits(8)
+                checkLeaf_array = []
+                for i in range(0,10):
+                    checkLeaf= CheckLeaf.objects.create(checkleaf_id=checkLeaf_id+i,
+                                                        bankaccount=bank_account,
+                                                        parent_check=check)
+
+
+                break
+            except:
+                pass

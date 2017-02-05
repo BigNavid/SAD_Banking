@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
-    SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm
+    SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm
 from .models import Customer, Cashier, Admin, Branch, AdminBranch
 
 
@@ -295,6 +295,38 @@ def profile_branch_admin(request, username):
         return redirect(reverse('403'))
     return render(request, 'branch_admin_profile.html', context=context)
 
+@login_required(login_url='/user/login/')
+def check_request(request):
+    message = ''
+    try:
+        cashier = Cashier.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = CheckRequestForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                bill_id = form.cleaned_data.get('bill_id')
+                amount = form.cleaned_data.get('amount')
+                bill_kind = form.cleaned_data.get('bill_kind')
+                bill_account = Bills.objects.get(kind=bill_kind).BankAccount_to
+                CreateTansactionModel(bankaccount_to=bill_account,
+                                      branch_to=bill_account.branch,
+                                      amount=amount,
+                                      type=Constants.BILL_PAYEMENT,
+                                      cashier=cashier)
+                message = "قبض {} با شماره {} و مبلغ {} پرداخت شد.".format(
+                    bill_kind,
+                    bill_id,
+                    amount)
+        else:
+            form = BillPaymentForm()
+        context = {'form': form,
+                   'message': message,
+                   'bill_kinds': Bills.objects.all(),
+                   'username': request.user.username}
+        return render(request, 'cash_bill_payment.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
 
 def forbidden(request):
     return render(request, '403.html')

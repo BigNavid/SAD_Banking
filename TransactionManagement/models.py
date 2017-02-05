@@ -97,7 +97,8 @@ class CheckLeaf(models.Model):
     checkleaf_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
     bankaccount = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name= 'BankAccount')
     parent_check = models.ForeignKey(Check, on_delete=models.CASCADE, related_name= 'Check')
-    expiration_date = models.DateField()
+    amount = models.BigIntegerField(null=True)
+    # expiration_date = models.DateField()
 
 
 class CreditCard(models.Model):
