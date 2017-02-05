@@ -229,8 +229,8 @@ def bill_definition(request):
                 bank_account_id = form.cleaned_data.get('bank_account_id')
                 kind = form.cleaned_data.get('kind')
                 message = "قبض {} با شماره حساب {} تعریف شد.".format(
-                    bank_account_id,
-                    kind)
+                    kind,
+                    bank_account_id)
         else:
             form = BillDefinitionForm()
         context = {'form': form,

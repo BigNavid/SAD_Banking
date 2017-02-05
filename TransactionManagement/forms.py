@@ -1,5 +1,5 @@
 from django import forms
-from TransactionManagement.models import BankAccount, Transaction, Bills, BillPayment
+from TransactionManagement.models import BankAccount, Transaction, Bills
 
 # izi
 from UserManagement.forms import random_with_N_digits
@@ -161,9 +161,26 @@ class BillPaymentForm(forms.Form):
         bill_account.amount += amount
         bill_account.save()
         bank_account.save()
-        BillPayment.objects.create(billpayment_id= bill_id,
-                                   bill_kind=bill_kind,
-                                   bankaccount_from_id = bank_account_id)
+        # BillPayment.objects.create(billpayment_id=bill_id,
+        #                            billkind=bill)
+                                   # bankaccount_from=bank_account)
+
+class CashBillPaymentForm(forms.Form):
+    bill_kind = forms.CharField(error_messages=field_errors)
+    bill_id = forms.IntegerField(min_value=0, error_messages=field_errors)
+    amount = forms.IntegerField(min_value=0, error_messages=field_errors)
+
+    def save(self):
+        bill_kind = self.cleaned_data.get('bill_kind')
+        bill_id = self.cleaned_data.get('bill_id')
+        amount = self.cleaned_data.get('amount')
+
+        bill = Bills.objects.get(kind=bill_kind)
+        bill_account = bill.BankAccount_to
+        bill_account.amount += amount
+        bill_account.save()
+        # BillPayment.objects.create(billpayment_id=bill_id,
+        #                            billkind=bill)
 
 
 # end_izi

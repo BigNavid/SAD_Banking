@@ -275,7 +275,7 @@ class SignUpCustomerForm(forms.Form):
 
 class BillDefinitionForm(forms.Form):
     kind = forms.CharField(max_length=255, error_messages=field_errors)
-    bank_account_id = forms.IntegerField(min_value=0, error_messages=field_errors)
+    bank_account_id = forms.IntegerField(min_value=1000000000, max_value=9999999999, error_messages=field_errors)
 
     def clean_bank_account_id(self):
         bank_account_id = self.cleaned_data.get('bank_account_id')
@@ -283,9 +283,15 @@ class BillDefinitionForm(forms.Form):
             bankAccount=BankAccount.objects.get(account_id=bank_account_id)
             raise forms.ValidationError('شماره حساب وارد شده تکراری است!')
         except BankAccount.DoesNotExist:
-            pass
+            return bank_account_id
 
     def save(self):
         kind = self.cleaned_data.get('kind')
         bank_account_id = self.cleaned_data.get('bank_account_id')
-        bill = Bills.objects.create(bank_account_id=bank_account_id, kind=kind)
+        customer = Customer.objects.get(user__username=13222)
+        branch = Branch.objects.get(branch_id=2782)
+        bank_account = BankAccount.objects.create(account_id=bank_account_id,
+                                                  customer=customer,
+                                                  amount=0,
+                                                  branch=branch)
+        Bills.objects.create(BankAccount_to=bank_account, kind=kind)

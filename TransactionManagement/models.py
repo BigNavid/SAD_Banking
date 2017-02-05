@@ -5,9 +5,9 @@ from UserManagement.models import Customer, Admin, AdminBranch, Accountant, Admi
 
 class BankAccount(models.Model):
     account_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
     amount = models.BigIntegerField()
-    branch = models.ForeignKey(Branch,on_delete=None)
+    branch = models.ForeignKey(Branch,on_delete=None, null=True)
 
 
 class Bank(models.Model):
@@ -54,12 +54,12 @@ class Bills(models.Model):
     BankAccount_to = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
 
 
-class BillPayment(models.Model):
-    # bill_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
-    billpayment_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
-    billkind = models.ForeignKey(Bills, on_delete=None)
-    # customer = models.ForeignKey(Customer, on_delete=None)
-    bankaccount_from = models.ForeignKey(BankAccount, on_delete=None)
+# class BillPayment(models.Model):
+#     # bill_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
+#     billpayment_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
+#     billkind = models.ForeignKey(Bills, on_delete=None)
+#     # customer = models.ForeignKey(Customer, on_delete=None)
+#     # bankaccount_from = models.ForeignKey(BankAccount, on_delete=None, null=True)
 
 
 class Transaction(models.Model):
