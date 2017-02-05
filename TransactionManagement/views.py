@@ -4,8 +4,7 @@ from django.core.urlresolvers import reverse
 
 from TransactionManagement import Constants
 from TransactionManagement.Utils import CreateTansactionModel
-from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm, \
-    CashBillPaymentForm
+from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm
 from UserManagement.models import Cashier, Accountant
 from .models import Transaction, BankAccount, Bills
 
@@ -144,39 +143,6 @@ def bill_payment(request):
                    'bill_kinds': Bills.objects.all(),
                    'username': request.user.username}
         return render(request, 'bill_payment.html', context=context)
-    except:
-        return redirect(reverse('TestView'))
-
-@login_required(login_url='/user/login/')
-def cash_bill_payment(request):
-    message = ''
-    try:
-        cashier = Cashier.objects.get(user__user__username=request.user.username)
-        if request.method == 'POST':
-            form = CashBillPaymentForm(request.POST)
-
-            if form.is_valid():
-                form.save()
-                bill_id = form.cleaned_data.get('bill_id')
-                amount = form.cleaned_data.get('amount')
-                bill_kind = form.cleaned_data.get('bill_kind')
-                bill_account = Bills.objects.get(kind=bill_kind).BankAccount_to
-                CreateTansactionModel(bankaccount_to=bill_account,
-                                      branch_to=bill_account.branch,
-                                      amount=amount,
-                                      type=Constants.BILL_PAYEMENT,
-                                      cashier=cashier)
-                message = "قبض {} با شماره {} و مبلغ {} پرداخت شد.".format(
-                    bill_kind,
-                    bill_id,
-                    amount)
-        else:
-            form = BillPaymentForm()
-        context = {'form': form,
-                   'message': message,
-                   'bill_kinds': Bills.objects.all(),
-                   'username': request.user.username}
-        return render(request, 'cash_bill_payment.html', context=context)
     except:
         return redirect(reverse('TestView'))
 

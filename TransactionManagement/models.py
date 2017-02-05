@@ -68,7 +68,7 @@ class Transaction(models.Model):
     branch_from = models.ForeignKey(Branch, on_delete=None, related_name="Branch From+", null=True, blank=True)
     bankaccount_to = models.ForeignKey(BankAccount, on_delete=None, related_name='BankAccount To+', null=True, blank=True)
     branch_to = models.ForeignKey(Branch, on_delete=None, related_name='Branch To+', null=True, blank=True)
-    date_time = models.DateTimeField(auto_now=True)
+    date_time = models.DateField(auto_now_add=True)
     amount = models.BigIntegerField()
     type = models.CharField(max_length=255, blank=False, null=False, db_index=True)
     cashier = models.ForeignKey(Cashier, on_delete=None, null=True, blank=True)
