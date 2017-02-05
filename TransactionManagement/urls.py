@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^aReport/', view=views.accountant_report, name='AccountantReport'),
     url(r'^BillPayment/', view=views.bill_payment, name='BillPayment'),
     url(r'^CashBillPayment/', view=views.cash_bill_payment, name='CashBillPayment')
+
 ]

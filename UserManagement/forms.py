@@ -305,8 +305,11 @@ class CheckRequestForm(forms.Form):
         bank_account_id = self.cleaned_data.get('bank_account_id')
         try:
             bankAccount=BankAccount.objects.get(account_id=bank_account_id)
-        except BankAccount.DoesNotExist:
+            if bankAccount.customer.activated == False:
+                raise forms.ValidationError('این حساب مسدود است!')
             return bank_account_id
+        except BankAccount.DoesNotExist:
+            raise forms.ValidationError('حسابی با این شماره یافت نشد!')
 
     def save(self):
         while True:
@@ -317,13 +320,13 @@ class CheckRequestForm(forms.Form):
                 check = Check.objects.create(check_id=check_id,
                                              bankaccount=bank_account)
                 checkLeaf_id= random_with_N_digits(8)
-                checkLeaf_array = []
-                for i in range(0,10):
-                    checkLeaf= CheckLeaf.objects.create(checkleaf_id=checkLeaf_id+i,
+                checkLeaf_list = []
+                for i in range(checkLeaf_id,checkLeaf_id+10):
+                    checkLeaf= CheckLeaf.objects.create(checkleaf_id=i,
                                                         bankaccount=bank_account,
-                                                        parent_check=check)
-
-
-                break
+                                                        parent_check=check,
+                                                        amount=0)
+                    checkLeaf_list.append(checkLeaf)
+                return checkLeaf_list
             except:
                 pass

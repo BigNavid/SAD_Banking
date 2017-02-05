@@ -295,38 +295,30 @@ def profile_branch_admin(request, username):
         return redirect(reverse('403'))
     return render(request, 'branch_admin_profile.html', context=context)
 
-# @login_required(login_url='/user/login/')
-# def check_request(request):
-#     message = ''
-#     try:
-#         cashier = Cashier.objects.get(user__user__username=request.user.username)
-#         if request.method == 'POST':
-#             form = CheckRequestForm(request.POST)
-#
-#             if form.is_valid():
-#                 form.save()
-#                 bill_id = form.cleaned_data.get('bill_id')
-#                 amount = form.cleaned_data.get('amount')
-#                 bill_kind = form.cleaned_data.get('bill_kind')
-#                 bill_account = Bills.objects.get(kind=bill_kind).BankAccount_to
-#                 CreateTansactionModel(bankaccount_to=bill_account,
-#                                       branch_to=bill_account.branch,
-#                                       amount=amount,
-#                                       type=Constants.BILL_PAYEMENT,
-#                                       cashier=cashier)
-#                 message = "قبض {} با شماره {} و مبلغ {} پرداخت شد.".format(
-#                     bill_kind,
-#                     bill_id,
-#                     amount)
-#         else:
-#             form = BillPaymentForm()
-#         context = {'form': form,
-#                    'message': message,
-#                    'bill_kinds': Bills.objects.all(),
-#                    'username': request.user.username}
-#         return render(request, 'cash_bill_payment.html', context=context)
-#     except:
-#         return redirect(reverse('TestView'))
+@login_required(login_url='/user/login/')
+def check_request(request):
+    message = ''
+    checkLeafList=[]
+    try:
+        cashier = Cashier.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = CheckRequestForm(request.POST)
+            if form.is_valid():
+                print("here")
+                checkLeafList=form.save()
+                bank_account_id = form.cleaned_data.get('bank_account_id')
+                print(bank_account_id)
+                message = "دسته چک برای حساب {} صادر گردید.".format(
+                    bank_account_id)
+        else:
+            form = CheckRequestForm()
+        context = {'form': form,
+                   'message': message,
+                   'CheckLeafList': checkLeafList,
+                   'username': request.user.username}
+        return render(request, 'check_request.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
 
 def forbidden(request):
     return render(request, '403.html')
