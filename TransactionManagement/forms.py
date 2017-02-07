@@ -182,7 +182,7 @@ class CashBillPaymentForm(forms.Form):
 
 
 class CheckLeafRequestForm(forms.Form):
-    checkleaf_id = forms.IntegerField(min_value=100000000, max_value=99999999, error_messages=field_errors)
+    checkleaf_id = forms.IntegerField(min_value=10000000, max_value=99999999, error_messages=field_errors)
     amount = forms.IntegerField(min_value=0, error_messages=field_errors)
     customer_to = forms.IntegerField(min_value=0, error_messages=field_errors)
     bank_account_id = forms.IntegerField(min_value=0, error_messages=field_errors)
@@ -234,7 +234,7 @@ class CheckLeafRequestForm(forms.Form):
         checkleaf.save()
 
 class CashCheckLeafRequestForm(forms.Form):
-    checkleaf_id = forms.IntegerField(min_value=100000000, max_value=99999999, error_messages=field_errors)
+    checkleaf_id = forms.IntegerField(min_value=10000000, max_value=99999999, error_messages=field_errors)
     amount = forms.IntegerField(min_value=0, error_messages=field_errors)
     customer_to = forms.IntegerField(min_value=0, error_messages=field_errors)
 
@@ -277,3 +277,11 @@ class AccountantReportForm(forms.Form):
     national_id = forms.IntegerField(error_messages=field_errors)
     start_date = forms.DateField(error_messages=field_errors)
     end_date = forms.DateField(error_messages=field_errors)
+
+
+class AdminReportForm(forms.Form):
+    branch_id = forms.IntegerField(error_messages=field_errors)
+    start_date = forms.DateField(required=False, error_messages=field_errors)
+    end_date = forms.DateField(required=False, error_messages=field_errors)
+    number_of_transaction_to = forms.IntegerField(error_messages=field_errors)
+    number_of_transaction_from = forms.IntegerField(error_messages=field_errors)

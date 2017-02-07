@@ -32,9 +32,8 @@ def loan_payment_paid_notif(loan_payment_id):
     loan_payment = LoanPayment.objects.get(loanpayment_id=loan_payment_id)
     loan_id = loan_payment.loadn_id
     customer_full_name = loan_payment.customer.user.get_full_name()
-    #TODO: Add account number
-    msg = 'مشتری گرامی {} قسط وام شماره {} شماره قسط {} از حساب شما کسر گردید.'.format(customer_full_name, loan_id,
-                                                                                       loan_payment_id)
+    bank_account_id = loan_payment.loadn.bank_account_id
+    msg = 'مشتری گرامی {} قسط وام شماره {} شماره قسط {} از حساب شما به شماره {} کسر گردید.'.format(customer_full_name, loan_id, loan_payment_id, bank_account_id)
     user = loan_payment.customer.user
     Notifications.objects.create(user=user, message=msg)
 
@@ -56,8 +55,8 @@ def loan_payment_not_paid_notif(loan_payment_id):
     for user in admin:
         Notifications.objects.create(user=user, message=msg)
 
-    #TODO: Get Admin of branch
-    branch_admin = AdminBranch.objects.get()
+    branch = loan_payment.loadn.bank_account.branch
+    branch_admin = AdminBranch.objects.get(user__branch=branch)
     user = branch_admin.user.user
     msg = 'مدیرشعبه محترم شعبه {} مشتری {} قسط وام شماره {} شماره قسط {} را پرداخت کرده است.'.format(branch_admin.user
                                                                                                      .branch_id,
