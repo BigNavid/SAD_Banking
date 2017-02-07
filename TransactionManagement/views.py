@@ -4,7 +4,8 @@ from django.core.urlresolvers import reverse
 
 from TransactionManagement import Constants
 from TransactionManagement.Utils import CreateTansactionModel
-from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm, CashBillPaymentForm, AccountantReportForm
+from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm, CashBillPaymentForm, AccountantReportForm, \
+    CheckLeafRequestForm, CashCheckLeafRequestForm
 from UserManagement.models import Cashier, Accountant
 from .models import Transaction, BankAccount, Bills
 
@@ -179,6 +180,45 @@ def cash_bill_payment(request):
     except:
         return redirect(reverse('TestView'))
 
+@login_required(login_url='/user/login/')
+def checkleaf_request(request):
+    message = ''
+    try:
+        cashier = Cashier.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = CheckLeafRequestForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                message = "درخواست شما پس از تایید کارشناس حقوقی و حسابرس انجام خواهد شد."
+        else:
+            form = CheckLeafRequestForm()
+        context = {'form': form,
+                   'message': message,
+                   'username': request.user.username}
+        return render(request, 'checkleaf_request.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
+
+@login_required(login_url='/user/login/')
+def cash_checkleaf_request(request):
+    message = ''
+    try:
+        cashier = Cashier.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = CashCheckLeafRequestForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                message = "درخواست شما پس از تایید کارشناس حقوقی و حسابرس انجام خواهد شد."
+        else:
+            form = CheckLeafRequestForm()
+        context = {'form': form,
+                   'message': message,
+                   'username': request.user.username}
+        return render(request, 'cash_checkleaf_request.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
 
 @login_required(login_url='/user/login/')
 def accountant_report(request):

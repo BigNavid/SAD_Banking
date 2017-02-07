@@ -323,7 +323,7 @@ class CheckRequestForm(forms.Form):
                 checkLeaf_list = []
                 for i in range(checkLeaf_id,checkLeaf_id+10):
                     checkLeaf= CheckLeaf.objects.create(checkleaf_id=i,
-                                                        bankaccount=bank_account,
+                                                        bankaccount_from=bank_account,
                                                         parent_check=check,
                                                         amount=0)
                     checkLeaf_list.append(checkLeaf)

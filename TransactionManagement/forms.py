@@ -1,5 +1,5 @@
 from django import forms
-from TransactionManagement.models import BankAccount, Transaction, Bills
+from TransactionManagement.models import BankAccount, Transaction, Bills, CheckLeaf
 
 # izi
 from UserManagement.forms import random_with_N_digits
@@ -178,6 +178,70 @@ class CashBillPaymentForm(forms.Form):
         bill_account.save()
         # BillPayment.objects.create(billpayment_id=bill_id,
         #                            billkind=bill)
+
+
+class CheckLeafRequestForm(forms.Form):
+    checkleaf_id = forms.IntegerField(min_value=100000000, max_value=99999999, error_messages=field_errors)
+    amount = forms.IntegerField(min_value=0, error_messages=field_errors)
+    bank_account_id = forms.IntegerField(min_value=0, error_messages=field_errors)
+
+    def clean_bank_account_id(self):
+        bank_account_id = self.cleaned_data.get('bank_account_id')
+        try:
+            bankAccount=BankAccount.objects.get(account_id=bank_account_id)
+            if bankAccount.customer.activated == False:
+                raise forms.ValidationError('این حساب مسدود است!')
+        except BankAccount.DoesNotExist:
+            raise forms.ValidationError('حسابی با این شماره یافت نشد!')
+        return bank_account_id
+
+    def clean_checkleaf_id(self):
+        checkleaf_id = self.cleaned_data.get('checkleaf_id')
+        try:
+            checkleaf=CheckLeaf.objects.get(checkleaf_id=checkleaf_id)
+            if checkleaf.used == True:
+                raise forms.ValidationError('این چک قبلا استفاده شده است!')
+        except CheckLeaf.DoesNotExist:
+            raise forms.ValidationError('چکی با این شماره یافت نشد!')
+        return checkleaf_id
+
+
+
+    def save(self):
+        bank_account_id = self.cleaned_data.get('bank_account_id')
+        checkleaf_id = self.cleaned_data.get('checkleaf_id')
+        amount = self.cleaned_data.get('amount')
+        checkleaf=CheckLeaf.objects.get(checkleaf_id=checkleaf_id)
+
+        checkleaf.bankaccount_to=bank_account_id
+        checkleaf.amount=amount
+        checkleaf.used = True
+        checkleaf.save()
+
+class CashCheckLeafRequestForm(forms.Form):
+    checkleaf_id = forms.IntegerField(min_value=100000000, max_value=99999999, error_messages=field_errors)
+    amount = forms.IntegerField(min_value=0, error_messages=field_errors)
+
+    def clean_checkleaf_id(self):
+        checkleaf_id = self.cleaned_data.get('checkleaf_id')
+        try:
+            checkleaf=CheckLeaf.objects.get(checkleaf_id=checkleaf_id)
+            if checkleaf.used == True:
+                raise forms.ValidationError('این چک قبلا استفاده شده است!')
+        except CheckLeaf.DoesNotExist:
+            raise forms.ValidationError('چکی با این شماره یافت نشد!')
+        return checkleaf_id
+
+
+
+    def save(self):
+        checkleaf_id = self.cleaned_data.get('checkleaf_id')
+        amount = self.cleaned_data.get('amount')
+        checkleaf=CheckLeaf.objects.get(checkleaf_id=checkleaf_id)
+
+        checkleaf.amount=amount
+        checkleaf.used = True
+        checkleaf.save()
 
 
 # end_izi
