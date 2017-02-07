@@ -31,6 +31,7 @@ class Loan(models.Model):
     amount = models.BigIntegerField()
     customer = models.ForeignKey(Customer, on_delete=None)
     date_time = models.DateTimeField(auto_now=True)
+    bank_account = models.ForeignKey(BankAccount, default=None)
 
 
 class LoanPayment(models.Model):
@@ -103,6 +104,7 @@ class CheckLeaf(models.Model):
     legalExpert_confirmation = models.BooleanField(default=False)
     accountant_confirmation = models.BooleanField(default=False)
     bankaccount_to = models.ForeignKey(BankAccount, related_name='Destination', null=True, blank=True, default=None )
+    customer_to = models.ForeignKey(Customer, related_name='Customer', null=True, blank=True, default=None )
 
 
 class CreditCard(models.Model):

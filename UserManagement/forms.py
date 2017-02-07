@@ -13,7 +13,15 @@ field_errors = {
 
 class CreateBankAccountForm(forms.Form):
     customer_username = forms.IntegerField(max_value=99999, min_value=10000, error_messages=field_errors)
-    amount = forms.IntegerField(min_value=0, error_messages=field_errors)
+    amount = forms.IntegerField(min_value=10000, error_messages=field_errors)
+
+    def clean_customer_to(self):
+        customer_id = self.cleaned_data.get('customer_to')
+        try:
+            customer=Customer.objects.get(user__username=customer_id)
+        except Customer.DoesNotExist:
+            raise forms.ValidationError('کاربری با این شماره یافت نشد!')
+        return customer_id
 
     def save(self,branch):
         customer_username = self.cleaned_data.get('customer_username')

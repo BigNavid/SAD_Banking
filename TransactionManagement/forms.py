@@ -3,6 +3,7 @@ from TransactionManagement.models import BankAccount, Transaction, Bills, CheckL
 
 # izi
 from UserManagement.forms import random_with_N_digits
+from UserManagement.models import Customer
 
 field_errors = {
     'required': 'وارد کردن این فیلد ضروری است.',
@@ -183,7 +184,18 @@ class CashBillPaymentForm(forms.Form):
 class CheckLeafRequestForm(forms.Form):
     checkleaf_id = forms.IntegerField(min_value=100000000, max_value=99999999, error_messages=field_errors)
     amount = forms.IntegerField(min_value=0, error_messages=field_errors)
+    customer_to = forms.IntegerField(min_value=0, error_messages=field_errors)
     bank_account_id = forms.IntegerField(min_value=0, error_messages=field_errors)
+
+    def clean_customer_to(self):
+        customer_id = self.cleaned_data.get('customer_to')
+        try:
+            customer=Customer.objects.get(user__username=customer_id)
+            if customer.activated == False:
+                raise forms.ValidationError('این حساب کاربری مسدود است!')
+        except Customer.DoesNotExist:
+            raise forms.ValidationError('کاربری با این شماره یافت نشد!')
+        return customer_id
 
     def clean_bank_account_id(self):
         bank_account_id = self.cleaned_data.get('bank_account_id')
@@ -211,16 +223,28 @@ class CheckLeafRequestForm(forms.Form):
         bank_account_id = self.cleaned_data.get('bank_account_id')
         checkleaf_id = self.cleaned_data.get('checkleaf_id')
         amount = self.cleaned_data.get('amount')
-        checkleaf=CheckLeaf.objects.get(checkleaf_id=checkleaf_id)
+        checkleaf = CheckLeaf.objects.get(checkleaf_id=checkleaf_id)
+        customer_id = self.cleaned_data.get('customer_to')
+        customer = Customer.objects.get(user__username=customer_id)
 
         checkleaf.bankaccount_to=bank_account_id
-        checkleaf.amount=amount
+        checkleaf.amount = amount
         checkleaf.used = True
+        checkleaf.customer_to = customer
         checkleaf.save()
 
 class CashCheckLeafRequestForm(forms.Form):
     checkleaf_id = forms.IntegerField(min_value=100000000, max_value=99999999, error_messages=field_errors)
     amount = forms.IntegerField(min_value=0, error_messages=field_errors)
+    customer_to = forms.IntegerField(min_value=0, error_messages=field_errors)
+
+    def clean_customer_to(self):
+        customer_id = self.cleaned_data.get('customer_to')
+        try:
+            customer=Customer.objects.get(user__username=customer_id)
+        except Customer.DoesNotExist:
+            raise forms.ValidationError('کاربری با این شماره یافت نشد!')
+        return customer_id
 
     def clean_checkleaf_id(self):
         checkleaf_id = self.cleaned_data.get('checkleaf_id')
@@ -237,10 +261,13 @@ class CashCheckLeafRequestForm(forms.Form):
     def save(self):
         checkleaf_id = self.cleaned_data.get('checkleaf_id')
         amount = self.cleaned_data.get('amount')
-        checkleaf=CheckLeaf.objects.get(checkleaf_id=checkleaf_id)
+        checkleaf = CheckLeaf.objects.get(checkleaf_id=checkleaf_id)
+        customer_id = self.cleaned_data.get('customer_to')
+        customer = Customer.objects.get(user__username=customer_id)
 
-        checkleaf.amount=amount
+        checkleaf.amount = amount
         checkleaf.used = True
+        checkleaf.customer_to = customer
         checkleaf.save()
 
 
