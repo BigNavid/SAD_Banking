@@ -278,3 +278,11 @@ class AccountantReportForm(forms.Form):
     national_id = forms.IntegerField(error_messages=field_errors)
     start_date = forms.DateField(error_messages=field_errors)
     end_date = forms.DateField(error_messages=field_errors)
+
+
+class AdminReportForm(forms.Form):
+    branch_id = forms.IntegerField(error_messages=field_errors)
+    start_date = forms.DateField(required=False, error_messages=field_errors)
+    end_date = forms.DateField(required=False, error_messages=field_errors)
+    number_of_transaction_to = forms.IntegerField(error_messages=field_errors)
+    number_of_transaction_from = forms.IntegerField(error_messages=field_errors)

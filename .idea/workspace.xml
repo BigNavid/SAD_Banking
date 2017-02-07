@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f3a6e9d-01a1-4186-b4a6-aa1e7498695d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/celerybeat-schedule.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Core_Banking/celery.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UserManagement/notification.py" />
+    <list default="true" id="0f3a6e9d-01a1-4186-b4a6-aa1e7498695d" name="Default" comment="More Notifications">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/celerybeat.pid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin_report.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Core_Banking.iml" afterPath="$PROJECT_DIR$/.idea/Core_Banking.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core_Banking/__init__.py" afterPath="$PROJECT_DIR$/Core_Banking/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core_Banking/settings.py" afterPath="$PROJECT_DIR$/Core_Banking/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UserManagement/admin.py" afterPath="$PROJECT_DIR$/UserManagement/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UserManagement/models.py" afterPath="$PROJECT_DIR$/UserManagement/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/forms.py" afterPath="$PROJECT_DIR$/TransactionManagement/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/urls.py" afterPath="$PROJECT_DIR$/TransactionManagement/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/views.py" afterPath="$PROJECT_DIR$/TransactionManagement/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UserManagement/notification.py" afterPath="$PROJECT_DIR$/UserManagement/notification.py" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,34 +34,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="notification.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/UserManagement/notification.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TransactionManagement/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="495">
-              <caret line="33" column="8" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+              <caret line="359" column="0" lean-forward="false" selection-start-line="359" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
               <folding>
-                <element signature="e#0#112#0" expanded="true" />
-                <marker date="1486441896000" expanded="true" signature="889:1458" ph="..." />
+                <element signature="e#0#57#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UserManagement/models.py">
+      <file leaf-file-name="admin_report.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/admin_report.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="44" column="50" lean-forward="true" selection-start-line="44" selection-start-column="50" selection-end-line="44" selection-end-column="50" />
-              <folding />
+            <state relative-caret-position="-1029">
+              <caret line="319" column="102" lean-forward="false" selection-start-line="319" selection-start-column="102" selection-end-line="319" selection-end-column="102" />
+              <folding>
+                <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TransactionManagement/models.py">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TransactionManagement/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="40" column="18" lean-forward="false" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+            <state relative-caret-position="120">
+              <caret line="10" column="68" lean-forward="false" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -77,14 +74,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bio-gra</find>
       <find>dropdown-menu.extended.lo</find>
       <find>bio-graph-he</find>
       <find>profile</find>
@@ -114,6 +110,7 @@
       <find>max_l</find>
       <find>403</find>
       <find>format</find>
+      <find>cust</find>
     </findStrings>
     <replaceStrings>
       <replace>customer</replace>
@@ -160,11 +157,9 @@
         <option value="$PROJECT_DIR$/static/css/atm.css" />
         <option value="$PROJECT_DIR$/static/js/ATM_Script.js" />
         <option value="$PROJECT_DIR$/TransactionManagement/models.py" />
-        <option value="$PROJECT_DIR$/TransactionManagement/urls.py" />
         <option value="$PROJECT_DIR$/templates/accountant_report.html" />
         <option value="$PROJECT_DIR$/AutomatedTellerMachine/views.py" />
         <option value="$PROJECT_DIR$/templates/atm_index.html" />
-        <option value="$PROJECT_DIR$/TransactionManagement/views.py" />
         <option value="$PROJECT_DIR$/celery.py" />
         <option value="$PROJECT_DIR$/celery_task.py" />
         <option value="$PROJECT_DIR$/Core_Banking/celery_task.py" />
@@ -172,10 +167,14 @@
         <option value="$PROJECT_DIR$/TransactionManagement/tasks.py" />
         <option value="$PROJECT_DIR$/Core_Banking/__init__.py" />
         <option value="$PROJECT_DIR$/Core_Banking/tasks.py" />
-        <option value="$PROJECT_DIR$/Core_Banking/celery.py" />
         <option value="$PROJECT_DIR$/UserManagement/admin.py" />
         <option value="$PROJECT_DIR$/UserManagement/models.py" />
+        <option value="$PROJECT_DIR$/Core_Banking/celery.py" />
         <option value="$PROJECT_DIR$/UserManagement/notification.py" />
+        <option value="$PROJECT_DIR$/TransactionManagement/urls.py" />
+        <option value="$PROJECT_DIR$/templates/admin_report.html" />
+        <option value="$PROJECT_DIR$/TransactionManagement/forms.py" />
+        <option value="$PROJECT_DIR$/TransactionManagement/views.py" />
       </list>
     </option>
   </component>
@@ -236,6 +235,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD_Banking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD_Banking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TransactionManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -270,12 +283,13 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/TransactionManagement/forms.py</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/TransactionManagement/models.py</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/TransactionManagement/urls.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/TransactionManagement/views.py</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/UserManagement/forms.py</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/UserManagement/urls.py</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/UserManagement/views.py</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/db.sqlite3</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/check_request.html</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -283,7 +297,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/check_request.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/cash_checkleaf_request.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/checkleaf_request.html</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -861,7 +876,21 @@
       <option name="project" value="LOCAL" />
       <updated>1486307983362</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Initial Celery&#10;Initial Notifications">
+      <created>1486441937263</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1486441937263</updated>
+    </task>
+    <task id="LOCAL-00022" summary="More Notifications">
+      <created>1486462324261</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1486462324261</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -875,16 +904,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3009768" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29795918" sideWeight="0.502442" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="manage.py@Core_Banking" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29081634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32857144" sideWeight="0.497558" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.497558" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29795918" sideWeight="0.497558" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29795918" sideWeight="0.497558" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -952,7 +981,9 @@
     <MESSAGE value="Accountant report concept" />
     <MESSAGE value="Fix" />
     <MESSAGE value="Fix Merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Merge" />
+    <MESSAGE value="Initial Celery&#10;Initial Notifications" />
+    <MESSAGE value="More Notifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="More Notifications" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -961,13 +992,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/blank_cashier.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1416">
-          <caret line="365" column="21" lean-forward="true" selection-start-line="282" selection-start-column="16" selection-end-line="365" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/customer_profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="492">
@@ -986,13 +1010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="214" column="75" lean-forward="false" selection-start-line="214" selection-start-column="75" selection-end-line="214" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UserManagement/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="112" column="27" lean-forward="false" selection-start-line="112" selection-start-column="27" selection-end-line="112" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1112,13 +1129,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="5" column="41" lean-forward="false" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/ATM_Script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="41" column="33" lean-forward="false" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1149,6 +1160,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="304" column="83" lean-forward="false" selection-start-line="304" selection-start-column="80" selection-end-line="304" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1190,16 +1202,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/accountant_report.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="304" column="44" lean-forward="true" selection-start-line="304" selection-start-column="44" selection-end-line="304" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#div#0;n#section#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AutomatedTellerMachine/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1223,22 +1225,6 @@
           <folding>
             <element signature="e#0#45#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TransactionManagement/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TransactionManagement/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2055">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1279,7 +1265,7 @@
         <state relative-caret-position="75">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1289,27 +1275,7 @@
         <state relative-caret-position="210">
           <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Core_Banking/celery.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="15" lean-forward="false" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TransactionManagement/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3098">
-          <caret line="12" column="40" lean-forward="true" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1322,37 +1288,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Core_Banking/celery.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UserManagement/notification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#112#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UserManagement/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3510">
+          <caret line="239" column="37" lean-forward="true" selection-start-line="239" selection-start-column="37" selection-end-line="239" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/UserManagement/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
+        <state relative-caret-position="-1140">
           <caret line="205" column="85" lean-forward="false" selection-start-line="205" selection-start-column="79" selection-end-line="205" selection-end-column="85" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UserManagement/models.py">
+    <entry file="file://$PROJECT_DIR$/templates/accountant_report.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="44" column="50" lean-forward="true" selection-start-line="44" selection-start-column="50" selection-end-line="44" selection-end-column="50" />
+        <state relative-caret-position="253">
+          <caret line="299" column="86" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="433" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/ATM_Script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransactionManagement/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="68" lean-forward="false" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="68" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TransactionManagement/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="40" column="18" lean-forward="false" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+        <state relative-caret-position="105">
+          <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UserManagement/notification.py">
+    <entry file="file://$PROJECT_DIR$/UserManagement/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransactionManagement/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="184" column="53" lean-forward="false" selection-start-line="184" selection-start-column="53" selection-end-line="184" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransactionManagement/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
-          <caret line="33" column="8" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+          <caret line="359" column="0" lean-forward="false" selection-start-line="359" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
           <folding>
-            <element signature="e#0#112#0" expanded="true" />
-            <marker date="1486441896000" expanded="true" signature="889:1458" ph="..." />
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin_report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1029">
+          <caret line="319" column="102" lean-forward="false" selection-start-line="319" selection-start-column="102" selection-end-line="319" selection-end-column="102" />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

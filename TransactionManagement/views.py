@@ -4,10 +4,9 @@ from django.core.urlresolvers import reverse
 
 from TransactionManagement import Constants
 from TransactionManagement.Utils import CreateTansactionModel
-from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm, CashBillPaymentForm, AccountantReportForm, \
-    CheckLeafRequestForm, CashCheckLeafRequestForm
-from UserManagement.models import Cashier, Accountant
-from .models import Transaction, BankAccount, Bills
+from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm, CashBillPaymentForm, AccountantReportForm, CheckLeafRequestForm, CashCheckLeafRequestForm, AdminReportForm
+from UserManagement.models import Cashier, Accountant, Admin
+from .models import Transaction, BankAccount, Bills, Branch
 
 
 @login_required(login_url='/user/login/')
@@ -290,6 +289,74 @@ def accountant_report(request):
             'transactions_from': transactions_from,
             'amount_from': amount_from,
             'amount_to': amount_to,
+            'form': form
+        }
+        return render(request, 'accountant_report.html', context=context)
+    except:
+        return redirect(reverse('403'))
+
+
+@login_required(login_url='/user/login/')
+def admin_report(request):
+    msg = ''
+    try:
+        Admin.objects.get(user=request.user)
+
+        branches = Branch.objects.all()
+
+        number_of_transaction_from = None
+        number_of_transaction_to = None
+        transactions_from = None
+        transactions_to = None
+        form = None
+
+        if request.method == 'POST':
+            form = AdminReportForm(request.POST)
+            if form.is_valid():
+                branch_id = form.cleaned_data.get('branch_id')
+                number_of_transaction_from = form.cleaned_data.get('number_of_transaction_from')
+                number_of_transaction_to = form.cleaned_data.get('number_of_transaction_to')
+                if branch_id == -1:
+                    isAll = True
+                else:
+                    isAll=False
+
+                start_date = form.cleaned_data.get('start_date')
+                end_date = form.cleaned_data.get('end_date')
+
+                try:
+                    if isAll:
+                        for branch in branches:
+                            transactions_from += Transaction.objects.all().filter(branch_from=branch, date_time__range=[start_date, end_date])
+                        if number_of_transaction_from is not 0:
+                            transactions_from = transactions_from[:number_of_transaction_from]
+                    else:
+                        branch = Branch.objects.get(branch_id=branch_id)
+                        transactions_from = Transaction.objects.all().filter(branch_from=branch, date_time__range=[start_date, end_date])
+                        if number_of_transaction_from is not 0:
+                            transactions_from = transactions_from[:number_of_transaction_from]
+                except:
+                    msg += 'تراکنش خروجی برای این شعبه یافت نشد.'
+
+                try:
+                    if isAll:
+                        for branch in branches:
+                            transactions_to += Transaction.objects.all().filter(branch_to=branch, date_time__range=[start_date, end_date])
+                        if number_of_transaction_to is not 0:
+                            transactions_to = transactions_to[:number_of_transaction_from]
+                    else:
+                        branch = Branch.objects.get(branch_id=branch_id)
+                        transactions_to = Transaction.objects.all().filter(branch_to=branch, date_time__range=[start_date, end_date])
+                        if number_of_transaction_to is not 0:
+                            transactions_to = transactions_to[:number_of_transaction_from]
+                except:
+                    msg += 'تراکنش ورودی برای این شعبه یافت نشد.'
+
+        context = {
+            'msg': msg,
+            'branches': branches,
+            'transactions_to': transactions_to,
+            'transactions_from': transactions_from,
             'form': form
         }
         return render(request, 'accountant_report.html', context=context)
