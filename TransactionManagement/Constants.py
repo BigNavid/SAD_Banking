@@ -1,9 +1,10 @@
 
 CASH_DEPOSIT = "واریز نقدی"
-DEPOSIT_TO_OTHER_ACCOUNT = "واریز به حساب از حساب"
+DEPOSIT_TO_OTHER_ACCOUNT = "واریز از حساب به حساب"
 CASH_WITHDRAW = "برداشت نقدی"
 
 
 BILL_PAYEMENT = "پرداخت قبض"
 CHECK_PAYMNENT = "پرداخت چک"
 
+types = [BILL_PAYEMENT, CASH_DEPOSIT, CASH_WITHDRAW, DEPOSIT_TO_OTHER_ACCOUNT, CHECK_PAYMNENT]

@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import Fees, BankAccount, Loan, LoanPayment, Money, Bills, Transaction, ATM, ATMMoneys, Check, CheckLeaf, \
-    Bank
+from .models import Fees, BankAccount, Loan, LoanPayment, Money, Bills, Transaction, ATM, ATMMoneys, Check, CheckLeaf, Bank
 
 admin.site.register(Fees)
 admin.site.register(BankAccount)

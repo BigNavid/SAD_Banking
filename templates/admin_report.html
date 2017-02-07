@@ -307,6 +307,16 @@
                                     {% endfor %}
                                         <option value="-1">همه شعبه‌ها</option>
                                 </select>
+
+                                <label>انتخاب نوع تراکنش:</label>
+                                <select name="type" id="id_type" class="btn btn-success" style="width: 200px">
+                                    <option selected disabled>انتخاب کنید</option>
+                                    {% for x in types %}
+                                        <option value="{{ x }}">{{ x }}</option>
+                                    {% endfor %}
+                                        <option value="all">همه انواع تراکنش‌ها</option>
+                                </select>
+
                                 <p class="text-muted">تعیین بازه تاریخ موردنظر:</p>
                                 <label>از:</label>
                                 <input name="start_date" id="id_start_date" type="date">

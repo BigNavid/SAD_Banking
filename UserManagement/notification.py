@@ -65,6 +65,7 @@ def loan_payment_not_paid_notif(loan_payment_id):
                                                                                                      loan_payment_id)
     Notifications.objects.create(user=user, message=msg)
     pass
+
 def cash_deposit_notif(t_id):
     transaction = Transaction.objects.get(transaction_id=t_id)
     msg = 'مبلغ {} تومان به صورت نقدی به حساب شما به شماره حساب {} واریز شد.'.format(transaction.amount, transaction.

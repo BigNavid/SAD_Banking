@@ -288,3 +288,4 @@ class AdminReportForm(forms.Form):
     end_date = forms.DateField(required=False, error_messages=field_errors)
     number_of_transaction_to = forms.IntegerField(error_messages=field_errors)
     number_of_transaction_from = forms.IntegerField(error_messages=field_errors)
+    type = forms.CharField(max_length=255, error_messages=field_errors)

@@ -248,11 +248,6 @@ def accountant_report(request):
                 start_date = form.cleaned_data.get('start_date')
                 end_date = form.cleaned_data.get('end_date')
 
-                print(national_id)
-                print(start_date)
-                print(end_date)
-                print(branch.branch_id)
-
                 try:
                     if isAll:
                         transactions_from = Transaction.objects.all().filter(branch_from=branch, date_time__range=[start_date, end_date])
@@ -279,8 +274,7 @@ def accountant_report(request):
                     for transaction in transactions_to:
                         amount = transaction.amount
                         amount_to += amount
-            else:
-                print('Salam')
+
         context = {
             'msg': msg,
             'branch': branch,
@@ -304,8 +298,7 @@ def admin_report(request):
 
         branches = Branch.objects.all()
 
-        number_of_transaction_from = None
-        number_of_transaction_to = None
+        types = Constants.types
         transactions_from = None
         transactions_to = None
         form = None
@@ -316,6 +309,8 @@ def admin_report(request):
                 branch_id = form.cleaned_data.get('branch_id')
                 number_of_transaction_from = form.cleaned_data.get('number_of_transaction_from')
                 number_of_transaction_to = form.cleaned_data.get('number_of_transaction_to')
+                type = form.cleaned_data.get('type')
+
                 if branch_id == -1:
                     isAll = True
                 else:
@@ -326,35 +321,37 @@ def admin_report(request):
 
                 try:
                     if isAll:
-                        for branch in branches:
-                            transactions_from += Transaction.objects.all().filter(branch_from=branch, date_time__range=[start_date, end_date])
-                        if number_of_transaction_from is not 0:
-                            transactions_from = transactions_from[:number_of_transaction_from]
+                        transactions_from = Transaction.objects.all().filter(date_time__range=[start_date, end_date])
                     else:
                         branch = Branch.objects.get(branch_id=branch_id)
-                        transactions_from = Transaction.objects.all().filter(branch_from=branch, date_time__range=[start_date, end_date])
-                        if number_of_transaction_from is not 0:
-                            transactions_from = transactions_from[:number_of_transaction_from]
+                        transactions_from = Transaction.objects.all().filter(branch_from=branch,
+                                                                             date_time__range=[start_date,
+                                                                                               end_date])
+                    if type != 'all':
+                        transactions_from = transactions_from.filter(type=type)
+                    if number_of_transaction_from is not 0:
+                        transactions_from = transactions_from[:number_of_transaction_from]
+
                 except:
                     msg += 'تراکنش خروجی برای این شعبه یافت نشد.'
 
                 try:
                     if isAll:
-                        for branch in branches:
-                            transactions_to += Transaction.objects.all().filter(branch_to=branch, date_time__range=[start_date, end_date])
-                        if number_of_transaction_to is not 0:
-                            transactions_to = transactions_to[:number_of_transaction_to]
+                        transactions_to = Transaction.objects.all().filter(date_time__range=[start_date, end_date])
                     else:
                         branch = Branch.objects.get(branch_id=branch_id)
                         transactions_to = Transaction.objects.all().filter(branch_to=branch, date_time__range=[start_date, end_date])
-                        if number_of_transaction_to is not 0:
-                            transactions_to = transactions_to[:number_of_transaction_to]
+                    if type != 'all':
+                        transactions_to = transactions_to.filter(type=type)
+                    if number_of_transaction_to is not 0:
+                        transactions_to = transactions_to[:number_of_transaction_to]
                 except:
                     msg += 'تراکنش ورودی برای این شعبه یافت نشد.'
 
         context = {
             'msg': msg,
             'branches': branches,
+            'types': types,
             'transactions_to': transactions_to,
             'transactions_from': transactions_from,
             'form': form
