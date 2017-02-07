@@ -397,3 +397,7 @@ class AccountantCheckConfirmForm(forms.Form):
 
 class ActivateAccountForm(forms.Form):
     customer_username = forms.IntegerField(max_value=99999, min_value=10000, error_messages=field_errors)
+
+class LoanConfirmationForm(forms.Form):
+    loan_id = forms.IntegerField(min_value=10000, max_value=99999, error_messages=field_errors)
+

@@ -35,6 +35,7 @@ class Loan(models.Model):
     legalExpert_confirmation = models.BooleanField(default=False)
     accountant_confirmation = models.BooleanField(default=False)
     cashier = models.ForeignKey(Cashier, related_name='Cashier_Loan', null=True, blank=True, default=None)
+    reject = models.BooleanField(default=False)
     # bankaccount_to = models.ForeignKey(BankAccount, related_name='LoanDestination', null=True, blank=True, default=None )
     # customer_to = models.ForeignKey(Customer, related_name='Customer_Loan', null=True, blank=True, default=None )
 

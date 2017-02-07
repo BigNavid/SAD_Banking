@@ -6,10 +6,10 @@ from django.shortcuts import render, redirect
 
 from TransactionManagement import Constants
 from TransactionManagement.Utils import CreateTansactionModel
-from TransactionManagement.models import CheckLeaf, BankAccount
+from TransactionManagement.models import CheckLeaf, BankAccount, Loan
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
     SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm, LegalExpertCheckConfirmForm, \
-    AccountantCheckConfirmForm, ActivateAccountForm, LoanRequestForm
+    AccountantCheckConfirmForm, ActivateAccountForm, LoanRequestForm, LoanConfirmationForm
 from .models import Customer, Cashier, Admin, Branch, AdminBranch, LegalExpert, Accountant
 
 
@@ -386,6 +386,82 @@ def accountant_check_confirm(request):
         return render(request, 'accountant_check_confirm.html', context=context)
     except:
         return redirect(reverse('TestView'))
+
+
+@login_required(login_url='/user/login/')
+def legalExpert_loan_confirm(request):
+    # message = ''
+    try:
+        legalExpert = LegalExpert.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = LoanConfirmationForm(request.POST)
+            if form.is_valid():
+                loan_id = form.cleaned_data.get('loan_id')
+                loan = Loan.objects.get(loan_id=loan_id)
+                if "accept" in request.POST:
+                    loan.legalExpert_confirmation = True
+                    loan.save()
+                elif 'reject' in request.POST:
+                    loan.reject = True
+                    loan.save()
+                    # message = "درخواست شما پس از تایید کارشناس حقوقی و حسابرس انجام خواهد شد."
+        else:
+            form = LoanConfirmationForm()
+        loans = Loan.objects.all().filter(reject=False, legalExpert_confirmation=False)
+        for loan in loans:
+            print(loan.loan_id)
+        context = {'form': form,
+                   'loans': loans,
+                   'username': request.user.username}
+        return render(request, 'legalExpert_loan_confirmation.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
+
+
+@login_required(login_url='/user/login/')
+def accountant_loan_confirm(request):
+    # message = ''
+    try:
+        accountant = Accountant.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = LoanConfirmationForm(request.POST)
+            if form.is_valid():
+                loan_id = form.cleaned_data.get('loan_id')
+                loan = Loan.objects.get(loan_id=loan_id)
+                if "accept" in request.POST:
+                    loan.accountant_confirmation = True
+                    bank_account_id = loan.bank_account
+                    bank_account = BankAccount.objects.get(account_id=bank_account_id)
+                    FA_bank_account = BankAccount.objects.get(account_id=9432650726)
+                    bank_account.amount += loan.amount
+                    FA_bank_account.amount -= loan.amount
+                    CreateTansactionModel(bankaccount_to=bank_account,
+                                          branch_to=bank_account.branch,
+                                          amount=loan.amount,
+                                          type=Constants.LOAN_PAYMANT,
+                                          cashier=loan.cashier,
+                                          bankaccount_from=FA_bank_account,
+                                          branch_from=FA_bank_account.branch)
+                    bank_account.save()
+                    FA_bank_account.save()
+                    loan.save()
+                elif 'reject' in request.POST:
+                    loan.reject = True
+                    loan.legalExpert_confirmation = False
+                    loan.save()
+        else:
+            form = LoanConfirmationForm()
+        loans = Loan.objects.all().filter(reject=False, legalExpert_confirmation=True, accountant_confirmation=False)
+        FA_bank_account = BankAccount.objects.get(account_id=9432650726)
+        FA_amount = FA_bank_account.amount
+        context = {'form': form,
+                   'loans': loans,
+                   'FA_amount': FA_amount,
+                   'username': request.user.username}
+        return render(request, 'accountant_loan_confirm.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
+
 
 @login_required(login_url='/user/login/')
 def activate_account(request):

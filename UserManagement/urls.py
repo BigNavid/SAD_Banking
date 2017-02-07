@@ -23,6 +23,9 @@ urlpatterns = [
     url(r'^accountant/CheckConfirmation/', view=views.accountant_check_confirm, name='AccountantCheckConfirm'),
     url(r'^legalExpert/ActivateAccount/', view=views.activate_account, name='ActivateAccount'),
     url(r'^cashier/LoanRequest/', view=views.loan_request, name='LoanRequest'),
+    url(r'^legalExpert/LoanConfirmation/', view=views.legalExpert_loan_confirm, name='LegalExpertLoanConfirm'),
+    url(r'^accountant/LoanConfirmation/', view=views.accountant_loan_confirm, name='AccountantLoanConfirm'),
+
 
     url(r'^ghabz/', view=views.ghabz, name='Ghabz'),
     url(r'^vam/', view=views.vam, name='Vam'),
