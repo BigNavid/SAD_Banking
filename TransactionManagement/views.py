@@ -4,8 +4,9 @@ from django.core.urlresolvers import reverse
 
 from TransactionManagement import Constants
 from TransactionManagement.Utils import CreateTansactionModel
-from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm, CashBillPaymentForm, AccountantReportForm, CheckLeafRequestForm, CashCheckLeafRequestForm, AdminReportForm
-from UserManagement.models import Cashier, Accountant, Admin
+from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm,\
+    CashBillPaymentForm, AccountantReportForm, CheckLeafRequestForm, CashCheckLeafRequestForm, AdminReportForm, CustomerReport
+from UserManagement.models import Cashier, Accountant, Admin, Customer
 from .models import Transaction, BankAccount, Bills, Branch
 
 
@@ -309,7 +310,7 @@ def admin_report(request):
                 branch_id = form.cleaned_data.get('branch_id')
                 number_of_transaction_from = form.cleaned_data.get('number_of_transaction_from')
                 number_of_transaction_to = form.cleaned_data.get('number_of_transaction_to')
-                type = form.cleaned_data.get('type')
+                transaction_type = form.cleaned_data.get('type')
 
                 if branch_id == -1:
                     isAll = True
@@ -327,8 +328,8 @@ def admin_report(request):
                         transactions_from = Transaction.objects.all().filter(branch_from=branch,
                                                                              date_time__range=[start_date,
                                                                                                end_date])
-                    if type != 'all':
-                        transactions_from = transactions_from.filter(type=type)
+                    if transaction_type != 'all':
+                        transactions_from = transactions_from.filter(type=transaction_type)
                     if number_of_transaction_from is not 0:
                         transactions_from = transactions_from[:number_of_transaction_from]
 
@@ -341,8 +342,8 @@ def admin_report(request):
                     else:
                         branch = Branch.objects.get(branch_id=branch_id)
                         transactions_to = Transaction.objects.all().filter(branch_to=branch, date_time__range=[start_date, end_date])
-                    if type != 'all':
-                        transactions_to = transactions_to.filter(type=type)
+                    if transaction_type != 'all':
+                        transactions_to = transactions_to.filter(type=transaction_type)
                     if number_of_transaction_to is not 0:
                         transactions_to = transactions_to[:number_of_transaction_to]
                 except:
@@ -357,5 +358,62 @@ def admin_report(request):
             'form': form
         }
         return render(request, 'admin_report.html', context=context)
+    except:
+        return redirect(reverse('403'))
+
+
+@login_required(login_url='/user/login/')
+def customer_report(request):
+    msg = ''
+    try:
+        Cashier.objects.get(user__user=request.user)
+
+        customers = Customer.objects.all()
+        transactions_from = None
+        transactions_to = None
+        form = None
+
+        if request.method == 'POST':
+            form = CustomerReport(request.POST)
+            if form.is_valid():
+                customer_id = form.cleaned_data.get('customer_id')
+                number_of_transaction_from = form.cleaned_data.get('number_of_transaction_from')
+                number_of_transaction_to = form.cleaned_data.get('number_of_transaction_to')
+                export_type = form.cleaned_data.get('type')
+                start_date = form.cleaned_data.get('start_date')
+                end_date = form.cleaned_data.get('end_date')
+
+                customer = Customer.objects.get(user__username=customer_id)
+
+                try:
+                    transactions_from = Transaction.objects.all().filter(bankaccount_from__customer=customer,
+                                                                         date_time__range=[start_date, end_date])
+                    if number_of_transaction_from is not 0:
+                        transactions_from = transactions_from[:number_of_transaction_from]
+                    print(len(transactions_from))
+
+                except:
+                    msg += 'تراکنش خروجی برای این مشتری یافت نشد.'
+
+                try:
+                    transactions_to = Transaction.objects.all().filter(bankaccount_from__customer=customer,
+                                                                       date_time__range=[start_date, end_date])
+                    if number_of_transaction_to is not 0:
+                        transactions_to = transactions_to[:number_of_transaction_to]
+                    print(len(transactions_to))
+                except:
+                    msg += 'تراکنش ورودی برای این مشتری یافت نشد.'
+
+                print(export_type)
+
+        context = {
+            'msg': msg,
+            'customers': customers,
+            'transactions_to': transactions_to,
+            'transactions_from': transactions_from,
+            'form': form
+        }
+        print("Salam")
+        return render(request, 'customer_report.html', context=context)
     except:
         return redirect(reverse('403'))

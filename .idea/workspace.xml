@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f3a6e9d-01a1-4186-b4a6-aa1e7498695d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/celerybeat.pid" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/celerybeat-schedule.db" afterPath="$PROJECT_DIR$/celerybeat-schedule.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/customer_report.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/Constants.py" afterPath="$PROJECT_DIR$/TransactionManagement/Constants.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/admin.py" afterPath="$PROJECT_DIR$/TransactionManagement/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core_Banking/settings.py" afterPath="$PROJECT_DIR$/Core_Banking/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/forms.py" afterPath="$PROJECT_DIR$/TransactionManagement/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/urls.py" afterPath="$PROJECT_DIR$/TransactionManagement/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/views.py" afterPath="$PROJECT_DIR$/TransactionManagement/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UserManagement/notification.py" afterPath="$PROJECT_DIR$/UserManagement/notification.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin_report.html" afterPath="$PROJECT_DIR$/templates/admin_report.html" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,22 +36,10 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TransactionManagement/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26">
-              <caret line="323" column="117" lean-forward="false" selection-start-line="323" selection-start-column="117" selection-end-line="323" selection-end-column="117" />
+            <state relative-caret-position="525">
+              <caret line="412" column="50" lean-forward="false" selection-start-line="412" selection-start-column="50" selection-end-line="412" selection-end-column="50" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TransactionManagement/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="123" lean-forward="false" selection-start-line="2" selection-start-column="123" selection-end-line="2" selection-end-column="123" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -63,31 +48,18 @@
       <file leaf-file-name="admin_report.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/admin_report.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="316" column="58" lean-forward="false" selection-start-line="316" selection-start-column="58" selection-end-line="316" selection-end-column="58" />
-              <folding>
-                <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#1;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constants.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TransactionManagement/Constants.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="17" />
+            <state relative-caret-position="486">
+              <caret line="408" column="0" lean-forward="true" selection-start-line="342" selection-start-column="0" selection-end-line="408" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TransactionManagement/forms.py">
+      <file leaf-file-name="customer_report.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/customer_report.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="291" column="0" lean-forward="false" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
+            <state relative-caret-position="606">
+              <caret line="403" column="0" lean-forward="true" selection-start-line="403" selection-start-column="0" selection-end-line="403" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -149,7 +121,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/signup_admin.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/customer_profile.html" />
         <option value="$PROJECT_DIR$/templates/cashier_profile.html" />
@@ -186,19 +157,20 @@
         <option value="$PROJECT_DIR$/celery.py" />
         <option value="$PROJECT_DIR$/celery_task.py" />
         <option value="$PROJECT_DIR$/Core_Banking/celery_task.py" />
-        <option value="$PROJECT_DIR$/Core_Banking/settings.py" />
         <option value="$PROJECT_DIR$/TransactionManagement/tasks.py" />
         <option value="$PROJECT_DIR$/Core_Banking/__init__.py" />
         <option value="$PROJECT_DIR$/Core_Banking/tasks.py" />
         <option value="$PROJECT_DIR$/UserManagement/admin.py" />
         <option value="$PROJECT_DIR$/UserManagement/models.py" />
         <option value="$PROJECT_DIR$/Core_Banking/celery.py" />
-        <option value="$PROJECT_DIR$/TransactionManagement/urls.py" />
         <option value="$PROJECT_DIR$/UserManagement/notification.py" />
-        <option value="$PROJECT_DIR$/TransactionManagement/forms.py" />
         <option value="$PROJECT_DIR$/templates/admin_report.html" />
         <option value="$PROJECT_DIR$/TransactionManagement/admin.py" />
         <option value="$PROJECT_DIR$/TransactionManagement/Constants.py" />
+        <option value="$PROJECT_DIR$/TransactionManagement/forms.py" />
+        <option value="$PROJECT_DIR$/TransactionManagement/urls.py" />
+        <option value="$PROJECT_DIR$/Core_Banking/settings.py" />
+        <option value="$PROJECT_DIR$/templates/customer_report.html" />
         <option value="$PROJECT_DIR$/TransactionManagement/views.py" />
       </list>
     </option>
@@ -929,7 +901,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486471231875</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Admin report completed">
+      <created>1486475326804</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1486475326805</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -943,9 +922,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3009768" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3009768" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29795918" sideWeight="0.502442" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1024,7 +1003,8 @@
     <MESSAGE value="More Notifications" />
     <MESSAGE value="AdminReport" />
     <MESSAGE value="Transfer Constant variables to Persian" />
-    <option name="LAST_COMMIT_MESSAGE" value="Transfer Constant variables to Persian" />
+    <MESSAGE value="Admin report completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin report completed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1033,13 +1013,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/blank_admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-515">
-          <caret line="297" column="75" lean-forward="false" selection-start-line="297" selection-start-column="75" selection-end-line="297" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/create_branch.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1270,14 +1243,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Core_Banking/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="138" column="23" lean-forward="false" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TransactionManagement/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1330,34 +1295,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/accountant_report.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="299" column="86" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="433" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/ATM_Script.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TransactionManagement/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="68" lean-forward="false" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UserManagement/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1378,39 +1319,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TransactionManagement/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="291" column="0" lean-forward="false" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TransactionManagement/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="123" lean-forward="false" selection-start-line="2" selection-start-column="123" selection-end-line="2" selection-end-column="123" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TransactionManagement/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="53" column="40" lean-forward="false" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin_report.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="316" column="58" lean-forward="false" selection-start-line="316" selection-start-column="58" selection-end-line="316" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#1;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1423,10 +1337,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/UserManagement/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransactionManagement/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="67" column="20" lean-forward="false" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransactionManagement/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="55" lean-forward="false" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core_Banking/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="141" column="71" lean-forward="false" selection-start-line="141" selection-start-column="71" selection-end-line="141" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransactionManagement/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="294" column="15" lean-forward="false" selection-start-line="294" selection-start-column="4" selection-end-line="294" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/accountant_report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-339">
+          <caret line="361" column="44" lean-forward="true" selection-start-line="361" selection-start-column="44" selection-end-line="361" selection-end-column="162" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin_report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="408" column="0" lean-forward="true" selection-start-line="342" selection-start-column="0" selection-end-line="408" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/customer_report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="403" column="0" lean-forward="true" selection-start-line="403" selection-start-column="0" selection-end-line="403" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TransactionManagement/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="323" column="117" lean-forward="false" selection-start-line="323" selection-start-column="117" selection-end-line="323" selection-end-column="117" />
+        <state relative-caret-position="525">
+          <caret line="412" column="50" lean-forward="false" selection-start-line="412" selection-start-column="50" selection-end-line="412" selection-end-column="50" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
           </folding>

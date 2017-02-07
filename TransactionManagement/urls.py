@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^DepositToOtherBankAccount/', view=views.deposit_to_other_bank_account, name='DepositToOtherBankAccount'),
     url(r'^AccountantReport/', view=views.accountant_report, name='AccountantReport'),
     url(r'^AdminReport/', view=views.admin_report, name='AdminReport'),
+    url(r'^CustomerReport/', view=views.customer_report, name='CustomerReport'),
     url(r'^BillPayment/', view=views.bill_payment, name='BillPayment'),
     url(r'^CashBillPayment/', view=views.cash_bill_payment, name='CashBillPayment'),
     url(r'^CheckLeafRequest/', view=views.checkleaf_request, name='CheckLeafRequest'),
