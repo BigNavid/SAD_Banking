@@ -1,6 +1,6 @@
 from TransactionManagement.Constants import CASH_DEPOSIT, CASH_WITHDRAW, DEPOSIT_TO_OTHER_ACCOUNT, BILL_PAYEMENT
 from TransactionManagement.models import Transaction, ATM, LoanPayment
-from UserManagement.models import Notifications
+from UserManagement.models import Notifications, Admin, AdminBranch
 
 
 def customer_notification(t_type, t_id):
@@ -21,7 +21,25 @@ def atm_notification(atm_id):
     Notifications.objects.create(user=user, message=msg)
 
 
-def loan_payment_notification(loan_payment_id):
+def loan_payment_notification(paid, loan_payment_id):
+    if paid:
+        loan_payment_paid_notif(loan_payment_id=loan_payment_id)
+    else:
+        loan_payment_not_paid_notif(loan_payment_id=loan_payment_id)
+
+
+def loan_payment_paid_notif(loan_payment_id):
+    loan_payment = LoanPayment.objects.get(loanpayment_id=loan_payment_id)
+    loan_id = loan_payment.loadn_id
+    customer_full_name = loan_payment.customer.user.get_full_name()
+    #TODO: Add account number
+    msg = 'مشتری گرامی {} قسط وام شماره {} شماره قسط {} از حساب شما کسر گردید.'.format(customer_full_name, loan_id,
+                                                                                       loan_payment_id)
+    user = loan_payment.customer.user
+    Notifications.objects.create(user=user, message=msg)
+
+
+def loan_payment_not_paid_notif(loan_payment_id):
     loan_payment = LoanPayment.objects.get(loanpayment_id=loan_payment_id)
     loan_id = loan_payment.loadn_id
     customer_full_name = loan_payment.customer.user.get_full_name()
@@ -31,9 +49,23 @@ def loan_payment_notification(loan_payment_id):
     user = loan_payment.customer.user
     Notifications.objects.create(user=user, message=msg)
 
+    admin = Admin.objects.all()
+    msg = 'مدیر محترم فا بانک مشتری {} قسط وام شماره {} شماره قسط {} را پرداخت کرده است.'.format(customer_full_name,
+                                                                                                 loan_id,
+                                                                                                 loan_payment_id)
+    for user in admin:
+        Notifications.objects.create(user=user, message=msg)
+
+    #TODO: Get Admin of branch
+    branch_admin = AdminBranch.objects.get()
+    user = branch_admin.user.user
+    msg = 'مدیرشعبه محترم شعبه {} مشتری {} قسط وام شماره {} شماره قسط {} را پرداخت کرده است.'.format(branch_admin.user
+                                                                                                     .branch_id,
+                                                                                                     customer_full_name,
+                                                                                                     loan_id,
+                                                                                                     loan_payment_id)
+    Notifications.objects.create(user=user, message=msg)
     pass
-
-
 def cash_deposit_notif(t_id):
     transaction = Transaction.objects.get(transaction_id=t_id)
     msg = 'مبلغ {} تومان به صورت نقدی به حساب شما به شماره حساب {} واریز شد.'.format(transaction.amount, transaction.

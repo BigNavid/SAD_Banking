@@ -22,4 +22,4 @@ def debug_task(self):
 
 @periodic_task(run_every=(crontab(minute='*/1')), name="some_task", ignore_result=True)
 def some_task():
-    print("Hi")
+    print("Hi testing Celery every minutes")
