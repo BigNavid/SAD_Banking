@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
 from TransactionManagement import Constants
-from TransactionManagement.Utils import CreateTansactionModel
+from TransactionManagement.Utils import CreateTansactionModel, CreateLoanPaymentModel
 from TransactionManagement.models import CheckLeaf, BankAccount, Loan
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
     SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm, LegalExpertCheckConfirmForm, \
@@ -442,6 +442,7 @@ def accountant_loan_confirm(request):
                                           cashier=loan.cashier,
                                           bankaccount_from=FA_bank_account,
                                           branch_from=FA_bank_account.branch)
+                    CreateLoanPaymentModel(loan)
                     bank_account.save()
                     FA_bank_account.save()
                     loan.save()

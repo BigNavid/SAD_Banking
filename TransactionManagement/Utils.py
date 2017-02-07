@@ -1,7 +1,7 @@
 import random
 
-from TransactionManagement.models import Transaction
-
+from TransactionManagement import Constants
+from TransactionManagement.models import Transaction, LoanPayment
 
 
 def random_with_N_digits(n):
@@ -37,3 +37,21 @@ def CreateTansactionModel(bankaccount_from=None,
 
 def UpdateAmount(bankAccount):
     pass
+
+def CreateLoanPaymentModel(loan):
+    amount = loan.amount
+    remain = amount % loan.installments
+    installment = (amount-remain)/loan.installments
+    for i in range(0, loan.installments):
+        if i == loan.installments:
+            installment += remain
+        while True:
+            try:
+                loanpayment_id = random_with_N_digits(8)
+                LoanPayment.objects.create(loanpayment_id=loanpayment_id,
+                                           loan=loan,
+                                           amount=installment,
+                                           profit=installment*Constants.LOAN_PROFIT)
+            except:
+                pass
+        LoanPayment.objects.create()

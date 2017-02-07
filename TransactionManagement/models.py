@@ -42,11 +42,12 @@ class Loan(models.Model):
 
 class LoanPayment(models.Model):
     loanpayment_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
-    loadn = models.ForeignKey(Loan, on_delete=models.CASCADE)
+    loan = models.ForeignKey(Loan, on_delete=models.CASCADE)
     amount = models.BigIntegerField()
-    customer = models.ForeignKey(Customer, on_delete=None)
+    # customer = models.ForeignKey(Customer, on_delete=None)
     date = models.DateField(db_index=True)
     paid = models.BooleanField(default=False)
+    profit = models.BigIntegerField(default=0)
 
 
 class Money(models.Model):
