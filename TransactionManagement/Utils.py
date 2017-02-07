@@ -48,10 +48,10 @@ def CreateLoanPaymentModel(loan):
         while True:
             try:
                 loanpayment_id = random_with_N_digits(8)
+                profit = installment*Constants.LOAN_PROFIT
                 LoanPayment.objects.create(loanpayment_id=loanpayment_id,
                                            loan=loan,
-                                           amount=installment,
-                                           profit=installment*Constants.LOAN_PROFIT)
+                                           amount=installment+profit,
+                                           profit=profit)
             except:
                 pass
-        LoanPayment.objects.create()

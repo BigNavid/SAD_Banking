@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
 
+from TransactionManagement import Constants
 from TransactionManagement.Utils import random_with_N_digits
 from .models import Customer, Admin, AdminBranch, BranchStaff, Cashier, Accountant, LegalExpert, AdminATM
-from TransactionManagement.models import BankAccount, Branch, CreditCard, Bills, Check, CheckLeaf, Loan
+from TransactionManagement.models import BankAccount, Branch, CreditCard, Bills, Check, CheckLeaf, Loan, Bank
 
 field_errors = {
     'required': 'وارد کردن این فیلد ضروری است.',
@@ -346,8 +347,8 @@ class BillDefinitionForm(forms.Form):
     def save(self):
         kind = self.cleaned_data.get('kind')
         bank_account_id = self.cleaned_data.get('bank_account_id')
-        customer = Customer.objects.get(user__username=13222)
-        branch = Branch.objects.get(branch_id=2782)
+        customer = Customer.objects.get(user__username=Constants.BILL_USER_ACCOUNT)
+        branch = Branch.objects.get(branch_id=Constants.MAIN_BRANCH)
         bank_account = BankAccount.objects.create(account_id=bank_account_id,
                                                   customer=customer,
                                                   amount=0,
@@ -400,4 +401,23 @@ class ActivateAccountForm(forms.Form):
 
 class LoanConfirmationForm(forms.Form):
     loan_id = forms.IntegerField(min_value=10000, max_value=99999, error_messages=field_errors)
+
+
+class FeeForm(forms.Form):
+    profit = forms.IntegerField(min_value=0, error_messages=field_errors)
+    card_fee = forms.IntegerField(min_value=0, error_messages=field_errors)
+    check_fee = forms.IntegerField(min_value=0, error_messages=field_errors)
+    alert_fee = forms.IntegerField(min_value=0, error_messages=field_errors)
+    card_transfer_fee = forms.IntegerField(min_value=0, error_messages=field_errors)
+    bankaccount_transfer_fee = forms.IntegerField(min_value=0, error_messages=field_errors)
+
+    def save(self):
+        bank = Bank.objects.get(name="FaBank")
+        bank.profit = self.cleaned_data.get('profit')
+        bank.card_fee = self.cleaned_data.get('card_fee')
+        bank.check_fee = self.cleaned_data.get('check_fee')
+        bank.alert_fee = self.cleaned_data.get('alert_fee')
+        bank.card_transfer_fee = self.cleaned_data.get('card_transfer_fee')
+        bank.bankaccount_transfer_fee = self.cleaned_data.get('bankaccount_transfer_fee')
+        bank.save()
 

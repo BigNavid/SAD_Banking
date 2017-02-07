@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^superUser/signupAdmin/', view=views.signup_admin, name='SignUpAdmin'),
     url(r'^admin/createBranch/', view=views.create_branch, name='CreateBranch'),
     url(r'^admin/billDefinition/', view=views.bill_definition, name='BillDefinition'),
+    url(r'^admin/FeeDefinition/', view=views.fee, name='FeeDefinition'),
     url(r'^admin/createBranchAdmin/', view=views.create_branch_admin, name='CreateBranchAdmin'),
     url(r'^cashier/signupCustomer/', view=views.signup_customer, name='SignUpCustomer'),
     url(r'^cashier/createBankAccount/', view=views.create_bank_account, name='CreateBankAccount'),

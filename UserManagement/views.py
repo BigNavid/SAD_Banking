@@ -6,10 +6,10 @@ from django.shortcuts import render, redirect
 
 from TransactionManagement import Constants
 from TransactionManagement.Utils import CreateTansactionModel, CreateLoanPaymentModel
-from TransactionManagement.models import CheckLeaf, BankAccount, Loan
+from TransactionManagement.models import CheckLeaf, BankAccount, Loan, Bank
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
     SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm, LegalExpertCheckConfirmForm, \
-    AccountantCheckConfirmForm, ActivateAccountForm, LoanRequestForm, LoanConfirmationForm
+    AccountantCheckConfirmForm, ActivateAccountForm, LoanRequestForm, LoanConfirmationForm, FeeForm
 from .models import Customer, Cashier, Admin, Branch, AdminBranch, LegalExpert, Accountant
 
 
@@ -308,10 +308,8 @@ def check_request(request):
         if request.method == 'POST':
             form = CheckRequestForm(request.POST)
             if form.is_valid():
-                print("here")
                 checkLeafList=form.save()
                 bank_account_id = form.cleaned_data.get('bank_account_id')
-                print(bank_account_id)
                 message = "دسته چک برای حساب {} صادر گردید.".format(
                     bank_account_id)
         else:
@@ -408,8 +406,6 @@ def legalExpert_loan_confirm(request):
         else:
             form = LoanConfirmationForm()
         loans = Loan.objects.all().filter(reject=False, legalExpert_confirmation=False)
-        for loan in loans:
-            print(loan.loan_id)
         context = {'form': form,
                    'loans': loans,
                    'username': request.user.username}
@@ -432,7 +428,7 @@ def accountant_loan_confirm(request):
                     loan.accountant_confirmation = True
                     bank_account_id = loan.bank_account
                     bank_account = BankAccount.objects.get(account_id=bank_account_id)
-                    FA_bank_account = BankAccount.objects.get(account_id=9432650726)
+                    FA_bank_account = BankAccount.objects.get(account_id=Constants.FA_BANK_ACCOUNT)
                     bank_account.amount += loan.amount
                     FA_bank_account.amount -= loan.amount
                     CreateTansactionModel(bankaccount_to=bank_account,
@@ -453,7 +449,7 @@ def accountant_loan_confirm(request):
         else:
             form = LoanConfirmationForm()
         loans = Loan.objects.all().filter(reject=False, legalExpert_confirmation=True, accountant_confirmation=False)
-        FA_bank_account = BankAccount.objects.get(account_id=9432650726)
+        FA_bank_account = BankAccount.objects.get(account_id=Constants.FA_BANK_ACCOUNT)
         FA_amount = FA_bank_account.amount
         context = {'form': form,
                    'loans': loans,
@@ -500,7 +496,6 @@ def loan_request(request):
 
             if form.is_valid():
                 form.save(cashier)
-                print("here")
                 message = "وام شما پس از تایید کارشناس حقوقی و حسابرس پرداخت خواهد شد."
         else:
             form = LoanRequestForm()
@@ -512,6 +507,30 @@ def loan_request(request):
         return render(request, 'loan_request.html', context=context)
     except:
         return redirect(reverse('TestView'))
+
+
+@login_required(login_url='/user/login/')
+def fee(request):
+    message = ''
+    try:
+        admin = Admin.objects.get(user__username=request.user.username)
+        if request.method == 'POST':
+            form = FeeForm(request.POST)
+            if form.is_valid():
+                form.save()
+                message = "کارمزدها و سود بانکی بروز شد."
+        else:
+            form = FeeForm()
+        bank = Bank.objects.get(name="FaBank")
+        context = {'form': form,
+                   'message': message,
+                   'bank': bank,
+                   'username': request.user.username}
+        return render(request, 'fee.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
+
+
 
 def forbidden(request):
     return render(request, '403.html')
