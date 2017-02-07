@@ -5,4 +5,5 @@ CASH_WITHDRAW = "برداشت نقدی"
 
 
 BILL_PAYEMENT = "پرداخت قبض"
+CHECK_PAYMNENT = "پرداخت چک"
 
