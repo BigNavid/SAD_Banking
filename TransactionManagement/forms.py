@@ -182,7 +182,7 @@ class CashBillPaymentForm(forms.Form):
 
 
 class CheckLeafRequestForm(forms.Form):
-    checkleaf_id = forms.IntegerField(min_value=100000000, max_value=99999999, error_messages=field_errors)
+    checkleaf_id = forms.IntegerField(min_value=10000000, max_value=99999999, error_messages=field_errors)
     amount = forms.IntegerField(min_value=0, error_messages=field_errors)
     customer_to = forms.IntegerField(min_value=0, error_messages=field_errors)
     bank_account_id = forms.IntegerField(min_value=0, error_messages=field_errors)
@@ -226,15 +226,16 @@ class CheckLeafRequestForm(forms.Form):
         checkleaf = CheckLeaf.objects.get(checkleaf_id=checkleaf_id)
         customer_id = self.cleaned_data.get('customer_to')
         customer = Customer.objects.get(user__username=customer_id)
+        bank_account = BankAccount.objects.get(account_id=bank_account_id)
 
-        checkleaf.bankaccount_to=bank_account_id
+        checkleaf.bankaccount_to=bank_account
         checkleaf.amount = amount
         checkleaf.used = True
         checkleaf.customer_to = customer
         checkleaf.save()
 
 class CashCheckLeafRequestForm(forms.Form):
-    checkleaf_id = forms.IntegerField(min_value=100000000, max_value=99999999, error_messages=field_errors)
+    checkleaf_id = forms.IntegerField(min_value=10000000, max_value=99999999, error_messages=field_errors)
     amount = forms.IntegerField(min_value=0, error_messages=field_errors)
     customer_to = forms.IntegerField(min_value=0, error_messages=field_errors)
 

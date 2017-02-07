@@ -4,9 +4,10 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
+from TransactionManagement.models import CheckLeaf
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
-    SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm
-from .models import Customer, Cashier, Admin, Branch, AdminBranch
+    SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm, LegalExpertCheckConfirmForm
+from .models import Customer, Cashier, Admin, Branch, AdminBranch, LegalExpert
 
 
 def homepage(request):
@@ -317,6 +318,37 @@ def check_request(request):
                    'CheckLeafList': checkLeafList,
                    'username': request.user.username}
         return render(request, 'check_request.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
+
+@login_required(login_url='/user/login/')
+def legalExpert_check_confirm(request):
+    # message = ''
+    try:
+        legalExpert = LegalExpert.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = LegalExpertCheckConfirmForm(request.POST)
+            if form.is_valid():
+                checkLeaf_id = form.cleaned_data.get('checkleaf_id')
+                checkleaf = CheckLeaf.objects.get(checkleaf_id=checkLeaf_id)
+                if "accept" in request.POST:
+                    print("accept")
+                    checkleaf.legalExpert_confirmation=True
+                    checkleaf.save()
+                elif 'reject' in request.POST:
+                    print("reject")
+                    checkleaf.used = False
+                    checkleaf.save()
+                # message = "درخواست شما پس از تایید کارشناس حقوقی و حسابرس انجام خواهد شد."
+        else:
+            form = LegalExpertCheckConfirmForm()
+        checkleafes = CheckLeaf.objects.all().filter(used=True, legalExpert_confirmation=False)
+        for checkleaf in checkleafes:
+            print(checkleaf.checkleaf_id)
+        context = {'form': form,
+                   'checkleafes': checkleafes,
+                   'username': request.user.username}
+        return render(request, 'legalExpert_check_confirm.html', context=context)
     except:
         return redirect(reverse('TestView'))
 

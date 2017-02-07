@@ -338,3 +338,6 @@ class CheckRequestForm(forms.Form):
                 return checkLeaf_list
             except:
                 pass
+
+class LegalExpertCheckConfirmForm(forms.Form):
+    checkleaf_id = forms.IntegerField(min_value=10000000, max_value=99999999, error_messages=field_errors)
