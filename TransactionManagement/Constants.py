@@ -1,8 +1,8 @@
 
-CASH_DEPOSIT = "cash_deposit"
-DEPOSIT_TO_OTHER_ACCOUNT = "deposit_to_other_account"
-CASH_WITHDRAW = "cash_withdraw"
+CASH_DEPOSIT = "واریز نقدی"
+DEPOSIT_TO_OTHER_ACCOUNT = "واریز به حساب از حساب"
+CASH_WITHDRAW = "برداشت نقدی"
 
 
-BILL_PAYEMENT = "bill_payement"
+BILL_PAYEMENT = "پرداخت قبض"
 

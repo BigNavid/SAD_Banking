@@ -343,12 +343,12 @@ def admin_report(request):
                         for branch in branches:
                             transactions_to += Transaction.objects.all().filter(branch_to=branch, date_time__range=[start_date, end_date])
                         if number_of_transaction_to is not 0:
-                            transactions_to = transactions_to[:number_of_transaction_from]
+                            transactions_to = transactions_to[:number_of_transaction_to]
                     else:
                         branch = Branch.objects.get(branch_id=branch_id)
                         transactions_to = Transaction.objects.all().filter(branch_to=branch, date_time__range=[start_date, end_date])
                         if number_of_transaction_to is not 0:
-                            transactions_to = transactions_to[:number_of_transaction_from]
+                            transactions_to = transactions_to[:number_of_transaction_to]
                 except:
                     msg += 'تراکنش ورودی برای این شعبه یافت نشد.'
 
@@ -359,6 +359,6 @@ def admin_report(request):
             'transactions_from': transactions_from,
             'form': form
         }
-        return render(request, 'accountant_report.html', context=context)
+        return render(request, 'admin_report.html', context=context)
     except:
         return redirect(reverse('403'))

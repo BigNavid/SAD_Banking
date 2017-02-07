@@ -299,7 +299,7 @@
                         <div class="panel-body">
                             <form action="{% url 'AdminReport' %}" method="post">
                                 {% csrf_token %}
-                                <label>انتخاب صندوقدار:</label>
+                                <label>انتخاب شعبه:</label>
                                 <select name="branch_id" id="id_branch_id" class="btn btn-success" style="width: 200px">
                                     <option selected disabled>انتخاب کنید</option>
                                     {% for x in branches %}
