@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f3a6e9d-01a1-4186-b4a6-aa1e7498695d" name="Default" comment="More Notifications">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/celerybeat.pid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin_report.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+    <list default="true" id="0f3a6e9d-01a1-4186-b4a6-aa1e7498695d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/forms.py" afterPath="$PROJECT_DIR$/TransactionManagement/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/urls.py" afterPath="$PROJECT_DIR$/TransactionManagement/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/Constants.py" afterPath="$PROJECT_DIR$/TransactionManagement/Constants.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransactionManagement/views.py" afterPath="$PROJECT_DIR$/TransactionManagement/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UserManagement/notification.py" afterPath="$PROJECT_DIR$/UserManagement/notification.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin_report.html" afterPath="$PROJECT_DIR$/templates/admin_report.html" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +33,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TransactionManagement/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="359" column="0" lean-forward="false" selection-start-line="359" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
+            <state relative-caret-position="645">
+              <caret line="350" column="87" lean-forward="false" selection-start-line="350" selection-start-column="87" selection-end-line="350" selection-end-column="87" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -46,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin_report.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin_report.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/admin_report.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1029">
-              <caret line="319" column="102" lean-forward="false" selection-start-line="319" selection-start-column="102" selection-end-line="319" selection-end-column="102" />
+            <state relative-caret-position="-1085">
+              <caret line="319" column="102" lean-forward="false" selection-start-line="319" selection-start-column="75" selection-end-line="319" selection-end-column="102" />
               <folding>
                 <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -58,11 +54,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TransactionManagement/urls.py">
+      <file leaf-file-name="Constants.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TransactionManagement/Constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="68" lean-forward="false" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="68" />
+            <state relative-caret-position="90">
+              <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TransactionManagement/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="286" column="68" lean-forward="false" selection-start-line="286" selection-start-column="68" selection-end-line="286" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -81,7 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dropdown-menu.extended.lo</find>
       <find>bio-graph-he</find>
       <find>profile</find>
       <find>panel-body</find>
@@ -111,6 +116,7 @@
       <find>403</find>
       <find>format</find>
       <find>cust</find>
+      <find>انتخاب</find>
     </findStrings>
     <replaceStrings>
       <replace>customer</replace>
@@ -124,7 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/TransactionManagement/admin.py" />
         <option value="$PROJECT_DIR$/templates/signup_admin.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
@@ -172,9 +177,10 @@
         <option value="$PROJECT_DIR$/Core_Banking/celery.py" />
         <option value="$PROJECT_DIR$/UserManagement/notification.py" />
         <option value="$PROJECT_DIR$/TransactionManagement/urls.py" />
-        <option value="$PROJECT_DIR$/templates/admin_report.html" />
         <option value="$PROJECT_DIR$/TransactionManagement/forms.py" />
         <option value="$PROJECT_DIR$/TransactionManagement/views.py" />
+        <option value="$PROJECT_DIR$/templates/admin_report.html" />
+        <option value="$PROJECT_DIR$/TransactionManagement/Constants.py" />
       </list>
     </option>
   </component>
@@ -284,12 +290,11 @@
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
           <PATH vcs="Git" revision="">$PROJECT_DIR$/TransactionManagement/forms.py</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/TransactionManagement/models.py</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/TransactionManagement/urls.py</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/TransactionManagement/views.py</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/UserManagement/forms.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/UserManagement/urls.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/UserManagement/views.py</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/db.sqlite3</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/check_request.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/legalExpert_check_confirm.html</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -297,8 +302,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/cash_checkleaf_request.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/checkleaf_request.html</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -890,7 +893,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486462324261</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="AdminReport">
+      <created>1486468886330</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1486468886330</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView">
@@ -911,9 +921,9 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29795918" sideWeight="0.502442" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="manage.py@Core_Banking" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29081634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.497558" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32857144" sideWeight="0.497558" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29795918" sideWeight="0.497558" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29795918" sideWeight="0.497558" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -983,7 +993,8 @@
     <MESSAGE value="Fix Merge" />
     <MESSAGE value="Initial Celery&#10;Initial Notifications" />
     <MESSAGE value="More Notifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="More Notifications" />
+    <MESSAGE value="AdminReport" />
+    <option name="LAST_COMMIT_MESSAGE" value="AdminReport" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1280,14 +1291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TransactionManagement/Constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Core_Banking/celery.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -1364,31 +1367,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TransactionManagement/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="184" column="53" lean-forward="false" selection-start-line="184" selection-start-column="53" selection-end-line="184" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TransactionManagement/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="359" column="0" lean-forward="false" selection-start-line="359" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
+        <state relative-caret-position="645">
+          <caret line="350" column="87" lean-forward="false" selection-start-line="350" selection-start-column="87" selection-end-line="350" selection-end-column="87" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TransactionManagement/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="286" column="68" lean-forward="false" selection-start-line="286" selection-start-column="68" selection-end-line="286" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin_report.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1029">
-          <caret line="319" column="102" lean-forward="false" selection-start-line="319" selection-start-column="102" selection-end-line="319" selection-end-column="102" />
+        <state relative-caret-position="-1085">
+          <caret line="319" column="102" lean-forward="false" selection-start-line="319" selection-start-column="75" selection-end-line="319" selection-end-column="102" />
           <folding>
             <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransactionManagement/Constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
