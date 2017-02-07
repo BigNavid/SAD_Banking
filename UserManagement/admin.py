@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Admin, Branch, BranchStaff, AdminBranch, Accountant, Cashier, LegalExpert, AdminATM, Customer
+from .models import Admin, Branch, BranchStaff, AdminBranch, Accountant, Cashier, LegalExpert, AdminATM, Customer, Notifications
 
 admin.site.register(Admin)
 admin.site.register(Branch)
@@ -11,3 +11,4 @@ admin.site.register(Cashier)
 admin.site.register(LegalExpert)
 admin.site.register(AdminATM)
 admin.site.register(Customer)
+admin.site.register(Notifications)

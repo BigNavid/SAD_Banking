@@ -46,3 +46,9 @@ class Customer(models.Model):
     phone = models.IntegerField(unique=False, null=True, blank=True)
     notification = models.BooleanField(default=False, null=False)
     activated = models.BooleanField(default=False, null=False)
+
+
+class Notifications(models.Model):
+    date = models.DateField(auto_now_add=True)
+    message = models.CharField(max_length=1000, blank=True, null=True)
+    user = models.ForeignKey(User, db_index=True)
