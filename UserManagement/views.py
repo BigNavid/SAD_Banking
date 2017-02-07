@@ -9,7 +9,7 @@ from TransactionManagement.Utils import CreateTansactionModel
 from TransactionManagement.models import CheckLeaf, BankAccount
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
     SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm, LegalExpertCheckConfirmForm, \
-    AccountantCheckConfirmForm
+    AccountantCheckConfirmForm, ActivateAccountForm
 from .models import Customer, Cashier, Admin, Branch, AdminBranch, LegalExpert, Accountant
 
 
@@ -203,9 +203,9 @@ def create_creditcard(request):
         cashier = Cashier.objects.get(user__user__username=request.user.username)
         if request.method == 'POST':
             form = CreateCreditCardForm(request.POST)
-            bank_account_id = form.cleaned_data.get('bank_account_id')
             if form.is_valid():
                 form.save()
+                bank_account_id = form.cleaned_data.get('bank_account_id')
                 credit_card= form.cleaned_data.get('credit_card')
                 message = "کارت بانکی با شماره {} برای حساب شماره {} صادر شد.".format(
                     credit_card.number,
@@ -384,6 +384,31 @@ def accountant_check_confirm(request):
                    'checkleafes': checkleafes,
                    'username': request.user.username}
         return render(request, 'accountant_check_confirm.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
+
+@login_required(login_url='/user/login/')
+def activate_account(request):
+    try:
+        legalExpert = LegalExpert.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = ActivateAccountForm(request.POST)
+            if form.is_valid():
+                customer_username = form.cleaned_data.get('customer_username')
+                customer = Customer.objects.get(user__username=customer_username)
+                if "activate" in request.POST:
+                    customer.activated=True
+                    customer.save()
+                elif 'block' in request.POST:
+                    customer.activated=False
+                    customer.save()
+        else:
+            form = ActivateAccountForm()
+        customers = Customer.objects.all()
+        context = {'form': form,
+                   'customers': customers,
+                   'username': request.user.username}
+        return render(request, 'activate_account.html', context=context)
     except:
         return redirect(reverse('TestView'))
 

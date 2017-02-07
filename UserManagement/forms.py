@@ -43,16 +43,30 @@ class CreateBankAccountForm(forms.Form):
 
 
 class CreateCreditCardForm(forms.Form):
-    bank_account_id = forms.IntegerField(error_messages=field_errors)
+    bank_account_id = forms.IntegerField(min_value=0, error_messages=field_errors)
+    password = forms.IntegerField(max_value=9999, min_value=1000, error_messages=field_errors)
+
+    def clean_bank_account_id(self):
+        bank_account_id = self.cleaned_data.get('bank_account_id')
+        try:
+            bankAccount=BankAccount.objects.get(account_id=bank_account_id)
+            if bankAccount.customer.activated == False:
+                raise forms.ValidationError('این حساب مسدود است!')
+        except BankAccount.DoesNotExist:
+            raise forms.ValidationError('حسابی با این شماره یافت نشد!')
+        return bank_account_id
 
     def save(self):
         bank_account_id = self.cleaned_data.get('bank_account_id')
+        bank_account = BankAccount.objects.get(account_id=bank_account_id)
+        password = self.cleaned_data.get('password')
 
         while True:
             try:
                 creditcard_id = random_with_N_digits(10)
                 credit_card = CreditCard.objects.create(number=creditcard_id,
-                                                        bank_account_id=bank_account_id)
+                                                        bank_account=bank_account,
+                                                        password=password)
                 self.cleaned_data['credit_card'] = credit_card
                 break
             except:
@@ -344,3 +358,6 @@ class LegalExpertCheckConfirmForm(forms.Form):
 
 class AccountantCheckConfirmForm(forms.Form):
     checkleaf_id = forms.IntegerField(min_value=10000000, max_value=99999999, error_messages=field_errors)
+
+class ActivateAccountForm(forms.Form):
+    customer_username = forms.IntegerField(max_value=99999, min_value=10000, error_messages=field_errors)
