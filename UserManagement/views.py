@@ -9,7 +9,7 @@ from TransactionManagement.Utils import CreateTansactionModel
 from TransactionManagement.models import CheckLeaf, BankAccount
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
     SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm, LegalExpertCheckConfirmForm, \
-    AccountantCheckConfirmForm, ActivateAccountForm
+    AccountantCheckConfirmForm, ActivateAccountForm, LoanRequestForm
 from .models import Customer, Cashier, Admin, Branch, AdminBranch, LegalExpert, Accountant
 
 
@@ -409,6 +409,30 @@ def activate_account(request):
                    'customers': customers,
                    'username': request.user.username}
         return render(request, 'activate_account.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
+
+
+@login_required(login_url='/user/login/')
+def loan_request(request):
+    message = ''
+    try:
+        cashier = Cashier.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = LoanRequestForm(request.POST)
+
+            if form.is_valid():
+                form.save(cashier)
+                print("here")
+                message = "وام شما پس از تایید کارشناس حقوقی و حسابرس پرداخت خواهد شد."
+        else:
+            form = LoanRequestForm()
+        bank_accounts = BankAccount.objects.all().filter(customer__activated=True)
+        context = {'form': form,
+                   'message': message,
+                   'bank_accounts': bank_accounts,
+                   'username': request.user.username}
+        return render(request, 'loan_request.html', context=context)
     except:
         return redirect(reverse('TestView'))
 

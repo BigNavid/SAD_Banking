@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 from TransactionManagement.Utils import random_with_N_digits
 from .models import Customer, Admin, AdminBranch, BranchStaff, Cashier, Accountant, LegalExpert, AdminATM
-from TransactionManagement.models import BankAccount, Branch, CreditCard, Bills, Check, CheckLeaf
+from TransactionManagement.models import BankAccount, Branch, CreditCard, Bills, Check, CheckLeaf, Loan
 
 field_errors = {
     'required': 'وارد کردن این فیلد ضروری است.',
@@ -68,6 +68,42 @@ class CreateCreditCardForm(forms.Form):
                                                         bank_account=bank_account,
                                                         password=password)
                 self.cleaned_data['credit_card'] = credit_card
+                break
+            except:
+                pass
+
+
+class LoanRequestForm(forms.Form):
+    bank_account_id = forms.IntegerField(min_value=0, error_messages=field_errors)
+    amount = forms.IntegerField(min_value=0, error_messages=field_errors)
+    installments = forms.IntegerField(min_value=0, error_messages=field_errors)
+
+    def clean_bank_account_id(self):
+        bank_account_id = self.cleaned_data.get('bank_account_id')
+        try:
+            bankAccount=BankAccount.objects.get(account_id=bank_account_id)
+            if bankAccount.customer.activated == False:
+                raise forms.ValidationError('این حساب مسدود است!')
+        except BankAccount.DoesNotExist:
+            raise forms.ValidationError('حسابی با این شماره یافت نشد!')
+        return bank_account_id
+
+    def save(self,cashier):
+        bank_account_id = self.cleaned_data.get('bank_account_id')
+        bank_account = BankAccount.objects.get(account_id=bank_account_id)
+        amount = self.cleaned_data.get('amount')
+        installments = self.cleaned_data.get('installments')
+
+        while True:
+            try:
+                Loan_id = random_with_N_digits(5)
+                loan = Loan.objects.create(loan_id=Loan_id,
+                                           bank_account=bank_account,
+                                           amount=amount,
+                                           installments=installments,
+                                           customer=bank_account.customer,
+                                           cashier=cashier)
+                # self.cleaned_data['Loan'] = loan
                 break
             except:
                 pass

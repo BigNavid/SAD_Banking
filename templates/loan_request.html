@@ -8,7 +8,7 @@
     <meta name="author" content="Navid Ahmadian">
     <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
 
-    <title>درخواست پرداخت چک</title>
+    <title>درخواست وام</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -304,16 +304,20 @@
             <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
-                       درخواست پرداخت چک
+                       درخواست وام
                     </header>
                     <div class="panel-body">
-                        <form class="form-horizontal tasi-form" method="post" action="{% url 'CheckLeafRequest' %}">
+                        <form class="form-horizontal tasi-form" method="post" action="{% url 'LoanRequest' %}">
                             {% csrf_token %}
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">شناسه چک</label>
+                                <label class="col-sm-2 control-label">شماره حساب</label>
                                 <div class="col-sm-10">
-                                    <input id="id_checkleaf_id" type="number" class="form-control" autofocus name="checkleaf_id">
-                                    <span class="error-block">{{ form.checkleaf_id.errors }}</span>
+                                    <select name="bank_account_id" id="id_bank_account_id" class="btn btn-success" style="width: 200px">
+                                        <option selected disabled>انتخاب کنید</option>
+                                        {% for account in bank_accounts %}
+                                            <option value="{{ account.account_id }}">{{ account.account_id }}</option>
+                                        {% endfor %}
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -324,21 +328,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">شناسه مشتری درخواست کننده</label>
+                                <label class="col-sm-2 control-label">تعداد اقساط</label>
                                 <div class="col-sm-10">
-                                    <input id="id_customer_to" type="number" class="form-control" autofocus name="customer_to">
-                                    <span class="error-block">{{ form.customer_to.errors }}</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">شماره حساب مقصد</label>
-                                <div class="col-sm-10">
-                                    <input id="id_bank_account_id" type="text" class="form-control" name="bank_account_id">
-                                    <span class="error-block">{{ form.bnak_account_id.errors }}</span>
+                                    <input id="id_installments" type="number" class="form-control" autofocus name="installments">
+                                    <span class="error-block">{{ form.insallments.errors }}</span>
                                 </div>
                             </div>
 
                             <button class="btn btn-shadow btn-success" type="submit">ثبت درخواست</button>
+                            <p>{{ form.errors }}</p>
                         </form>
                     </div>
                 </section>

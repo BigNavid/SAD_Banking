@@ -29,9 +29,14 @@ class Fees(models.Model):
 class Loan(models.Model):
     loan_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
     amount = models.BigIntegerField()
-    customer = models.ForeignKey(Customer, on_delete=None)
-    date_time = models.DateTimeField(auto_now=True)
+    installments = models.IntegerField(default=1)
     bank_account = models.ForeignKey(BankAccount, default=None)
+    customer = models.ForeignKey(Customer, on_delete=None)
+    legalExpert_confirmation = models.BooleanField(default=False)
+    accountant_confirmation = models.BooleanField(default=False)
+    cashier = models.ForeignKey(Cashier, related_name='Cashier_Loan', null=True, blank=True, default=None)
+    # bankaccount_to = models.ForeignKey(BankAccount, related_name='LoanDestination', null=True, blank=True, default=None )
+    # customer_to = models.ForeignKey(Customer, related_name='Customer_Loan', null=True, blank=True, default=None )
 
 
 class LoanPayment(models.Model):
