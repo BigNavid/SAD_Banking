@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^logout/', view=views.logout_view, name='Logout'),
     url(r'^cashier/CheckRequest/', view=views.check_request, name='CheckRequest'),
     url(r'^legalExpert/CheckConfirmation/', view=views.legalExpert_check_confirm, name='LegalExpertCheckConfirm'),
+    url(r'^accountant/CheckConfirmation/', view=views.accountant_check_confirm, name='AccountantCheckConfirm'),
 
     url(r'^ghabz/', view=views.ghabz, name='Ghabz'),
     url(r'^vam/', view=views.vam, name='Vam'),

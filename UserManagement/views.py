@@ -4,10 +4,13 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 
-from TransactionManagement.models import CheckLeaf
+from TransactionManagement import Constants
+from TransactionManagement.Utils import CreateTansactionModel
+from TransactionManagement.models import CheckLeaf, BankAccount
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
-    SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm, LegalExpertCheckConfirmForm
-from .models import Customer, Cashier, Admin, Branch, AdminBranch, LegalExpert
+    SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm, LegalExpertCheckConfirmForm, \
+    AccountantCheckConfirmForm
+from .models import Customer, Cashier, Admin, Branch, AdminBranch, LegalExpert, Accountant
 
 
 def homepage(request):
@@ -332,23 +335,55 @@ def legalExpert_check_confirm(request):
                 checkLeaf_id = form.cleaned_data.get('checkleaf_id')
                 checkleaf = CheckLeaf.objects.get(checkleaf_id=checkLeaf_id)
                 if "accept" in request.POST:
-                    print("accept")
                     checkleaf.legalExpert_confirmation=True
                     checkleaf.save()
                 elif 'reject' in request.POST:
-                    print("reject")
                     checkleaf.used = False
                     checkleaf.save()
                 # message = "درخواست شما پس از تایید کارشناس حقوقی و حسابرس انجام خواهد شد."
         else:
             form = LegalExpertCheckConfirmForm()
         checkleafes = CheckLeaf.objects.all().filter(used=True, legalExpert_confirmation=False)
-        for checkleaf in checkleafes:
-            print(checkleaf.checkleaf_id)
         context = {'form': form,
                    'checkleafes': checkleafes,
                    'username': request.user.username}
         return render(request, 'legalExpert_check_confirm.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
+
+@login_required(login_url='/user/login/')
+def accountant_check_confirm(request):
+    # message = ''
+    try:
+        accountant = Accountant.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = AccountantCheckConfirmForm(request.POST)
+            if form.is_valid():
+                checkLeaf_id = form.cleaned_data.get('checkleaf_id')
+                checkleaf = CheckLeaf.objects.get(checkleaf_id=checkLeaf_id)
+                if "accept" in request.POST:
+                    checkleaf.accountant_confirmation = True
+                    bank_account_id = checkleaf.bankaccount_to
+                    bank_account = BankAccount.objects.get(account_id=bank_account_id)
+                    bank_account.amount -= checkleaf.amount
+                    CreateTansactionModel(bankaccount_to=bank_account,
+                                          branch_to=bank_account.branch,
+                                          amount=checkleaf.amount,
+                                          type=Constants.CHECK_PAYMANT,
+                                          cashier=checkleaf.cashier)
+                    bank_account.save()
+                    checkleaf.save()
+                elif 'reject' in request.POST:
+                    checkleaf.used = False
+                    checkleaf.legalExpert_confirmation = False
+                    checkleaf.save()
+        else:
+            form = AccountantCheckConfirmForm()
+        checkleafes = CheckLeaf.objects.all().filter(used=True, legalExpert_confirmation=True, accountant_confirmation=False)
+        context = {'form': form,
+                   'checkleafes': checkleafes,
+                   'username': request.user.username}
+        return render(request, 'accountant_check_confirm.html', context=context)
     except:
         return redirect(reverse('TestView'))
 

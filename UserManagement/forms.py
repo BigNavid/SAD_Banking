@@ -341,3 +341,6 @@ class CheckRequestForm(forms.Form):
 
 class LegalExpertCheckConfirmForm(forms.Form):
     checkleaf_id = forms.IntegerField(min_value=10000000, max_value=99999999, error_messages=field_errors)
+
+class AccountantCheckConfirmForm(forms.Form):
+    checkleaf_id = forms.IntegerField(min_value=10000000, max_value=99999999, error_messages=field_errors)

@@ -219,7 +219,7 @@ class CheckLeafRequestForm(forms.Form):
 
 
 
-    def save(self):
+    def save(self,cashier):
         bank_account_id = self.cleaned_data.get('bank_account_id')
         checkleaf_id = self.cleaned_data.get('checkleaf_id')
         amount = self.cleaned_data.get('amount')
@@ -232,6 +232,7 @@ class CheckLeafRequestForm(forms.Form):
         checkleaf.amount = amount
         checkleaf.used = True
         checkleaf.customer_to = customer
+        checkleaf.cashier = cashier
         checkleaf.save()
 
 class CashCheckLeafRequestForm(forms.Form):
@@ -259,7 +260,7 @@ class CashCheckLeafRequestForm(forms.Form):
 
 
 
-    def save(self):
+    def save(self,cashier):
         checkleaf_id = self.cleaned_data.get('checkleaf_id')
         amount = self.cleaned_data.get('amount')
         checkleaf = CheckLeaf.objects.get(checkleaf_id=checkleaf_id)
@@ -269,6 +270,7 @@ class CashCheckLeafRequestForm(forms.Form):
         checkleaf.amount = amount
         checkleaf.used = True
         checkleaf.customer_to = customer
+        checkleaf.cashier = cashier
         checkleaf.save()
 
 

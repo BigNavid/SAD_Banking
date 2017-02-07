@@ -104,7 +104,8 @@ class CheckLeaf(models.Model):
     legalExpert_confirmation = models.BooleanField(default=False)
     accountant_confirmation = models.BooleanField(default=False)
     bankaccount_to = models.ForeignKey(BankAccount, related_name='Destination', null=True, blank=True, default=None )
-    customer_to = models.ForeignKey(Customer, related_name='Customer', null=True, blank=True, default=None )
+    customer_to = models.ForeignKey(Customer, related_name='Customer_CheckLeaf', null=True, blank=True, default=None )
+    cashier = models.ForeignKey(Cashier, related_name='Cashier_CheckLeaf', null=True, blank=True, default=None)
 
 
 class CreditCard(models.Model):

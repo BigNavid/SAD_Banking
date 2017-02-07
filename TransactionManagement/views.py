@@ -188,7 +188,7 @@ def checkleaf_request(request):
             form = CheckLeafRequestForm(request.POST)
 
             if form.is_valid():
-                form.save()
+                form.save(cashier)
                 message = "درخواست شما پس از تایید کارشناس حقوقی و حسابرس انجام خواهد شد."
         else:
             form = CheckLeafRequestForm()
@@ -208,7 +208,7 @@ def cash_checkleaf_request(request):
             form = CashCheckLeafRequestForm(request.POST)
 
             if form.is_valid():
-                form.save()
+                form.save(cashier)
                 message = "درخواست شما پس از تایید کارشناس حقوقی و حسابرس انجام خواهد شد."
         else:
             form = CheckLeafRequestForm()
