@@ -305,6 +305,28 @@ def profile_branch_admin(request, username):
     return render(request, 'branch_admin_profile.html', context=context)
 
 @login_required(login_url='/user/login/')
+def profile_accountant(request, username):
+    if request.user.username != username:
+        return redirect(reverse('403'))
+    try:
+        accountant = Accountant.objects.get(user__user__username=username)
+        context = {'accountant': accountant}
+    except:
+        return redirect(reverse('403'))
+    return render(request, 'accountant_profile.html', context=context)
+
+@login_required(login_url='/user/login/')
+def profile_legal_expert(request, username):
+    if request.user.username != username:
+        return redirect(reverse('403'))
+    try:
+        legalexpert = LegalExpert.objects.get(user__user__username=username)
+        context = {'legalexpert': legalexpert}
+    except:
+        return redirect(reverse('403'))
+    return render(request, 'legalExpert_profile.html', context=context)
+
+@login_required(login_url='/user/login/')
 def check_request(request):
     message = ''
     checkLeafList=[]
