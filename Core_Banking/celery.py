@@ -9,7 +9,7 @@ import datetime
 import django
 django.setup()
 
-from TransactionManagement.models import BankAccount, Bank, LoanPayment
+from TransactionManagement.models import BankAccount, Bank, LoanPayment, RegularTransfers
 from UserManagement.notification import loan_payment_not_paid_notif, loan_payment_paid_notif
 
 # set the default Django settings module for the 'celery' program.
@@ -70,18 +70,30 @@ def loan_payment():
 
 
 @periodic_task(run_every=(crontab(minute=0, hour=0)), name="loan_payment", ignore_result=True)
-def loan_payment():
+def regular_transaction():
     today = datetime.date.today()
-    loan_payments = LoanPayment.objects.all().filter(paid=False, date=today)
-    for payment in loan_payments:
-        bank_account = payment.loan.bank_account
-        if bank_account.amount >= payment.amount:
-            bank_account.amount -= payment.amount
-            bank_account.save()
-            payment.paid = True
-            payment.save()
-            loan_payment_paid_notif(payment.loanpayment_id)
-        else:
-            bank_account.customer.activated = False
-            bank_account.customer.save()
-            loan_payment_not_paid_notif(payment.loanpayment_id)
+    regular_transactions = RegularTransfers.objects.all().filter()
+    do = False
+    for transaction in regular_transactions:
+        dt = today - transaction.date
+        if transaction.isDaily:
+            do = True
+        elif transaction.isMonthly:
+            if dt % 30 == 0:
+                do = True
+        elif transaction.isYearly:
+            if dt % 365 == 0:
+                do = True
+        if do:
+            bank_account_from = transaction.bankaccount_from
+            bank_account_to = transaction.bankaccount_to
+            if bank_account_from.amount >= transaction.amount:
+                bank_account_from.amount -= transaction.amount
+                bank_account_from.save()
+                bank_account_to.amount += transaction.amount
+                bank_account_to.save()
+            else:
+                pass
+
+
+

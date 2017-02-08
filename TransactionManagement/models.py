@@ -126,6 +126,7 @@ class RegularTransfers(models.Model):
     isDaily = models.BooleanField(default=False)
     isMonthly = models.BooleanField(default=False)
     isYearly = models.BooleanField(default=False)
+    date = models.DateField(auto_now_add=True)
     bankaccount_from = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name='BankAccount_From')
     bankaccount_to = models.ForeignKey(BankAccount, related_name='BankAccount_To', on_delete=models.CASCADE)
     amount = models.BigIntegerField()
