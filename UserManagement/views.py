@@ -41,7 +41,15 @@ def login_user(request):
                             AdminBranch.objects.get(user__user__username=username)
                             return redirect(reverse('ProfileBranchAdmin', args={username}))
                         except:
-                            return redirect(reverse('TestView', args={username}))
+                            try:
+                                Accountant.objects.get(user__user__username=username)
+                                return redirect(reverse('ProfileAccountant', args={username}))
+                            except:
+                                try:
+                                    LegalExpert.objects.get(user__user__username=username)
+                                    return redirect(reverse('ProfileLegalExpert', args={username}))
+                                except:
+                                    return redirect(reverse('TestView', args={username}))
 
         else:
             error = 'شماره مشتری/پرسنلی یا رمز عبور اشتباه است.'
@@ -314,7 +322,11 @@ def profile_accountant(request, username):
         return redirect(reverse('403'))
     try:
         accountant = Accountant.objects.get(user__user__username=username)
-        context = {'accountant': accountant}
+        notifications = Notifications.objects.all().filter(user__username=accountant.user.user.username)
+        notif_number = len(notifications)
+        context = {'accountant': accountant,
+                   'notifications': notifications,
+                   'notif_number': notif_number}
     except:
         return redirect(reverse('403'))
     return render(request, 'accountant_profile.html', context=context)
