@@ -337,7 +337,11 @@ def profile_legal_expert(request, username):
         return redirect(reverse('403'))
     try:
         legalexpert = LegalExpert.objects.get(user__user__username=username)
-        context = {'legalexpert': legalexpert}
+        notifications = Notifications.objects.all().filter(user__username=legalexpert.user.user.username)
+        notif_number = len(notifications)
+        context = {'legalexpert': legalexpert,
+                   'notifications': notifications,
+                   'notif_number': notif_number}
     except:
         return redirect(reverse('403'))
     return render(request, 'legalExpert_profile.html', context=context)
