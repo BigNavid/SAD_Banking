@@ -288,7 +288,11 @@ def profile_admin(request, username):
         return redirect(reverse('403'))
     try:
         admin = Admin.objects.get(user__username=username)
-        context = {'admin': admin}
+        notifications = Notifications.objects.all().filter(user__username=admin.user.username)
+        notif_number = len(notifications)
+        context = {'admin': admin,
+                   'notifications': notifications,
+                   'notif_number': notif_number}
     except:
         return redirect(reverse('403'))
     return render(request, 'admin_profile.html', context=context)
