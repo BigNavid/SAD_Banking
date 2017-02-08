@@ -199,84 +199,50 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a class="" href="index.html">
+                        <a class="" href="{% url 'ProfileAdmin' %}">
                             <i class="icon-dashboard"></i>
-                            <span>صفحه اصلی</span>
+                            <span>پروفایل</span>
                         </a>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
-                            <i class="icon-book"></i>
+                            <i class="icon-building"></i>
                             <span>مدیریت شعب</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
                             <li><a class="" href="{% url 'CreateBranch' %}">شعبه جدید</a></li>
                             <li><a class="" href="{% url 'CreateBranchAdmin' %}">مدیر شعبه</a></li>
-{#                            <li><a class="" href="widget.html">ویجت ها</a></li>#}
-{#                            <li><a class="" href="slider.html">اسلایدر ها</a></li>#}
-{#                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>#}
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon-cogs"></i>
-                            <span>کامنت ها</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="grids.html">گرید</a></li>
-                            <li><a class="" href="calendar.html">تقویم</a></li>
-                            <li><a class="" href="charts.html">چارت</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon-tasks"></i>
-                            <span>ابزارهای فرم</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="form_component.html">کامنت فرم</a></li>
-                            <li><a class="" href="form_wizard.html">فرم Wizard</a></li>
-                            <li><a class="" href="form_validation.html">ارزیابی فرم</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon-th"></i>
-                            <span>اطلاعات جدول</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="basic_table.html">جدول ساده</a></li>
-                            <li><a class="" href="dynamic_table.html">جدول داینامیک</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="" href="inbox.html">
-                            <i class="icon-envelope"></i>
-                            <span>ایمیل </span>
-                            <span class="label label-danger pull-right mail-info">2</span>
+                        <a class="" href="{% url 'FeeDefinition' %}">
+                            <i class="icon-dollar"></i>
+                            <span>تغییر سود یا کارمزد</span>
+                            <span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="{% url 'BillDefinition' %}">
+                            <i class="icon-list-alt"></i>
+                            <span>تعریف قبض</span>
+                            <span></span>
                         </a>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
-                            <i class="icon-glass"></i>
-                            <span>عناصر اضافی</span>
+                            <i class="icon-money"></i>
+                            <span>مدیریت اسکناس</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="blank_admin.html">صفحه خالی</a></li>
-                            <li><a class="" href="profile.html">پروفایل</a></li>
-                            <li><a class="" href="invoice.html">فاکتور</a></li>
-                            <li><a class="" href="404.html">404 Error</a></li>
-                            <li><a class="" href="500.html">500 Error</a></li>
+                            <li><a class="" href="{% url 'MoneyDeclaration' %}">اسکناس جدید</a></li>
+                            <li><a class="" href="{% url 'MoneyEdit' %}">ویرایش اسکناس ها</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="" href="login.html">
-                            <i class="icon-user"></i>
+                        <a class="" href="{% url 'Homepage' %}">
+                            <i class="icon-key"></i>
                             <span>صفحه ورود به سایت</span>
                         </a>
                     </li>
