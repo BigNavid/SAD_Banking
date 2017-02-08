@@ -1,1 +1,14 @@
 .idea*
+.idea/*
+.DS_Store
+AutomatedTellerMachine/.DS_Store
+AutomatedTellerMachine/__pycache__/
+AutomatedTellerMachine/migrations/.DS_Store
+AutomatedTellerMachine/migrations/__pycache__/
+Core_Banking/__pycache__/
+TransactionManagement/__pycache__/
+UserManagement/.DS_Store
+UserManagement/__pycache__/
+UserManagement/migrations/
+static/.DS_Store
+static/js/.DS_Store

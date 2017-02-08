@@ -3,6 +3,9 @@ CASH_DEPOSIT = "واریز نقدی"
 DEPOSIT_TO_OTHER_ACCOUNT = "واریز از حساب به حساب"
 CASH_WITHDRAW = "برداشت نقدی"
 
+WITHDRAW_ATM = "برداشت از خودپرداز"
+DEPOSIT_TO_OTHER_ACCOUNT_ATM = "واریز از کارت به حساب"
+DEPOSIT_TO_OTHER_CREDITCARD_ATM = "واریز از کارت به کارت"
 
 BILL_PAYEMENT = "پرداخت قبض"
 CHECK_PAYMNENT = "پرداخت چک"

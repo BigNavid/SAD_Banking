@@ -73,6 +73,12 @@ div.top {
 	letter-spacing: 1px;
 }
 
+#message {
+	font-family:BNazanin,'BNazanin',tahoma;
+    color: red;
+	direction: rtl;
+}
+
 #context {
 	font-family:BNazanin,'BNazanin',tahoma;
 	direction: rtl;

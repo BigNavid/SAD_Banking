@@ -1,37 +1,58 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, logout
-from django.core.urlresolvers import reverse
-
+from django.shortcuts import render
 
 from TransactionManagement.models import CreditCard
+from TransactionManagement.Utils import CreateTansactionModel
+from TransactionManagement.Constants import WITHDRAW_ATM, DEPOSIT_TO_OTHER_ACCOUNT_ATM, DEPOSIT_TO_OTHER_CREDITCARD_ATM
 
 
 def atm_login(request):
     msg = ''
     if request.method == 'POST':
-        cardNumber = request.POST['cardNumber']
+        cardnumber = request.POST['cardNumber']
+        print("cardNumber: ", cardnumber)
         password = request.POST['password']
+        print("password: ", password)
+        amount = request.POST['amount']
+        amount = int(amount)
+        print("amount: ", amount)
+        is_withdraw_cash = request.POST['is_withdraw_cash']
+        is_deposit_to_credit_card = request.POST['is_deposit_to_credit_card']
+        is_deposit_to_bank_account = request.POST['is_deposit_to_bank_account']
+        to_credit_card = request.POST['to_credit_card']
+        to_bank_account = request.POST['to_bank_account']
+
+
         try:
-            creditcard = CreditCard.objects.get(cardNumber=cardNumber, password=password)
-            user = creditcard.bank_account.customer.user
-            if creditcard is not None:
-                login(request, user)
-                return redirect(reverse('Services'))
+            print("Finding CreditCard...")
+            creditcard = CreditCard.objects.get(number=cardnumber, password=password)
+            print("Card Found")
+            if creditcard.bank_account.customer.activated:
+                print("CustomerAccount Activated")
+                if is_withdraw_cash:
+                    bankaccount_from = creditcard.bank_account
+                    print("BankAccount.Amount: ", bankaccount_from.amount)
+                    if bankaccount_from.amount >= amount:
+                        print("BankAccount.Amount greater than amount")
+                        bankaccount_from.amount -= amount
+                        print("NEW BankAccount.Amount: ", bankaccount_from.amount)
+                        bankaccount_from.save()
+                        print("Saved")
+                        CreateTansactionModel(bankaccount_from=bankaccount_from,
+                                              branch_from=bankaccount_from.branch,
+                                              amount=amount,
+                                              type=WITHDRAW_ATM)
+                        print("Transaction Created")
+                        msg = 'از کارت شما به شماره کارت {} مبلغ {} برداشته شد.'.format(creditcard.number, amount)
+                    else:
+                        msg = 'موجودی کارت کافی نمی‌باشد.'
+                elif is_deposit_to_credit_card:
+                    pass
+                elif is_deposit_to_bank_account:
+                    pass
             else:
-                msg = 'شماره کارت ویا کلمه عبور وارد شده صحیح نمی‌باشد.'
+                msg = 'حساب کاربری شما غیر فعال می‌باشد.'
         except:
-            msg = 'شماره کارت ویا کلمه عبور وارد شده صحیح نمی‌باشد.'
+            msg = 'شماره کارت/رمز عبور اشتباه است.'
+
     context = {'msg': msg}
     return render(request, 'atm_index.html', context)
-
-
-@login_required(login_url='/user/login/')
-def choose_service(request):
-    print("Services")
-    return render(request, 'atm_index.html')
-
-
-def atm_logout(request):
-    logout(request)
-    return redirect(reverse('ATMLogin'))
