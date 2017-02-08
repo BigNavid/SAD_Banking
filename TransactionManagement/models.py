@@ -7,7 +7,8 @@ class BankAccount(models.Model):
     account_id = models.BigIntegerField(primary_key=True, unique=True, db_index=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
     amount = models.BigIntegerField()
-    branch = models.ForeignKey(Branch,on_delete=None, null=True)
+    branch = models.ForeignKey(Branch, on_delete=None, null=True)
+    profit_until_now = models.BigIntegerField(default=0)
 
 
 class Bank(models.Model):
