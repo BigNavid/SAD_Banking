@@ -8,7 +8,7 @@
     <meta name="author" content="Navid Ahmadian">
     <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
 
-    <title>پروفایل کاربری صندوق‌دار</title>
+    <title>پروفایل کاربری مدیر شعبه</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -176,7 +176,7 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <img alt="" src="{% static 'img/avatar1_small.jpg' %}">
-                        <span class="username">{{ cashier.user.user.first_name }}</span>
+                        <span class="username">{{ admin.user.first_name }}</span>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu extended logout">
@@ -199,86 +199,16 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu">
                 <li class="active">
-                    <a class="" href="index.html">
+                    <a class="" href="{% url 'ProfileBranchAdmin' %}">
                         <i class="icon-dashboard"></i>
-                        <span>صفحه اصلی</span>
+                        <span>پروفایل</span>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a class="" href="{% url 'SignupStaff' %}">
-                        <i class="icon-dashboard"></i>
-                        <span>حساب کاربری جدید</span>
-                    </a>
-                </li>
-{#                <li class="sub-menu">#}
-{#                    <a href="javascript:;" class="">#}
-{#                        <i class="icon-book"></i>#}
-{#                        <span>مدیریت حساب ها</span>#}
-{#                        <span class="arrow"></span>#}
-{#                    </a>#}
-{#                    <ul class="sub">#}
-{#                        <li><a class="" href="{% url 'SignUpCustomer' %}">حساب کاربری جدید</a></li>#}
-{#                        <li><a class="" href="{% url 'CreateBankAccount' %}">حساب بانکی جدید</a></li>#}
-                        {#                            <li><a class="" href="widget.html">ویجت ها</a></li>#}
-                        {#                            <li><a class="" href="slider.html">اسلایدر ها</a></li>#}
-                        {#                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>#}
-{#                    </ul>#}
-{#                </li>#}
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon-cogs"></i>
-                        <span>برداشت از حساب</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="{%  url 'WithdrawBankAccount' %}">نقدی</a></li>
-                        <li><a class="" href="{%  url 'DepositBankAccount' %}">واریز به حساب دیگر</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="variz.html" class="">
-                        <i class="icon-tasks"></i>
-                        <span>واریز به حساب</span>
-                        <span class="arrow"></span>
-                    </a>
-
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon-th"></i>
-                        <span>اطلاعات جدول</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="basic_table.html">جدول ساده</a></li>
-                        <li><a class="" href="dynamic_table.html">جدول داینامیک</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="" href="inbox.html">
-                        <i class="icon-envelope"></i>
-                        <span>ایمیل </span>
-                        <span class="label label-danger pull-right mail-info">2</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon-glass"></i>
-                        <span>عناصر اضافی</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="blank_admin.html">صفحه خالی</a></li>
-                        <li><a class="" href="profile.html">پروفایل</a></li>
-                        <li><a class="" href="invoice.html">فاکتور</a></li>
-                        <li><a class="" href="404.html">404 Error</a></li>
-                        <li><a class="" href="500.html">500 Error</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="" href="login.html">
-                        <i class="icon-user"></i>
-                        <span>صفحه ورود به سایت</span>
+                        <i class="icon-group"></i>
+                        <span>کارمند جدید</span>
+                        <span></span>
                     </a>
                 </li>
             </ul>
@@ -297,8 +227,8 @@
                             <a href="#">
                                 <img src="{% static 'img/profile-avatar.jpg' %}" alt="">
                             </a>
-                            <h1>{{ cashier.user.user.first_name }} {{ cashier.user.user.last_name }}</h1>
-                            <p>{{ cashier.user.user.email }}</p>
+                            <h1>{{ branchadmin.user.user.first_name }} {{ branchadmin.user.user.last_name }}</h1>
+                            <p>{{ branchadmin.user.user.email }}</p>
                         </div>
 
                         <ul class="nav nav-pills nav-stacked">
@@ -312,28 +242,28 @@
                 <aside class="profile-info col-lg-9">
                     <section class="panel">
                         <div class="bio-graph-heading">
-                            {{ cashier.user.user.first_name }} عزیز صندوق‌دار محترم فابانک به حساب کاربری‌تان خوش آمدید.
+                            {{ branchadmin.user.user.first_name }} عزیز مدیر شعبه محترم فابانک به حساب کاربری‌تان خوش آمدید.
                         </div>
                         <div class="panel-body bio-graph-info">
                             <h1>اطلاعات شما:</h1>
                             <div class="row">
                                 <div class="bio-row">
-                                    <p><span>نام </span>: {{ cashier.user.user.first_name }}</p>
+                                    <p><span>نام </span>: {{ branchadmin.user.user.first_name }}</p>
                                 </div>
                                 <div class="bio-row">
-                                    <p><span>نام خانوادگی </span>: {{ cashier.user.user.last_name }}</p>
+                                    <p><span>نام خانوادگی </span>: {{ branchadmin.user.user.last_name }}</p>
                                 </div>
                                 <div class="bio-row">
-                                    <p><span>شعبه </span>: {{ cashier.user.branch.name }}</p>
+                                    <p><span>شماره ملی</span>: {{ branchadmin.national_id }}</p>
                                 </div>
                                 <div class="bio-row">
-                                    <p><span>شماره ملی</span>: {{ cashier.user.national_id }}</p>
+                                    <p><span>نقش </span>: مدیر شعبه</p>
                                 </div>
                                 <div class="bio-row">
-                                    <p><span>نقش </span>: صندوق‌دار</p>
+                                    <p><span>رایانامه </span>: {{ branchadmin.user.user.email }}</p>
                                 </div>
                                 <div class="bio-row">
-                                    <p><span>رایانامه </span>: {{ cashier.user.user.email }}</p>
+                                    <p><span>شماره تماس </span>: {{ branchadmin.phone }}</p>
                                 </div>
                             </div>
                         </div>
