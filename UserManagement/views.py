@@ -309,16 +309,22 @@ def profile_admin(request, username):
         return redirect(reverse('403'))
     return render(request, 'admin_profile.html', context=context)
 
+
 @login_required(login_url='/user/login/')
 def profile_branch_admin(request, username):
     if request.user.username != username:
         return redirect(reverse('403'))
     try:
         adminBranch = AdminBranch.objects.get(user__user__username=username)
-        context = {'adminBranch': adminBranch}
+        notifications = Notifications.objects.all().filter(user__username=adminBranch.user.user.username)
+        notif_number = len(notifications)
+        context = {'adminBranch': adminBranch,
+                   'notifications': notifications,
+                   'notif_number': notif_number}
     except:
         return redirect(reverse('403'))
     return render(request, 'branch_admin_profile.html', context=context)
+
 
 @login_required(login_url='/user/login/')
 def profile_accountant(request, username):
