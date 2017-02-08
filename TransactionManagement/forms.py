@@ -1,5 +1,6 @@
 from django import forms
-from TransactionManagement.models import BankAccount, Transaction, Bills, CheckLeaf
+from TransactionManagement.models import BankAccount, Transaction, Bills, CheckLeaf, Money
+from TransactionManagement.Utils import random_with_N_digits
 
 # izi
 from UserManagement.forms import random_with_N_digits
@@ -298,3 +299,53 @@ class CustomerReport(forms.Form):
     number_of_transaction_to = forms.IntegerField(error_messages=field_errors)
     number_of_transaction_from = forms.IntegerField(error_messages=field_errors)
     type = forms.CharField(max_length=255, error_messages=field_errors)
+
+
+class MoneyDeclarationForm(forms.Form):
+    name = forms.CharField(max_length=255)
+    amount = forms.IntegerField(min_value=0)
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        try:
+            Money.objects.get(name=name)
+            raise forms.ValidationError('این نام قبلا ثبت شده است.')
+        except:
+            return name
+
+    def save(self):
+        name = self.cleaned_data.get('name')
+        amount = self.cleaned_data.get('amount')
+        while True:
+            try:
+                money_id = random_with_N_digits(5)
+                money = Money.objects.create(money_id=money_id, name=name, amount=amount)
+                self.cleaned_data['money'] = money
+                self.cleaned_data['money_id'] = money_id
+                break
+            except:
+                pass
+
+
+class MoneyEditForm(forms.Form):
+    money_id = forms.IntegerField(min_value=10000, max_value=99999)
+    name = forms.CharField(max_length=255)
+    amount = forms.IntegerField(min_value=0)
+
+    def clean_money_id(self):
+        money_id = self.cleaned_data.get('money_id')
+        try:
+            Money.objects.get(money_id=money_id)
+            return money_id
+        except:
+            raise forms.ValidationError('این اسکناس موجود نمی‌باشد.')
+
+    def save(self):
+        money_id = self.cleaned_data.get('money_id')
+        name = self.cleaned_data.get('name')
+        amount = self.cleaned_data.get('amount')
+        money = Money.objects.get(money_id=money_id)
+        money.name = name
+        money.amount = amount
+        money.save()
+        self.cleaned_data['money'] = money

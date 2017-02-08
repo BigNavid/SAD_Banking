@@ -51,7 +51,7 @@ class LoanPayment(models.Model):
 
 
 class Money(models.Model):
-    payment_id = models.IntegerField(primary_key=True, unique=True, db_index=True)
+    money_id = models.IntegerField(primary_key=True, unique=True, db_index=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     amount = models.IntegerField()
 

@@ -14,5 +14,7 @@ urlpatterns = [
     url(r'^CashBillPayment/', view=views.cash_bill_payment, name='CashBillPayment'),
     url(r'^CheckLeafRequest/', view=views.checkleaf_request, name='CheckLeafRequest'),
     url(r'^CashCheckLeafRequest/', view=views.cash_checkleaf_request, name='CashCheckLeafRequest'),
+    url(r'^MoneyDeclaration/', view=views.money_declaration, name='MoneyDeclaration'),
+    url(r'^MoneyEdit/', view=views.money_edit, name='MoneyEdit'),
 
 ]

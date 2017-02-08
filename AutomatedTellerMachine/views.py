@@ -1,8 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
-from TransactionManagement.models import CreditCard
-from TransactionManagement.Utils import CreateTansactionModel
+from TransactionManagement.models import CreditCard, ATM, AdminATM
+from TransactionManagement.Utils import CreateTansactionModel, random_with_N_digits
 from TransactionManagement.Constants import WITHDRAW_ATM, DEPOSIT_TO_OTHER_ACCOUNT_ATM, DEPOSIT_TO_OTHER_CREDITCARD_ATM
+
+from UserManagement.models import AdminBranch, AdminATM
+
+from .forms import CreateATMForm
 
 
 def atm_login(request):
@@ -56,3 +62,42 @@ def atm_login(request):
 
     context = {'msg': msg}
     return render(request, 'atm_index.html', context)
+
+
+@login_required(login_url='/user/login/')
+def create_atm(request):
+    msg = ''
+    try:
+        branchadmin = AdminBranch.objects.get(user__user=request.user)
+        branch = branchadmin.user.branch
+        # managers = AdminATM.objects.all().filter(user__branch=branch)
+        managers = AdminATM.objects.all()
+        print("Managers Found ", len(managers))
+
+        if request.method == 'POST':
+            form = CreateATMForm(request.POST)
+
+            if form.is_valid():
+                manager_id = form.cleaned_data.get('manager_id')
+                amount = form.cleaned_data.get('amount')
+
+                manager = AdminATM.objects.get(user__user__username=manager_id)
+                while True:
+                    try:
+                        atm_id = random_with_N_digits(4)
+                        atm = ATM.objects.create(atm_id=atm_id, branch=branch, manager=manager, amount=amount)
+                        break
+                    except:
+                        pass
+                manager_full_name = atm.manager.user.user.get_full_name()
+                msg = 'خود پرداز شماره {} با موجودی {} تومان و مدیریت {} ساخته شد.'.format(atm.atm_id, atm.amount,
+                                                                                           manager_full_name)
+        else:
+            form = CreateATMForm()
+        context = {'form': form,
+                   'message': msg,
+                   'managers': managers}
+        return render(request, 'atm_create.html', context=context)
+
+    except:
+        return redirect(reverse('403'))

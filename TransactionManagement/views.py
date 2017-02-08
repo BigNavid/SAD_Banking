@@ -5,8 +5,10 @@ from django.core.urlresolvers import reverse
 from TransactionManagement import Constants
 from TransactionManagement.Utils import CreateTansactionModel
 from TransactionManagement.forms import WithdrawForm, DepositForm, DepositToOtherForm, BillPaymentForm,\
-    CashBillPaymentForm, AccountantReportForm, CheckLeafRequestForm, CashCheckLeafRequestForm, AdminReportForm, CustomerReport
+    CashBillPaymentForm, AccountantReportForm, CheckLeafRequestForm, CashCheckLeafRequestForm, AdminReportForm,\
+    CustomerReport, MoneyDeclarationForm, MoneyEditForm
 from UserManagement.models import Cashier, Accountant, Admin, Customer
+from TransactionManagement.models import Money
 from .models import Transaction, BankAccount, Bills, Branch
 
 
@@ -415,5 +417,51 @@ def customer_report(request):
         }
         print("Salam")
         return render(request, 'customer_report.html', context=context)
+    except:
+        return redirect(reverse('403'))
+
+
+@login_required(login_url='/user/login/')
+def money_declaration(request):
+    msg = ''
+    try:
+        Admin.objects.get(user=request.user)
+        if request.method == 'POST':
+            form = MoneyDeclarationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                money = form.cleaned_data.get('money')
+                msg = 'پول {} به ارزش {} تومان و شماره شناسه {} با موفقیت ایجاد شد.'.format(money.name, money.amount,
+                                                                                            money.money_id)
+        else:
+            form = MoneyDeclarationForm()
+        context = {'form': form,
+                   'message': msg}
+        return render(request, 'money_declaration.html', context=context)
+
+    except:
+        return redirect(reverse('403'))
+
+
+@login_required(login_url='/user/login/')
+def money_edit(request):
+    msg = ''
+    moneys = Money.objects.all()
+    try:
+        Admin.objects.get(user=request.user)
+        if request.method == 'POST':
+            form = MoneyEditForm(request.POST)
+            if form.is_valid():
+                form.save()
+                money = form.cleaned_data.get('money')
+                msg = 'پول {} به ارزش {} تومان و شماره شناسه {} با موفقیت تغییر یافت.'.format(money.name, money.amount,
+                                                                                              money.money_id)
+        else:
+            form = MoneyEditForm()
+        context = {'form': form,
+                   'message': msg,
+                   'moneys': moneys}
+        return render(request, 'money_edit.html', context=context)
+
     except:
         return redirect(reverse('403'))
