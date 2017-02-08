@@ -44,12 +44,12 @@
                     <li id="header_inbox_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-envelope-alt"></i>
-                            <span class="badge bg-important">5</span>
+                            <span class="badge bg-important">{{ notif_number }}</span>
                         </a>
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-red"></div>
                             <li>
-                                <p class="red">شما 5 پیام جدید دارید</p>
+                                <p class="red">شما {{ notif_number }} پیام جدید دارید</p>
                             </li>
                             <li>
                                 <a href="#">
@@ -199,7 +199,7 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a class="" href="{% url 'ProfileCashier' %}">
+                        <a class="" href="{% url 'ProfileCashier' username=request.user.username %}">
                             <i class="icon-dashboard"></i>
                             <span>پروفایل</span>
                         </a>
@@ -231,13 +231,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="" href="{% url CreateCreditCard %}">
+                        <a class="" href="{% url 'CreateCreditCard' %}">
                             <i class="icon-credit-card"></i>
                             <span>صدور کارت</span>
                         </a>
                     </li>
                     <li>
-                        <a class="" href="{% url CheckRequest %}">
+                        <a class="" href="{% url 'CheckRequest' %}">
                             <i class="icon-book"></i>
                             <span>صدور دسته چک</span>
                         </a>
@@ -265,13 +265,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="" href="{% url LoanRequest %}">
+                        <a class="" href="{% url 'LoanRequest' %}">
                             <i class="icon-file-text"></i>
                             <span>درخواست وام</span>
                         </a>
                     </li>
                     <li>
-                        <a class="" href="{% url Homepage %}">
+                        <a class="" href="{% url 'Homepage' %}">
                             <i class="icon-key"></i>
                             <span>صفحه ورود به سایت</span>
                         </a>

@@ -10,7 +10,7 @@ from TransactionManagement.models import CheckLeaf, BankAccount, Loan, Bank
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
     SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm, LegalExpertCheckConfirmForm, \
     AccountantCheckConfirmForm, ActivateAccountForm, LoanRequestForm, LoanConfirmationForm, FeeForm, RegularTransfers
-from .models import Customer, Cashier, Admin, Branch, AdminBranch, LegalExpert, Accountant
+from .models import Customer, Cashier, Admin, Branch, AdminBranch, LegalExpert, Accountant, Notifications
 
 
 def homepage(request):
@@ -271,7 +271,12 @@ def profile_cashier(request, username):
         return redirect(reverse('403'))
     try:
         cashier = Cashier.objects.get(user__user__username=username)
-        context = {'cashier': cashier}
+        notifications = Notifications.objects.all().filter(user__username=cashier.user.user.username)
+        notif_number = len(notifications)
+
+        context = {'cashier': cashier,
+                   'notifications': notifications,
+                   'notif_number': notif_number}
     except:
         return redirect(reverse('403'))
     return render(request, 'cashier_profile.html', context=context)
@@ -548,7 +553,7 @@ def regular_transaction(request):
         context = {'form': form,
                    'message': message,
                    'username': request.user.username}
-        return render(request, 'loan_request.html', context=context)
+        return render(request, 'regular_transactions_create.html', context=context)
     except:
         return redirect(reverse('TestView'))
 
