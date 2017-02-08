@@ -120,3 +120,12 @@ class CreditCard(models.Model):
     number = models.BigIntegerField(primary_key=True, unique=True, blank=False, null=False)
     bank_account = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
     password = models.IntegerField(null=False, blank=False)
+
+
+class RegularTransfers(models.Model):
+    isDaily = models.BooleanField(default=False)
+    isMonthly = models.BooleanField(default=False)
+    isYearly = models.BooleanField(default=False)
+    bankaccount_from = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name='BankAccount_From')
+    bankaccount_to = models.ForeignKey(BankAccount, related_name='BankAccount_To', on_delete=models.CASCADE)
+    amount = models.BigIntegerField()
