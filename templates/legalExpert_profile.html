@@ -8,7 +8,7 @@
     <meta name="author" content="Navid Ahmadian">
     <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
 
-    <title>پروفایل کاربری حسابرس</title>
+    <title>پروفایل کاربری کارشناس حقوقی</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -199,29 +199,29 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a class="" href="{% url 'ProfileAccountant' %}">
+                        <a class="" href="{% url 'ProfileLegalExpert' %}">
                             <i class="icon-dashboard"></i>
                             <span>پروفایل</span>
                         </a>
                     </li>
                     <li>
-                        <a class="" href="{% url 'AccountantCheckConfirm' %}">
+                        <a class="" href="{% url 'ActivateAccount' %}">
+                            <i class="icon-key"></i>
+                            <span>فعال/غیرفعال سازی حساب کاربری</span>
+                            <span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="{% url 'LegalExpertCheckConfirm' %}">
                             <i class="icon-foursquare"></i>
                             <span>تایید چک</span>
                             <span></span>
                         </a>
                     </li>
                     <li>
-                        <a class="" href="{% url 'AccountantLoanConfirm' %}">
+                        <a class="" href="{% url 'LegalExpertLoanConfirm' %}">
                             <i class="icon-ok"></i>
                             <span>تایید وام</span>
-                            <span></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'AccountantReport' %}">
-                            <i class="icon-file-text"></i>
-                            <span>گزارش گیری</span>
                             <span></span>
                         </a>
                     </li>
@@ -247,8 +247,8 @@
                                 <a href="#">
                                     <img src="{% static 'img/profile-avatar.jpg' %}" alt="">
                                 </a>
-                                <h1>{{ accountant.user.user.first_name }} {{ accountant.user.user.last_name }}</h1>
-                                <p>{{ accountant.user.user.email }}</p>
+                                <h1>{{ legalexpert.user.user.first_name }} {{ legalexpert.user.user.last_name }}</h1>
+                                <p>{{ legalexpert.user.user.email }}</p>
                             </div>
 
                             <ul class="nav nav-pills nav-stacked">
@@ -262,28 +262,28 @@
                     <aside class="profile-info col-lg-9">
                         <section class="panel">
                             <div class="bio-graph-heading">
-                                {{ accountant.user.user.first_name }} عزیز مدیرسامانه محترم فابانک به حساب کاربری‌تان خوش آمدید.
+                                {{ legalexpert.user.user.first_name }} عزیز کارشناس حقوقی محترم فابانک به حساب کاربری‌تان خوش آمدید.
                             </div>
                             <div class="panel-body bio-graph-info">
                                 <h1>اطلاعات شما:</h1>
                                 <div class="row">
                                     <div class="bio-row">
-                                        <p><span>نام </span>: {{ accountant.user.user.first_name }}</p>
+                                        <p><span>نام </span>: {{ legalexpert.user.user.first_name }}</p>
                                     </div>
                                     <div class="bio-row">
-                                        <p><span>نام خانوادگی </span>: {{ accountant.user.user.last_name }}</p>
+                                        <p><span>نام خانوادگی </span>: {{ legalexpert.user.user.last_name }}</p>
                                     </div>
                                     <div class="bio-row">
-                                        <p><span>شماره ملی</span>: {{ accountant.national_id }}</p>
+                                        <p><span>شماره ملی</span>: {{ legalexpert.national_id }}</p>
                                     </div>
                                     <div class="bio-row">
-                                        <p><span>نقش </span>: حسابرس</p>
+                                        <p><span>نقش </span>: کارشناس حقوقی</p>
                                     </div>
                                     <div class="bio-row">
-                                        <p><span>رایانامه </span>: {{ accountant.user.user.email }}</p>
+                                        <p><span>رایانامه </span>: {{ legalexpert.user.user.email }}</p>
                                     </div>
                                     <div class="bio-row">
-                                        <p><span>شماره تماس </span>: {{ accountant.phone }}</p>
+                                        <p><span>شماره تماس </span>: {{ legalexpert.phone }}</p>
                                     </div>
                                 </div>
                             </div>
