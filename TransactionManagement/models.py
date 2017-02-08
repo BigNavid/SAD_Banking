@@ -82,12 +82,12 @@ class Transaction(models.Model):
     cashier = models.ForeignKey(Cashier, on_delete=None, null=True, blank=True)
 
 
-
 class ATM(models.Model):
     atm_id = models.IntegerField(primary_key=True, unique=True, db_index=True)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     manager = models.ForeignKey(AdminATM, on_delete=models.CASCADE)
     amount = models.BigIntegerField()
+    min_amount = models.BigIntegerField(default=0)
 
 
 class ATMMoneys(models.Model):

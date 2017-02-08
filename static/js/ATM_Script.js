@@ -1,9 +1,11 @@
 // Get all the keys from document
 var keys = document.querySelectorAll('#atm span');
+var isATMSelected = false;
 var isCardNumEntered = false;
 var isPasswordEntered = false;
 var cardNumber;
 var password;
+var atm_id;
 var is_withdraw_cash = false;
 var is_deposit_to_credit_card = false;
 var to_credit_card;
@@ -25,7 +27,14 @@ for(var i = 0; i < keys.length; i++) {
 		// Now, just append the key values (btnValue) to the input string and finally use javascript's eval function to get the result
 		// If eval key is pressed, calculate and display the result
 		if(btnVal == 'تایید') {
-            if(inputVal != '' & !isCardNumEntered){
+		    if(inputVal != '' & !isATMSelected){
+                isATMSelected = true;
+                atm_id = inputVal;
+                input.innerHTML = '';
+                context.innerHTML = 'لطفا شماره کارت خود را وارد کنید.';
+                document.querySelector('#message').innerHTML = ''
+            }
+            else if(inputVal != '' & !isCardNumEntered){
                 isCardNumEntered = true;
                 cardNumber = inputVal;
                 input.innerHTML = '';
@@ -44,7 +53,7 @@ for(var i = 0; i < keys.length; i++) {
             }
             else if(inputVal != '' & is_withdraw_cash & !is_amount_entered){
                 amount = inputVal;
-                post('', {cardNumber: cardNumber, password: password, amount: amount, is_withdraw_cash: is_withdraw_cash, is_deposit_to_credit_card: is_deposit_to_credit_card, is_deposit_to_bank_account: is_deposit_to_bank_account, to_credit_card: to_credit_card, to_bank_account: to_bank_account})
+                post('', {atm_id: atm_id, cardNumber: cardNumber, password: password, amount: amount, is_withdraw_cash: is_withdraw_cash, is_deposit_to_credit_card: is_deposit_to_credit_card, is_deposit_to_bank_account: is_deposit_to_bank_account, to_credit_card: to_credit_card, to_bank_account: to_bank_account})
             }
             else if(inputVal != '' & is_deposit_to_credit_card & !is_amount_entered){
                 amount = inputVal;
@@ -54,7 +63,7 @@ for(var i = 0; i < keys.length; i++) {
             }
             else if(inputVal != '' & is_deposit_to_credit_card & is_amount_entered){
                 to_credit_card = inputVal;
-                post('', {cardNumber: cardNumber, password: password, amount: amount, is_withdraw_cash: is_withdraw_cash, is_deposit_to_credit_card: is_deposit_to_credit_card, is_deposit_to_bank_account: is_deposit_to_bank_account, to_credit_card: to_credit_card, to_bank_account: to_bank_account})
+                post('', {atm_id: atm_id, cardNumber: cardNumber, password: password, amount: amount, is_withdraw_cash: is_withdraw_cash, is_deposit_to_credit_card: is_deposit_to_credit_card, is_deposit_to_bank_account: is_deposit_to_bank_account, to_credit_card: to_credit_card, to_bank_account: to_bank_account})
             }
             else if(inputVal != '' & is_deposit_to_bank_account & !is_amount_entered){
                 amount = inputVal;
@@ -64,7 +73,7 @@ for(var i = 0; i < keys.length; i++) {
             }
             else if(inputVal != '' & is_deposit_to_bank_account & is_amount_entered){
                 to_bank_account = inputVal;
-                post('', {cardNumber: cardNumber, password: password, amount: amount, is_withdraw_cash: is_withdraw_cash, is_deposit_to_credit_card: is_deposit_to_credit_card, is_deposit_to_bank_account: is_deposit_to_bank_account, to_credit_card: to_credit_card, to_bank_account: to_bank_account})
+                post('', {atm_id: atm_id, cardNumber: cardNumber, password: password, amount: amount, is_withdraw_cash: is_withdraw_cash, is_deposit_to_credit_card: is_deposit_to_credit_card, is_deposit_to_bank_account: is_deposit_to_bank_account, to_credit_card: to_credit_card, to_bank_account: to_bank_account})
             }
 		}
 
