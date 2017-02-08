@@ -258,7 +258,11 @@ def profile_customer(request, username):
         return redirect(reverse('403'))
     try:
         customer = Customer.objects.get(user__username=username)
-        context = {'customer': customer}
+        notifications = Notifications.objects.all().filter(user__username=customer.user.username)
+        notif_number = len(notifications)
+        context = {'customer': customer,
+                   'notifications': notifications,
+                   'notif_number': notif_number}
     except:
         return redirect(reverse('403'))
     return render(request, 'customer_profile.html', context=context)
@@ -331,6 +335,7 @@ def profile_accountant(request, username):
         return redirect(reverse('403'))
     return render(request, 'accountant_profile.html', context=context)
 
+
 @login_required(login_url='/user/login/')
 def profile_legal_expert(request, username):
     if request.user.username != username:
@@ -345,6 +350,7 @@ def profile_legal_expert(request, username):
     except:
         return redirect(reverse('403'))
     return render(request, 'legalExpert_profile.html', context=context)
+
 
 @login_required(login_url='/user/login/')
 def check_request(request):

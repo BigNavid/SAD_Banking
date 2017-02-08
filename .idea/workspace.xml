@@ -4,9 +4,8 @@
     <list default="true" id="0f3a6e9d-01a1-4186-b4a6-aa1e7498695d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UserManagement/urls.py" afterPath="$PROJECT_DIR$/UserManagement/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UserManagement/views.py" afterPath="$PROJECT_DIR$/UserManagement/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin_profile.html" afterPath="$PROJECT_DIR$/templates/admin_profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/customer_profile.html" afterPath="$PROJECT_DIR$/templates/customer_profile.html" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,18 +33,18 @@
       <file leaf-file-name="cashier_profile.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/cashier_profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
+            <state relative-caret-position="-17">
               <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="74" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin_profile.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/admin_profile.html">
+      <file leaf-file-name="customer_profile.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/customer_profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="109" column="92" lean-forward="false" selection-start-line="109" selection-start-column="92" selection-end-line="109" selection-end-column="92" />
+            <state relative-caret-position="225">
+              <caret line="85" column="103" lean-forward="false" selection-start-line="85" selection-start-column="103" selection-end-line="85" selection-end-column="103" />
               <folding />
             </state>
           </provider>
@@ -54,21 +53,11 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UserManagement/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="294" column="47" lean-forward="false" selection-start-line="294" selection-start-column="47" selection-end-line="294" selection-end-column="47" />
+            <state relative-caret-position="216">
+              <caret line="264" column="48" lean-forward="true" selection-start-line="264" selection-start-column="48" selection-end-line="264" selection-end-column="48" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UserManagement/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="30" column="43" lean-forward="false" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -86,13 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Admin</find>
-      <find>cashier</find>
-      <find>Profile</find>
-      <find>Pos</find>
-      <find>BankAccount</find>
-      <find>login</find>
-      <find>login_user</find>
       <find>logout</find>
       <find>context</find>
       <find>eval</find>
@@ -115,7 +97,14 @@
       <find>CreateCreditCard</find>
       <find>cashier_profile</find>
       <find>admin_profile</find>
+      <find>Accou</find>
+      <find>Profile</find>
       <find>ProfileAdmin</find>
+      <find>accounta</find>
+      <find>ProfileAccountant</find>
+      <find>ProfileBranchAdmin</find>
+      <find>ProfileLegalExpert</find>
+      <find>profile_acc</find>
     </findStrings>
     <replaceStrings>
       <replace>customer</replace>
@@ -129,9 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/blank_admin.html" />
-        <option value="$PROJECT_DIR$/templates/create_branch_admin.html" />
-        <option value="$PROJECT_DIR$/templates/ghabz.html" />
         <option value="$PROJECT_DIR$/templates/check.html" />
         <option value="$PROJECT_DIR$/templates/gozaresh.html" />
         <option value="$PROJECT_DIR$/templates/havale.html" />
@@ -177,9 +163,12 @@
         <option value="$PROJECT_DIR$/Core_Banking/celery.py" />
         <option value="$PROJECT_DIR$/templates/cashier_profile.html" />
         <option value="$PROJECT_DIR$/templates/create_credit_card.html" />
-        <option value="$PROJECT_DIR$/UserManagement/views.py" />
         <option value="$PROJECT_DIR$/UserManagement/urls.py" />
+        <option value="$PROJECT_DIR$/templates/accountant_profile.html" />
         <option value="$PROJECT_DIR$/templates/admin_profile.html" />
+        <option value="$PROJECT_DIR$/templates/legalExpert_profile.html" />
+        <option value="$PROJECT_DIR$/UserManagement/views.py" />
+        <option value="$PROJECT_DIR$/templates/customer_profile.html" />
       </list>
     </option>
   </component>
@@ -302,8 +291,19 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/UserManagement/urls.py</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/UserManagement/views.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/bill_payment.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/cash_bill_payment.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/cash_checkleaf_request.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/cashier_profile.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/check_request.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/checkleaf_request.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/create_bank_account.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/create_credit_card.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/deposit_to_bank_account.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/deposit_to_other_bank_account.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/loan_request.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/signup_customer.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/withdraw_from_bank_account.html</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -987,7 +987,35 @@
       <option name="project" value="LOCAL" />
       <updated>1486537098057</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="AdminProfile Fix">
+      <created>1486537390459</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1486537390459</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Notif Test&#10;Accountant Profile">
+      <created>1486538063568</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1486538063568</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Fix">
+      <created>1486538197527</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1486538197527</updated>
+    </task>
+    <task id="LOCAL-00039" summary="LegalExpert Notif">
+      <created>1486538516213</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1486538516213</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1080,9 +1108,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix views imports (TransactionManagement)" />
-    <MESSAGE value="Add ATM page" />
-    <MESSAGE value="Add Cashier &amp; Customer Profile" />
     <MESSAGE value="Enhance Add Cashier &amp; Customer Profile" />
     <MESSAGE value="Add Create Branch Admin for SystemAdmin" />
     <MESSAGE value="set max_lenght for bank name in models (Bug Fix)&#10;declear BankAccount before Bank in models (Bug Fix)" />
@@ -1104,8 +1129,11 @@
     <MESSAGE value="Add RegularTransfer model&#10;Profit scheduler&#10;LoanPayment scheduler" />
     <MESSAGE value="cashier menu" />
     <MESSAGE value="Notif Cashier" />
+    <MESSAGE value="AdminProfile Fix" />
+    <MESSAGE value="Notif Test&#10;Accountant Profile" />
     <MESSAGE value="Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix" />
+    <MESSAGE value="LegalExpert Notif" />
+    <option name="LAST_COMMIT_MESSAGE" value="LegalExpert Notif" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1114,27 +1142,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/signup_admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="898">
-          <caret line="312" column="78" lean-forward="false" selection-start-line="312" selection-start-column="78" selection-end-line="312" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homepage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="39" column="114" lean-forward="false" selection-start-line="39" selection-start-column="114" selection-end-line="39" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="47" column="12" lean-forward="false" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/basic_table.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
@@ -1426,36 +1433,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/cashier_profile.html">
+    <entry file="file://$PROJECT_DIR$/UserManagement/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="74" selection-end-column="42" />
+        <state relative-caret-position="420">
+          <caret line="30" column="94" lean-forward="false" selection-start-line="30" selection-start-column="87" selection-end-line="30" selection-end-column="94" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UserManagement/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/accountant_profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="294" column="47" lean-forward="false" selection-start-line="294" selection-start-column="47" selection-end-line="294" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UserManagement/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="30" column="43" lean-forward="false" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
+        <state relative-caret-position="225">
+          <caret line="86" column="117" lean-forward="false" selection-start-line="86" selection-start-column="117" selection-end-line="86" selection-end-column="117" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin_profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="109" column="92" lean-forward="false" selection-start-line="109" selection-start-column="92" selection-end-line="109" selection-end-column="92" />
+        <state relative-caret-position="238">
+          <caret line="109" column="51" lean-forward="false" selection-start-line="109" selection-start-column="50" selection-end-line="109" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/legalExpert_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="86" column="119" lean-forward="false" selection-start-line="86" selection-start-column="119" selection-end-line="86" selection-end-column="119" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UserManagement/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="264" column="48" lean-forward="true" selection-start-line="264" selection-start-column="48" selection-end-line="264" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cashier_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="74" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/customer_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="85" column="103" lean-forward="false" selection-start-line="85" selection-start-column="103" selection-end-line="85" selection-end-column="103" />
           <folding />
         </state>
       </provider>
