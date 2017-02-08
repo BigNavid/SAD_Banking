@@ -199,78 +199,77 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu">
                 <li class="active">
-                    <a class="" href="index.html">
+                    <a class="" href="{% url 'ProfileCashier' username=request.user.username %}">
                         <i class="icon-dashboard"></i>
-                        <span>صفحه اصلی</span>
+                        <span>پروفایل</span>
                     </a>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;" class="">
-                        <i class="icon-book"></i>
-                        <span>مدیریت حساب ها</span>
+                        <i class="icon-user"></i>
+                        <span>افزودن حساب</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
                         <li><a class="" href="{% url 'SignUpCustomer' %}">حساب کاربری جدید</a></li>
                         <li><a class="" href="{% url 'CreateBankAccount' %}">حساب بانکی جدید</a></li>
-                        {#                            <li><a class="" href="widget.html">ویجت ها</a></li>#}
-                        {#                            <li><a class="" href="slider.html">اسلایدر ها</a></li>#}
-                        {#                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>#}
                     </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;" class="">
-                        <i class="icon-cogs"></i>
-                        <span>برداشت از حساب</span>
+                        <i class="icon-money"></i>
+                        <span>واریز یا برداشت</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="{%  url 'WithdrawBankAccount' %}">نقدی</a></li>
-                        <li><a class="" href="{% url 'DepositToOtherBankAccount' %}">واریز به حساب دیگر</a></li>
-                    </ul>
-                </li>
-                <li class="active">
-                    <a href="{% url 'DepositBankAccount' %}" class="">
-                        <i class="icon-tasks"></i>
-                        <span>واریز به حساب</span>
-                        <span class="arrow"></span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon-th"></i>
-                        <span>اطلاعات جدول</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="basic_table.html">جدول ساده</a></li>
-                        <li><a class="" href="dynamic_table.html">جدول داینامیک</a></li>
+                        <li><a class="" href="{%  url 'WithdrawBankAccount' %}">برداشت نقدی</a></li>
+                        <li><a class="" href="{% url 'DepositBankAccount' %}">واریز نقدی</a></li>
+                        <li><a class="" href="{% url 'DepositToOtherBankAccount' %}">انتقال وجه</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="" href="inbox.html">
-                        <i class="icon-envelope"></i>
-                        <span>ایمیل </span>
-                        <span class="label label-danger pull-right mail-info">2</span>
+                    <a class="" href="{% url 'CreateCreditCard' %}">
+                        <i class="icon-credit-card"></i>
+                        <span>صدور کارت</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="{% url 'CheckRequest' %}">
+                        <i class="icon-book"></i>
+                        <span>صدور دسته چک</span>
                     </a>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;" class="">
-                        <i class="icon-glass"></i>
-                        <span>عناصر اضافی</span>
+                        <i class="icon-dollar"></i>
+                        <span>پرداخت چک</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="blank_admin.html">صفحه خالی</a></li>
-                        <li><a class="" href="profile.html">پروفایل</a></li>
-                        <li><a class="" href="invoice.html">فاکتور</a></li>
-                        <li><a class="" href="404.html">404 Error</a></li>
-                        <li><a class="" href="500.html">500 Error</a></li>
+                        <li><a class="" href="{%  url 'CashCheckLeafRequest' %}">نقدی</a></li>
+                        <li><a class="" href="{% url 'CheckLeafRequest' %}">واریز</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon-list-alt"></i>
+                        <span>پرداخت قبض</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="{%  url 'CashBillPayment' %}">نقدی</a></li>
+                        <li><a class="" href="{% url 'BillPayment' %}">واریز</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="" href="login.html">
-                        <i class="icon-user"></i>
+                    <a class="" href="{% url 'LoanRequest' %}">
+                        <i class="icon-file-text"></i>
+                        <span>درخواست وام</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="{% url 'Homepage' %}">
+                        <i class="icon-key"></i>
                         <span>صفحه ورود به سایت</span>
                     </a>
                 </li>

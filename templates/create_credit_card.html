@@ -197,86 +197,83 @@
     <aside>
         <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
-                <ul class="sidebar-menu">
-                    <li class="active">
-                        <a class="" href="{% url 'ProfileCashier' username=request.user.username %}">
-                            <i class="icon-dashboard"></i>
-                            <span>پروفایل</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon-user"></i>
-                            <span>افزودن حساب</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="{% url 'SignUpCustomer' %}">حساب کاربری جدید</a></li>
-                            <li><a class="" href="{% url 'CreateBankAccount' %}">حساب بانکی جدید</a></li>
-{#                            <li><a class="" href="widget.html">ویجت ها</a></li>#}
-{#                            <li><a class="" href="slider.html">اسلایدر ها</a></li>#}
-{#                            <li><a class="" href="font_awesome.html">فونت های شکل دار</a></li>#}
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon-money"></i>
-                            <span>واریز یا برداشت</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="{%  url 'WithdrawBankAccount' %}">برداشت نقدی</a></li>
-                            <li><a class="" href="{% url 'DepositBankAccount' %}">واریز نقدی</a></li>
-                            <li><a class="" href="{% url 'DepositToOtherBankAccount' %}">انتقال وجه</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'CreateCreditCard' %}">
-                            <i class="icon-credit-card"></i>
-                            <span>صدور کارت</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'CheckRequest' %}">
-                            <i class="icon-book"></i>
-                            <span>صدور دسته چک</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon-dollar"></i>
-                            <span>پرداخت چک</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="{%  url 'CashCheckLeafRequest' %}">نقدی</a></li>
-                            <li><a class="" href="{% url 'CheckLeafRequest' %}">واریز</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon-list-alt"></i>
-                            <span>پرداخت قبض</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="{%  url 'CashBillPayment' %}">نقدی</a></li>
-                            <li><a class="" href="{% url 'BillPayment' %}">واریز</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'LoanRequest' %}">
-                            <i class="icon-file-text"></i>
-                            <span>درخواست وام</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'Homepage' %}">
-                            <i class="icon-key"></i>
-                            <span>صفحه ورود به سایت</span>
-                        </a>
-                    </li>
-                </ul>
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a class="" href="{% url 'ProfileCashier' username=request.user.username %}">
+                        <i class="icon-dashboard"></i>
+                        <span>پروفایل</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon-user"></i>
+                        <span>افزودن حساب</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="{% url 'SignUpCustomer' %}">حساب کاربری جدید</a></li>
+                        <li><a class="" href="{% url 'CreateBankAccount' %}">حساب بانکی جدید</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon-money"></i>
+                        <span>واریز یا برداشت</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="{%  url 'WithdrawBankAccount' %}">برداشت نقدی</a></li>
+                        <li><a class="" href="{% url 'DepositBankAccount' %}">واریز نقدی</a></li>
+                        <li><a class="" href="{% url 'DepositToOtherBankAccount' %}">انتقال وجه</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="" href="{% url 'CreateCreditCard' %}">
+                        <i class="icon-credit-card"></i>
+                        <span>صدور کارت</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="{% url 'CheckRequest' %}">
+                        <i class="icon-book"></i>
+                        <span>صدور دسته چک</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon-dollar"></i>
+                        <span>پرداخت چک</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="{%  url 'CashCheckLeafRequest' %}">نقدی</a></li>
+                        <li><a class="" href="{% url 'CheckLeafRequest' %}">واریز</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon-list-alt"></i>
+                        <span>پرداخت قبض</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="{%  url 'CashBillPayment' %}">نقدی</a></li>
+                        <li><a class="" href="{% url 'BillPayment' %}">واریز</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="" href="{% url 'LoanRequest' %}">
+                        <i class="icon-file-text"></i>
+                        <span>درخواست وام</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="{% url 'Homepage' %}">
+                        <i class="icon-key"></i>
+                        <span>صفحه ورود به سایت</span>
+                    </a>
+                </li>
+            </ul>
             <!-- sidebar menu end-->
         </div>
     </aside>
