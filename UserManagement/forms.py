@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 from TransactionManagement import Constants
 from TransactionManagement.Utils import random_with_N_digits
 from .models import Customer, Admin, AdminBranch, BranchStaff, Cashier, Accountant, LegalExpert, AdminATM
-from TransactionManagement.models import BankAccount, Branch, CreditCard, Bills, Check, CheckLeaf, Loan, Bank
+from TransactionManagement.models import BankAccount, Branch, CreditCard, Bills, Check, CheckLeaf, Loan, Bank,\
+    RegularTransfers
 
 field_errors = {
     'required': 'وارد کردن این فیلد ضروری است.',
@@ -421,3 +422,38 @@ class FeeForm(forms.Form):
         bank.bankaccount_transfer_fee = self.cleaned_data.get('bankaccount_transfer_fee')
         bank.save()
 
+
+class RegularTransactionForm(forms.Form):
+    type = forms.CharField(max_length=10)
+    bankaccount_from = forms.IntegerField(error_messages=field_errors)
+    bankaccount_to = forms.IntegerField(error_messages=field_errors)
+    amount = forms.IntegerField(min_value=0, error_messages=field_errors)
+
+    def save(self):
+        type = self.cleaned_data.get('type')
+        bankaccount_from = self.cleaned_data.get('bankaccount_from')
+        bankaccount_to = self.cleaned_data.get('bankaccount_to')
+        amount = self.cleaned_data.get('amount')
+        try:
+            while True:
+                regular_transaction_id = random_with_N_digits(5)
+                regular_transaction = None
+                if type == 'Daily':
+                    regular_transaction = RegularTransfers.objects.create(regular_trasaction_id=regular_transaction_id,
+                                                                          isDaily=True, bankaccount_from=
+                                                                          bankaccount_from, bankaccount_to=
+                                                                          bankaccount_to, amount=amount)
+                elif type == 'Monthly':
+                    regular_transaction = RegularTransfers.objects.create(regular_trasaction_id=regular_transaction_id,
+                                                                          isMonthly=True, bankaccount_from=
+                                                                          bankaccount_from, bankaccount_to=
+                                                                          bankaccount_to, amount=amount)
+                elif type == 'Yearly':
+                    regular_transaction = RegularTransfers.objects.create(regular_trasaction_id=regular_transaction_id,
+                                                                          isYearly=True, bankaccount_from=
+                                                                          bankaccount_from, bankaccount_to=
+                                                                          bankaccount_to, amount=amount)
+                self.cleaned_data['regular_transaction'] = regular_transaction
+                break
+        except:
+            pass

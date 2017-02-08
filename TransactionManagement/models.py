@@ -123,6 +123,7 @@ class CreditCard(models.Model):
 
 
 class RegularTransfers(models.Model):
+    regular_trasaction_id = models.IntegerField(primary_key=True, db_index=True)
     isDaily = models.BooleanField(default=False)
     isMonthly = models.BooleanField(default=False)
     isYearly = models.BooleanField(default=False)

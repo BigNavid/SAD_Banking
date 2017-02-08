@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^cashier/LoanRequest/', view=views.loan_request, name='LoanRequest'),
     url(r'^legalExpert/LoanConfirmation/', view=views.legalExpert_loan_confirm, name='LegalExpertLoanConfirm'),
     url(r'^accountant/LoanConfirmation/', view=views.accountant_loan_confirm, name='AccountantLoanConfirm'),
+    url(r'^cashier/RegularTransaction/', view=views.regular_transaction, name='RegularTransaction'),
 
 
     url(r'^ghabz/', view=views.ghabz, name='Ghabz'),

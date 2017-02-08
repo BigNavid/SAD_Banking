@@ -16,5 +16,4 @@ urlpatterns = [
     url(r'^CashCheckLeafRequest/', view=views.cash_checkleaf_request, name='CashCheckLeafRequest'),
     url(r'^MoneyDeclaration/', view=views.money_declaration, name='MoneyDeclaration'),
     url(r'^MoneyEdit/', view=views.money_edit, name='MoneyEdit'),
-
 ]

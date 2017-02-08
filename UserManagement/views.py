@@ -9,7 +9,7 @@ from TransactionManagement.Utils import CreateTansactionModel, CreateLoanPayment
 from TransactionManagement.models import CheckLeaf, BankAccount, Loan, Bank
 from .forms import SignUpCustomerForm, CreateBankAccountForm, SignUpAdminForm, CreateBranchForm, SignUpBranchAdminForm, \
     SignUpStaffForm, CreateCreditCardForm, BillDefinitionForm, CheckRequestForm, LegalExpertCheckConfirmForm, \
-    AccountantCheckConfirmForm, ActivateAccountForm, LoanRequestForm, LoanConfirmationForm, FeeForm
+    AccountantCheckConfirmForm, ActivateAccountForm, LoanRequestForm, LoanConfirmationForm, FeeForm, RegularTransfers
 from .models import Customer, Cashier, Admin, Branch, AdminBranch, LegalExpert, Accountant
 
 
@@ -530,6 +530,27 @@ def fee(request):
     except:
         return redirect(reverse('TestView'))
 
+
+@login_required(login_url='/user/login/')
+def regular_transaction(request):
+    message = ''
+    try:
+        Cashier.objects.get(user__user__username=request.user.username)
+        if request.method == 'POST':
+            form = RegularTransfers(request.POST)
+            if form.is_valid():
+                form.save()
+                rt = form.cleaned_data.get('regular_transaction')
+                message = 'حواله منظم شماره {} ساخته شد.'.format(rt.regular_trasaction_id)
+        else:
+            form = RegularTransfers()
+
+        context = {'form': form,
+                   'message': message,
+                   'username': request.user.username}
+        return render(request, 'loan_request.html', context=context)
+    except:
+        return redirect(reverse('TestView'))
 
 
 def forbidden(request):
