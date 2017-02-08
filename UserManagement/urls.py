@@ -13,9 +13,9 @@ urlpatterns = [
     url(r'^cashier/createBankAccount/', view=views.create_bank_account, name='CreateBankAccount'),
     url(r'^cashier/createCreditCard/', view=views.create_creditcard, name='CreateCreditCard'),
     url(r'^profile/cashier/(?P<username>.+)/', view=views.profile_cashier, name='ProfileCashier'),
-    url(r'^profile/admin/(.+)/', view=views.profile_admin, name='ProfileAdmin'),
-    url(r'^profile/customer/(.+)/', view=views.profile_customer, name='ProfileCustomer'),
-    url(r'^profile/branchAdmin/(.+)/', view=views.profile_branch_admin, name='ProfileBranchAdmin'),
+    url(r'^profile/admin/(?P<username>.+)/', view=views.profile_admin, name='ProfileAdmin'),
+    url(r'^profile/customer/(?P<username>.+)/', view=views.profile_customer, name='ProfileCustomer'),
+    url(r'^profile/branchAdmin/(?P<username>.+)/', view=views.profile_branch_admin, name='ProfileBranchAdmin'),
     url(r'^branchAdmin/signupStaff/', view=views.signup_staff, name='SignupStaff'),
     url(r'^test/(.+)/', view=views.test, name='TestView'),
     url(r'^logout/', view=views.logout_view, name='Logout'),
@@ -27,8 +27,8 @@ urlpatterns = [
     url(r'^legalExpert/LoanConfirmation/', view=views.legalExpert_loan_confirm, name='LegalExpertLoanConfirm'),
     url(r'^accountant/LoanConfirmation/', view=views.accountant_loan_confirm, name='AccountantLoanConfirm'),
     url(r'^cashier/RegularTransaction/', view=views.regular_transaction, name='RegularTransaction'),
-    url(r'^profile/legalExpert/(.+)/', view=views.profile_legal_expert, name='ProfileLegalExpert'),
-    url(r'^profile/accountant/(.+)/', view=views.profile_accountant, name='ProfileAccountant'),
+    url(r'^profile/legalExpert/(?P<username>.+)/', view=views.profile_legal_expert, name='ProfileLegalExpert'),
+    url(r'^profile/accountant/(?P<username>.+)/', view=views.profile_accountant, name='ProfileAccountant'),
 
 
     url(r'^ghabz/', view=views.ghabz, name='Ghabz'),
